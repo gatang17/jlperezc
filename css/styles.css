@@ -1,0 +1,41 @@
+/* Declarar la fuente */
+@font-face {font-family: 'Imbue'; src: url('data/Imbue/Imbue-VariableFont_opsz,wght.ttf') format('truetype'); font-weight: 100 900; /* variable font, puede usar todo el rango de pesos */ font-style: normal;}
+/*solopara Tagline */
+.tagline {font-family: 'Imbue', serif; font-weight: 100; font-size: clamp(2.5rem, 8vw, 10rem); letter-spacing: 0.05em; line-height: 1.2; text-transform: lowercase; }
+*,*::before,*::after {  box-sizing: border-box;}/* los hijos y todos se ajustan al tamano del body*/
+
+body, html {margin: 0;padding: 0; font-family: "Nunito Sans", sans-serif;background-color: #808080;color: #f0f0f0;text-shadow: 2px 2px 6px #252525;scroll-behavior: smooth;scrollbar-gutter: stable;}
+
+#sec_1{background-image: url(/images/01.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;}
+section { position: sticky; top: 0px; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; background-color: #808080; overflow: hidden; padding: 4rem; }
+.btn { border: 2px solid #f0f0f0; border-radius: 10px; padding: 5px; letter-spacing: 0.15em; text-decoration: none; color: inherit; flex: 1; text-align: center; z-index: 10000; }
+
+h1{font-size: 4rem; z-index: 1; position: relative; font-family: "Sofia Sans Extra Condensed", sans-serif; text-transform: uppercase; }
+h3{ z-index: 1; position: relative; text-transform: capitalize;}
+h2, .btn{ font-size: 1rem;  z-index: 1;  position: relative;  font-family: "Sofia Sans Extra Condensed", sans-serif;font-weight: 700;  text-transform: uppercase;}
+.d_grid{ justify-content: center; /* centra en horizontal */  text-align: center;    }
+.d_sub_grid{ display: flex;  gap: 1rem;  }
+
+/* Overlay de cuadritos */
+.pixel-overlay,.pixel-overlay * {  pointer-events: none;}
+.pixel-overlay {position: absolute;  top: 0;left: 0; width: 100%;height: 100%;display: grid; grid-template-columns: repeat(20, 1fr); /* 20 columnas de cuadritos */ grid-template-rows: repeat(20, 1fr);   /* 20 filas */ gap: 2px; z-index: 1000;}
+.pixel-overlay div { background-color: #fcfcfc;  opacity: 1;  transition: opacity 0.3s ease;}
+header{ position: fixed; top: 0;  width: 100vw; z-index: 100;  }
+nav{ display: flex;  height: 25px; padding: 10px; }
+nav a{  display: block;  flex: 1; text-align: center;  padding: 1rem; text-decoration: none;  color: inherit;  }
+
+/*ABOUT - gallery_1*/
+ #about{    width: 100vw;  display: flex;  flex-direction: row;  justify-content: left;    }
+ #gallery_1{ display: grid; grid-template-columns: repeat(1, 1fr); /* 2 columnas de cuadritos */   background-color: #6c0e0e; gap: 1rem; }
+ #gallery_1 img{height: 200px; }
+
+/**mywork*/
+#work {display: flex; flex-direction: column; align-items: center; justify-content: center; }
+#prev, #next { position: relative; /* CLAVE */ z-index: 200; background: none; border: none; cursor: pointer; }
+#carrusel-container { position: relative; width: 100%; margin: 50px auto; display: flex; align-items: center; justify-content: center; }
+#carrusel { position: relative; width: 100%; height: 300px; perspective: 1000px; }
+#carrusel img { position: absolute; top: 50%; left: 50%; width: 60%; height: auto; transform: translate(-50%, -50%); transition: all 0.5s ease; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+@media (max-width: 785px) {
+  #carrusel img { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; border-radius: 0; }
+}
+    

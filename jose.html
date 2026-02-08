@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--FONTS-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">  
+<link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<link rel="stylesheet" href="css/styles.css">
+  <title>Dark Multi-Section Page</title>
+
+</head>
+<body>
+  <header >
+    
+    <nav id="home">  
+      <a href="#"> logo</a>
+      <a href="#about">about</a>
+      <a href="#work">myWork</a>
+      <a href="#contact">Contact</a> 
+    </nav>
+    
+  </header>
+    <main>     
+        <section  id="sec_1"  class="fade-section">  <div class="pixel-overlay"></div>  <div>
+           <div class="d_grid">
+            <h3 class="tagline">Photography, tailored for impact.</h3>
+               <h1>jlpezc</h1>
+              
+            <div class="d_grid d_sub_grid"><p>Photographer</p>
+             <p>|</p>
+             <p>Visual Storyteller</p></div>
+             <a class="btn" href="#about" data-scroll>Lets work together!</a>
+           </div>
+           
+
+         </div> 
+        </section>
+      
+        <section id="about" class="fade-section">
+          <div class="pixel-overlay"></div>
+          <h1>About<br>ME</h1>
+          <div id="gallery_1"><img src="/images/01.jpg"><img src="/images/01.jpg"><img src="/images/01.jpg"><img src="/images/01.jpg">
+            <img src="/images/01.jpg"><img src="/images/01.jpg"></div>
+        </section>
+      
+        <section id="work" class="fade-section">
+          <h1>Areas of expertise</h1>
+          <div class="pixel-overlay"></div>         
+          <div id="carrusel-container">
+            <i id="next" class="fa-solid fa-angle-left"></i>
+            
+            <div id="carrusel">
+             
+            <img src="/images/01.jpg" data-title="portrait">
+            <img src="/images/01.jpg" data-title="enviromental">
+            <img src="/images/01.jpg" data-title="product">
+            <img src="/images/01.jpg" data-title="manipulations">
+            <img src="/images/01.jpg" data-title="groups">
+            <img src="/images/01.jpg" data-title="architecture">
+            <img src="/images/01.jpg" data-title="creative">
+             
+            </div>
+            <i id="prev" class="fa-solid fa-angle-right"></i>
+          
+          </div>
+          <h2 id="carousel-title"></h2>
+          </div>
+        </section>
+      
+        <section id="contact" class="fade-section">
+          <div class="pixel-overlay"></div>
+          <h1>Contact</h1>
+        </section>
+      </main>
+      
+      
+
+<script>
+  
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".fade-section");
+
+  // Crear cuadritos dentro del overlay
+  sections.forEach(section => {
+    const overlay = section.querySelector(".pixel-overlay");
+    const total = 20 * 20;
+
+    for(let i=0; i<total; i++){
+      const block = document.createElement("div");
+      overlay.appendChild(block);
+    }
+  });
+
+  // Animación de cuadritos
+  function animateSection(section){
+    const blocks = section.querySelectorAll(".pixel-overlay div");
+    blocks.forEach((block, index) => {
+      setTimeout(() => {
+        block.style.opacity = "0";
+      }, Math.random() * 1000);
+    });
+  }
+
+  // IntersectionObserver
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        animateSection(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  sections.forEach(section => observer.observe(section));
+});
+  
+const links = document.querySelectorAll('a[href^="#"]');
+let currentZ = 10;
+links.forEach(link => {
+  link.addEventListener("click, scroll", e => {
+    const id = link.getAttribute("href");
+
+    if (!id.startsWith("#")) return;
+    const target = document.querySelector(id);
+    if (!target) return;
+    currentZ++;
+    target.style.zIndex = currentZ;
+  });
+});
+
+//myWork
+const carousel = document.getElementById("carrusel");
+const images = Array.from(carousel.getElementsByTagName("img"));
+let positions = []; // array que guarda la posición de cada imagen
+
+// Inicializamos las posiciones
+function initPositions() {
+  const len = images.length;
+  positions = [];
+  for (let i = 0; i < len; i++) {
+    if (i === 0) positions.push("center");
+    else if (i % 2 === 1) positions.push("right");
+    else positions.push("left");
+  }
+  updateCarousel();
+}
+
+// Función que actualiza estilos según la posición
+
+const maxPairs = 3;   // máximo de capas visibles a cada lado
+const baseGap = 2;    // rem de separación horizontal
+const scaleStep = 0.1;
+let currentIndex = 0;
+
+function updateCarousel() {
+  const isMobile = window.innerWidth <= 768;
+  const total = images.length;
+
+  images.forEach((img, i) => {
+    let offset = i - currentIndex;
+    // ciclo infinito
+    if (offset < -Math.floor(total / 2)) offset += total;
+    if (offset > Math.floor(total / 2)) offset -= total;
+    const absOffset = Math.abs(offset);
+
+    let x = 0;
+    let scale = 1;
+    let rotateY = 0;
+    let zIndex = 0;
+    let yOffset = 0;
+
+    if (offset === 0) {
+      // centro
+      scale = 1.1;
+      zIndex = 10;
+      document.getElementById("carousel-title").textContent =img.dataset.title || "";
+    } else {
+      const pairIndex = Math.min(absOffset, maxPairs);
+
+      scale = 1 - scaleStep * pairIndex;
+      rotateY = offset > 0 ? -15 : 15;
+      yOffset = pairIndex * 0.3;
+      zIndex = 10 - pairIndex;
+
+      //mobile 
+      if (!isMobile) {
+        x = (offset > 0 ? 4 : -4) * baseGap * pairIndex;
+      }
+    }
+    img.style.transform = ` translate( calc(-50% + ${x}rem),  calc(-50% + ${yOffset}rem) ) scale(${scale})  rotateY(${rotateY}deg)  `;
+    img.style.zIndex = zIndex;
+  });
+}
+
+// Botones
+document.getElementById("next").addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateCarousel();
+});
+document.getElementById("prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateCarousel();
+});
+
+updateCarousel();
+// Botones
+document.getElementById("next").addEventListener("click", next);
+document.getElementById("prev").addEventListener("click", prev);
+
+// Inicializamos
+initPositions();
+
+let startX = 0;
+let endX = 0;
+
+carousel.addEventListener("touchstart", e => {
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", e => {
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const diff = startX - endX;
+
+  if (Math.abs(diff) < 50) return; // ignora toques pequeños
+
+  if (diff > 0) next();
+  else prev();
+}
+
+
+
+</script>
+</body>
+</html>
