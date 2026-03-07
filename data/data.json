@@ -1,0 +1,11 @@
+{
+    "galleries": {
+        "photography": {
+          "title": "personal portfolio",
+          "description": "",
+          "src": "images/g_gallery",
+          "count": 18
+        }
+       
+      }
+    }

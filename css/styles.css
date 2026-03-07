@@ -1,41 +1,354 @@
 /* Declarar la fuente */
-@font-face {font-family: 'Imbue'; src: url('data/Imbue/Imbue-VariableFont_opsz,wght.ttf') format('truetype'); font-weight: 100 900; /* variable font, puede usar todo el rango de pesos */ font-style: normal;}
+@font-face {
+  font-family: "Imbue";
+  src: url("data/Imbue/Imbue-VariableFont_opsz,wght.ttf") format("truetype");
+  font-weight: 100 900; /* variable font, puede usar todo el rango de pesos */
+  font-style: normal;
+}
 /*solopara Tagline */
-.tagline {font-family: 'Imbue', serif; font-weight: 100; font-size: clamp(2.5rem, 8vw, 10rem); letter-spacing: 0.05em; line-height: 1.2; text-transform: lowercase; }
-*,*::before,*::after {  box-sizing: border-box;}/* los hijos y todos se ajustan al tamano del body*/
+.tagline {
+  font-family: "Imbue", serif;
+  font-weight: 100;
+  font-size: clamp(2.5rem, 8vw, 10rem);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: lowercase;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+} /* los hijos y todos se ajustan al tamano del body*/
 
-body, html {margin: 0;padding: 0; font-family: "Nunito Sans", sans-serif;background-color: #808080;color: #f0f0f0;text-shadow: 2px 2px 6px #252525;scroll-behavior: smooth;scrollbar-gutter: stable;}
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito Sans", sans-serif;
+  background-color: #262424;
+  color: #efdfbb;
+  text-shadow: 2px 2px 6px #252525;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+}
 
-#sec_1{background-image: url(/images/01.jpg); background-repeat: no-repeat; background-size: cover; background-position: center;}
-section { position: sticky; top: 0px; height: 100vh; width: 100vw; display: flex; justify-content: center; align-items: center; background-color: #808080; overflow: hidden; padding: 4rem; }
-.btn { border: 2px solid #f0f0f0; border-radius: 10px; padding: 5px; letter-spacing: 0.15em; text-decoration: none; color: inherit; flex: 1; text-align: center; z-index: 10000; }
+#sec_1 {
+  background-image: url(/images/01.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+section {
+  position: sticky;
+  height: 100vh;
+  top: 0px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #14232e;
+  padding: 4rem 1rem 0 1rem ;
+}
+.btn {
+  border: 2px solid #4b1208;
+  border-radius: 10px;
+  padding: 5px;
+  letter-spacing: 0.15em;
+  text-decoration: none;
+  color: inherit;
+  flex: 1;
+  text-align: center;
+  z-index: 10000;
+}
 
-h1{font-size: 4rem; z-index: 1; position: relative; font-family: "Sofia Sans Extra Condensed", sans-serif; text-transform: uppercase; }
-h3{ z-index: 1; position: relative; text-transform: capitalize;}
-h2, .btn{ font-size: 1rem;  z-index: 1;  position: relative;  font-family: "Sofia Sans Extra Condensed", sans-serif;font-weight: 700;  text-transform: uppercase;}
-.d_grid{ justify-content: center; /* centra en horizontal */  text-align: center;    }
-.d_sub_grid{ display: flex;  gap: 1rem;  }
+h1 {
+  font-size: 4rem;
+  z-index: 1;
+  position: relative;
+  font-family: "Sofia Sans Extra Condensed", sans-serif;
+  text-transform: uppercase;
+}
+h3 {
+  z-index: 1;
+  position: relative;
+  text-transform: capitalize;
+}
+h2,
+.btn {
+  font-size: 1rem;
+  z-index: 1;
+  position: relative;
+  font-family: "Sofia Sans Extra Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.d_grid {
+  justify-content: center; /* centra en horizontal */
+  text-align: center;
+}
+.d_sub_grid {
+  display: flex;
+  gap: 1rem;
+}
 
 /* Overlay de cuadritos */
-.pixel-overlay,.pixel-overlay * {  pointer-events: none;}
-.pixel-overlay {position: absolute;  top: 0;left: 0; width: 100%;height: 100%;display: grid; grid-template-columns: repeat(20, 1fr); /* 20 columnas de cuadritos */ grid-template-rows: repeat(20, 1fr);   /* 20 filas */ gap: 2px; z-index: 1000;}
-.pixel-overlay div { background-color: #fcfcfc;  opacity: 1;  transition: opacity 0.3s ease;}
-header{ position: fixed; top: 0;  width: 100vw; z-index: 100;  }
-nav{ display: flex;  height: 25px; padding: 10px; }
-nav a{  display: block;  flex: 1; text-align: center;  padding: 1rem; text-decoration: none;  color: inherit;  }
+.pixel-overlay,
+.pixel-overlay * {
+  pointer-events: none;
+}
+.pixel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr); /* 20 columnas de cuadritos */
+  grid-template-rows: repeat(20, 1fr); /* 20 filas */
+  gap: 2px;
+  z-index: 1000;
+}
+.pixel-overlay div {
+  background-color: #efdfbb;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+}
+nav {
+  display: flex;
+  height: 25px;
+  padding: 10px;
+}
+nav a {
+  display: block;
+  flex: 1;
+  text-align: center;
+  padding-bottom: 2rem;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 2px solid #4b1208;
+}
+/*=================================SECTION 0*/
+.section-gallery {
+  height: 100vh; /* altura completa de la ventana */
+}
+
+.d_grid0 {
+  display: flex;
+  height: 100%;
+}
+
+.d_sub_grid0 {
+  width: 20%; /* o width: 25%; si quieres proporcional */
+  min-width: 200px; /* opcional, para que no se haga muy pequeño */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0rem 0rem 5rem 0rem;
+  background-image: url(/images/01.jpg);
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Ocultar scrollbar en la mayoría de navegadores */
+body::-webkit-scrollbar #gallery {
+  display: none; /* Chrome, Safari */
+}
+body #gallery {
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+#gallery {
+  flex: 1;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  overflow-y: auto; /* scroll solo aquí */
+  height: 100%; /* ocupar toda la sección sticky */
+  padding: 1rem;
+}
+
+.gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* se adapta al ancho */
+  grid-auto-rows: 1fr; /* todas las filas iguales y llenan el espacio */
+  gap: 2rem;
+
+  height: 100%; /* ocupa toda la altura disponible */
+}
+
+.gallery_grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ajusta las imágenes al tamaño del grid */
+  aspect-ratio: 1 / 1;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.gallery_grid img:hover {
+  transform: scale(1.05);
+}
+#previewImage {
+  max-width: 350px;
+}
+#popupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+
+#popupImage {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+#prevBtn,
+#nextBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
+
+#prevBtn {
+  left: 2rem;
+}
+#nextBtn {
+  right: 2rem;
+}
 
 /*ABOUT - gallery_1*/
- #about{    width: 100vw;  display: flex;  flex-direction: row;  justify-content: left;    }
- #gallery_1{ display: grid; grid-template-columns: repeat(1, 1fr); /* 2 columnas de cuadritos */   background-color: #6c0e0e; gap: 1rem; }
- #gallery_1 img{height: 200px; }
+#about {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+#gallery_1 {
+  margin: 0 2rem 0 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* 2 columnas de cuadritos */
+  background-color: #4b1208;
+  gap: 1rem;
+}
+#gallery_1 img {
+  height: 200px;
+}
 
 /**mywork*/
-#work {display: flex; flex-direction: column; align-items: center; justify-content: center; }
-#prev, #next { position: relative; /* CLAVE */ z-index: 200; background: none; border: none; cursor: pointer; }
-#carrusel-container { position: relative; width: 100%; margin: 50px auto; display: flex; align-items: center; justify-content: center; }
-#carrusel { position: relative; width: 100%; height: 300px; perspective: 1000px; }
-#carrusel img { position: absolute; top: 50%; left: 50%; width: 60%; height: auto; transform: translate(-50%, -50%); transition: all 0.5s ease; border-radius: 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
-@media (max-width: 785px) {
-  #carrusel img { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; border-radius: 0; }
+#work {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-    
+#prev,
+#next {
+  position: relative; /* CLAVE */
+  z-index: 200;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+#carrusel-container {
+  position: relative;
+  width: 100%;
+  margin: 50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#carrusel {
+  position: relative;
+  width: 60%;
+  height: 300px;
+  perspective: 1000px;
+}
+#carrusel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  height: auto;
+  transform: translate(-50%, -50%);
+  transition: all 0.5s ease;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+}
+
+@media (max-width: 785px) {
+  .carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 680px;
+    aspect-ratio: 1 / 1;
+  }
+  #section-gallery {
+    padding: 0;
+    margin: 0;
+  }
+  .d_grid0 {
+    flex-direction: column;
+  }
+  .d_sub_grid0 {
+    min-width: 100%;
+    margin: 5rem 0 0 0;
+    padding: 0 0 0 0;
+    height: 200px;
+  }
+  #gallery {
+    flex: 1;
+    display: grid;
+    grid-template-rows: 1 1fr;
+    gap: 1rem;
+    overflow-y: auto; /* scroll solo aquí */
+    height: 100%; /* ocupar toda la sección sticky */
+    margin-top: 2rem;
+  }
+
+  .gallery_grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* se adapta al ancho */
+    grid-auto-rows: 1fr; /* todas las filas iguales y llenan el espacio */
+    gap: 2rem;
+
+    height: 100%; /* ocupa toda la altura disponible */
+  }
+}
+
+.carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 680px;
+  aspect-ratio: 1 / 1; /* 🔥 siempre cuadrado */
+
+  background-size: cover; /* 🔥 no deforma */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}

@@ -17,18 +17,37 @@
 
 </head>
 <body>
-  <header >
-    
+  <header >    
     <nav id="home">  
       <a href="#"> logo</a>
       <a href="#about">about</a>
       <a href="#work">myWork</a>
       <a href="#contact">Contact</a> 
-    </nav>
-    
+    </nav>    
   </header>
+
     <main>     
-        <section  id="sec_1"  class="fade-section">  <div class="pixel-overlay"></div>  <div>
+      <section class="section-gallery fade-section">
+        <div class="d_grid0">
+          <div class="d_sub_grid0">
+            
+            <h2>jose luis prerez cespedes</h2>
+              <p>Photograpy</p>
+          </div>
+      
+          <div class="container-fluid" id="gallery">
+            <div id="gallery_grid"></div>
+            <div class="text-center"></div>
+          </div>
+        </div>
+      </section>
+   <!-- Overlay para galería -->
+<div id="popupOverlay">
+  <i class="fa-solid fa-chevron-left" id="prevBtn"></i>
+  <img id="popupImage">
+  <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
+</div>
+        <section  id="sec_1"  class="fade-section">  <div class="pixel-overlay"></div> <div>
            <div class="d_grid">
             <h3 class="tagline">Photography, tailored for impact.</h3>
                <h1>jlpezc</h1>
@@ -48,6 +67,7 @@
           <h1>About<br>ME</h1>
           <div id="gallery_1"><img src="/images/01.jpg"><img src="/images/01.jpg"><img src="/images/01.jpg"><img src="/images/01.jpg">
             <img src="/images/01.jpg"><img src="/images/01.jpg"></div>
+            <p>quien soy</p>
         </section>
       
         <section id="work" class="fade-section">
@@ -56,17 +76,16 @@
           <div id="carrusel-container">
             <i id="next" class="fa-solid fa-angle-left"></i>
             
-            <div id="carrusel">
-             
-            <img src="/images/01.jpg" data-title="portrait">
-            <img src="/images/01.jpg" data-title="enviromental">
-            <img src="/images/01.jpg" data-title="product">
-            <img src="/images/01.jpg" data-title="manipulations">
-            <img src="/images/01.jpg" data-title="groups">
-            <img src="/images/01.jpg" data-title="architecture">
-            <img src="/images/01.jpg" data-title="creative">
-             
-            </div>
+            <div id="carrusel">       
+                <div class="carousel-item" data-title="portrait" style="background-image: url('images/01.jpg');"></div>
+                <div class="carousel-item" data-title="enviromental" style="background-image: url('images/02.jpg');"></div>
+                <div class="carousel-item" data-title="product" style="background-image: url('images/03.jpg');"></div>
+                <div class="carousel-item" data-title="manipulations" style="background-image: url('images/04.jpg');"></div>
+                <div class="carousel-item" data-title="groups" style="background-image: url('images/05.jpg');"></div>
+                <div class="carousel-item" data-title="architecture" style="background-image: url('images/01.jpg');"></div>
+                <div class="carousel-item" data-title="creative" style="background-image: url('images/01.jpg');"></div> 
+
+          </div>
             <i id="prev" class="fa-solid fa-angle-right"></i>
           
           </div>
@@ -136,7 +155,8 @@ links.forEach(link => {
 
 //myWork
 const carousel = document.getElementById("carrusel");
-const images = Array.from(carousel.getElementsByTagName("img"));
+const images = Array.from(carousel.getElementsByClassName("carousel-item"));
+
 let positions = []; // array que guarda la posición de cada imagen
 
 // Inicializamos las posiciones
@@ -184,7 +204,7 @@ function updateCarousel() {
       const pairIndex = Math.min(absOffset, maxPairs);
 
       scale = 1 - scaleStep * pairIndex;
-      rotateY = offset > 0 ? -15 : 15;
+      rotateY = offset > 0 ? -20 : 20;
       yOffset = pairIndex * 0.3;
       zIndex = 10 - pairIndex;
 
@@ -237,6 +257,119 @@ function handleSwipe() {
   else prev();
 }
 
+//GALERIAAAAAAAA 
+document.addEventListener("DOMContentLoaded", () => {
+
+// Leer servicio desde URL
+// Elegir galería según URL o fallback general
+const params = new URLSearchParams(window.location.search);
+const serviceKey = params.get("service") || "photography"; // "photography" es la galería general
+sessionStorage.setItem("selectedService", serviceKey.toLowerCase());
+const service = sessionStorage.getItem("selectedService");
+
+// Contenedor
+const container = document.getElementById("gallery_grid");
+container.innerHTML = "";
+container.style.display = "flex";
+container.style.flexDirection = "column";
+container.style.justifyContent = "center";
+container.style.alignItems = "center";
+container.style.paddingBottom = "4rem";
+
+// Overlay elementos
+const overlay = document.getElementById("popupOverlay");
+const imgBig = document.getElementById("popupImage");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+//Variables globales para navegación
+let currentIndex = 0;
+let imagesList = [];
+
+// Cargar JSON
+fetch("data/data.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const galleryData = data.galleries[serviceKey] || data.galleries.photography;
+
+    // Título
+    const title = document.createElement("h1");
+    title.textContent = galleryData.title;
+    title.style.textAlign = "center";
+    title.style.margin = "0";
+    container.appendChild(title);
+
+    // Descripción
+    if (galleryData.description) {
+      const desc = document.createElement("p");
+      desc.textContent = galleryData.description;
+      desc.style.maxWidth = "700px";
+      desc.style.margin = "2.5rem 0";
+      container.appendChild(desc);
+    }
+
+    // Contenedor de imágenes
+    const otro_container = document.createElement("div");
+    otro_container.className = "gallery_grid";
+    container.appendChild(otro_container);
+
+    //  Crear array de imágenes
+    imagesList = Array.from(
+      { length: galleryData.count || 18 },
+      (_, i) => `${galleryData.src}/${i + 1}.jpg`
+    );
+
+    // Mezclar
+    for (let i = imagesList.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [imagesList[i], imagesList[j]] = [imagesList[j], imagesList[i]];
+    }
+
+    // Pintar imágenes
+    imagesList.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.alt = galleryData.title;
+      otro_container.appendChild(img);
+
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        imgBig.src = src;
+        overlay.style.display = "flex";
+      });
+    });
+
+  })
+  .catch(error => console.error("Error loading gallery:", error));
+
+//Navegación
+function showNext() {
+  currentIndex = (currentIndex + 1) % imagesList.length;
+  imgBig.src = imagesList[currentIndex];
+}
+function showPrev() {
+  currentIndex = (currentIndex - 1 + imagesList.length) % imagesList.length;
+  imgBig.src = imagesList[currentIndex];
+}
+
+nextBtn.addEventListener("click", e => { e.stopPropagation(); showNext(); });
+prevBtn.addEventListener("click", e => { e.stopPropagation(); showPrev(); });
+
+// 9Cerrar overlay
+overlay.addEventListener("click", e => {
+  if (e.target === overlay) overlay.style.display = "none";
+});
+
+// Teclado
+document.addEventListener("keydown", e => {
+  if (overlay.style.display !== "flex") return;
+  if (e.key === "ArrowRight") showNext();
+  if (e.key === "ArrowLeft") showPrev();
+  if (e.key === "Escape") overlay.style.display = "none";
+});
+
+});
 
 
 </script>
