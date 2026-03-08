@@ -237,7 +237,7 @@ body #gallery {
     /* width: 100%; */
     flex-grow: 1;
     flex-basis: 200px;
-    width: 180px;
+    width: 300px;
     height: auto;
     /* height: auto; */
     object-fit: cover;
