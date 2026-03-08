@@ -3,64 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--FONTS-->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">  
+ 
 <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 
 <link rel="stylesheet" href="css/styles.css">
-  <title>Dark Multi-Section Page</title>
+  <title>Jose Luis Perez Portfolio</title>
 
 </head>
 <body>
-  <header >    
-    <nav id="home">    
-      <a href="#init">
-        <span class="flip"><span class="front">home</span>  <span class="back">home</span></span>
-      </a>
-      <a href="#sec_1">
-        <span class="flip"> <span class="front">resume</span><span class="back">resume</span>
-        </span>
-      </a>
-
-        <a href="#about">
-          <span class="flip">
-            <span class="front">about</span>
-            <span class="back">about</span>
-          </span>
-        </a>
-        
-        <a href="#work">
-          <span class="flip">
-            <span class="front">work</span>
-            <span class="back">work</span>
-          </span>
-        </a>
-        
-        <a href="#contact">
-          <span class="flip">
-            <span class="front">contact</span>
-            <span class="back">contact</span>
-          </span>
-        </a>
-        
-    </nav>    
-  </header>
+  <!-- <header >    
+   
+  </header> -->
+  <div id="header"></div>
 <style>
   
 </style>
-    <main>     
+    <main class="borroso">
+      <div id="cont_background" class="container hero"></div> 
+
+      <section  id="sec_1"  class="fade-section">
+        <div class="pixel-overlay"></div>
+        <div>
+        <div class="d_grid">
+         <h3 class="tagline">Photography, tailored for impact.</h3>
+          
+         <div class="d_grid d_sub_grid"><p>Jose Perez</p>
+          <p>|</p>
+          <p>Portfolio</p></div>
+          <a class="boton" href="#init" data-scroll>View gallery</a>
+        </div>
+      </div> 
+     </section>
+
       <section id="init" class="section-gallery fade-section">
         <div class="pixel-overlay"></div>
         <div class="d_grid0">
           <div class="d_sub_grid0">
             <div class="wrapp">
-              <h2>jose luis prerez cespedes</h2>
+              <h1>jose luis prerez cespedes</h1>
+             
               <p>Hi, I'm Jose. Welcome to my portfolio!
                 I’m a product photography student at JCTC, and I was honored with a Gold ADDY award in 2026. <br>I specialize in capturing products with creativity and precision, bringing each image to life. </p>
             </div>
@@ -79,20 +61,7 @@
   <img id="popupImage">
   <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
 </div>
-        <section  id="sec_1"  class="fade-section">  <div class="pixel-overlay"></div> <div>
-           <div class="d_grid">
-            <h3 class="tagline">Photography, tailored for impact.</h3>
-               <h1>jlpezc</h1>
-              
-            <div class="d_grid d_sub_grid"><p>Photographer</p>
-             <p>|</p>
-             <p>Visual Storyteller</p></div>
-             <a class="boton" href="#contact" data-scroll>Lets work together!</a>
-           </div>
-           
-
-         </div> 
-        </section>
+        
       
         <section id="about" class="fade-section">
           <div class="pixel-overlay"></div>
@@ -106,7 +75,8 @@
           <h1>Areas of expertise</h1>
           <div class="pixel-overlay"></div>         
           <div id="carrusel-container">
-            <i id="next" class="fa-solid fa-angle-left"></i>
+            <i id="prev" class="fa-solid fa-angle-left"></i>
+            
             
             <div id="carrusel">       
                 <div class="carousel-item" data-title="portrait" style="background-image: url('images/01.jpg');"></div>
@@ -118,7 +88,7 @@
                 <div class="carousel-item" data-title="creative" style="background-image: url('images/01.jpg');"></div> 
 
           </div>
-            <i id="prev" class="fa-solid fa-angle-right"></i>
+          <i id="next" class="fa-solid fa-angle-right"></i>
           
           </div>
           <h2 id="carousel-title"></h2>
@@ -129,7 +99,7 @@
           <div class="pixel-overlay"></div>
         
           <div class="container">
-            <h1 class="text-center mt-5 mb-5">Contact</h1>
+            <h1 >Contact</h1>
             <p class="mb-5 text-center">
               For questions, service requests, or feedback, please fill out the form below.
               I’ll get back to you shortly!
@@ -176,20 +146,89 @@
       <button class="closeBtn" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></button> 
       
   
-      <h5>Thank you for your message. I'll respond shortly.</h5>
+      <p>Thank you for your message. I'll respond shortly.</p>
   
     </div>
   </div>
 
-      
+      <!--FOOTER-->
+  <footer class="d-flex justify-content-center w-100" id="foot_bar">
+    <div id="div_menubotom">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+       <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+       <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
 
 <script>
+  //=================================Carousel
+  document.addEventListener('DOMContentLoaded', () => {
+  const cont = document.getElementById('cont_background');
+  const images = [
+    "images/g_gallery/11.jpg",
+    "images/g_gallery/13.jpg",
+    "images/g_gallery/10.jpg",
+    "images/g_gallery/15.jpg",
+    "images/g_gallery/18.jpg"
+  ];  
+  // Crear contenedor
+  const divCarrusel = document.createElement('div');
+  divCarrusel.id = 'carr_ind';
+  cont.appendChild(divCarrusel);
+
+  // aqui esta el efecto fade!!!!!!
+  images.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'img_carr';
+    img.style.position = 'absolute';
+    img.style.filter= 'brightnes(0.1)'
+    img.style.top = '0';
+    img.style.left = '0';
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.objectFit = 'cover';
+    img.style.opacity = i === 0 ? '1' : '0';
+    img.style.transition = 'opacity 3s ease-in-out';
+    divCarrusel.appendChild(img);
+  });
+
+  let current = 0;
+  setInterval(() => {
+    const imgs = divCarrusel.querySelectorAll('.img_carr');
+    const next = (current + 1) % imgs.length;
+    imgs[current].style.opacity = '0.0';
+    imgs[next].style.opacity = '1';
+    current = next;
+  }, 5000);
+});
   //=================================================CONTACT
+  document.querySelectorAll('.input-box').forEach(box => {
+      const field = box.querySelector('input');
+    
+      if (!field) return;
+    
+      const update = () => {
+        // Si tiene contenido (no solo espacios) o si el field está en foco, marca como has-value
+        if (field.value.trim() !== '') box.classList.add('has-value');
+        else box.classList.remove('has-value');
+      };
+    
+
+      // Eventos que actualizan el estado
+      field.addEventListener('input', update);
+      // Ejecutar una vez en carga (por si hay value pre-llenado)
+      update();
+    }); 
+
+
   window.addEventListener("DOMContentLoaded", () => {
   if(window.location.hash === "#pop_up") {
     document.getElementById("pop_up").classList.add("active");
   }
 });
+
+
 const popup = document.getElementById("pop_up");
 const form = document.getElementById("contactForm");
 
@@ -199,6 +238,7 @@ function openPopup(){
 
 function closePopup(){
   popup.classList.remove("active");
+  window.scrollTo(0, 0);
 }
 
 // cerrar si hacen click fuera del popup
@@ -506,6 +546,135 @@ document.addEventListener("keydown", e => {
   if (e.key === "Escape") overlay.style.display = "none";
 });
 
+});
+
+
+
+//header injection
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data/header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("header").innerHTML = html;
+
+      // --- VARIABLES INICIALES ---
+const divMenu = document.getElementById('div_menutop');       // menú top
+const divFoot = document.getElementById('div_menubotom');     // footer
+const footerStyle = document.getElementById('foot_bar');      // contenedor footer
+const btnHamburguesa = document.getElementById('btnHamburguesa'); // botón hamburguesa
+const elementosBorrosos = document.getElementsByClassName('borroso'); // elementos que se desenfocan
+const menuDrop = document.getElementById('navbarMenu');       // menú desplegable hamburguesa
+const menu_cny = document.getElementById('container_top')
+/* para notas*/ 
+
+// Guardar HTML original
+const menuOriginalHTML = divMenu.innerHTML;
+const footerOriginalHTML = divFoot.innerHTML;
+
+let menuAbierto = false; // estado del menú hamburguesa
+let ultimaPosicionScroll = 0; // posición anterior del scroll
+
+// Selecciona todos los enlaces <a>
+// Selecciona todos los enlaces <a>
+const todosLosLinks = document.querySelectorAll("a");
+
+// Recorrerlos y agregar evento
+todosLosLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    
+    document.body.style.overflow = '';
+    menuDrop.style.visibility = "hidden";
+    for (let i = 0; i < elementosBorrosos.length; i++) {
+      elementosBorrosos[i].style.filter = "none";
+
+    }
+    menuAbierto = false;
+  });
+});
+
+// --- FUNCION PARA ACTUALIZAR UI SEGÚN TAMAÑO ---
+function actualizarUI() {
+  const ancho = window.innerWidth;
+
+  if (ancho < 765) { // móvil
+    btnHamburguesa.style.display = "flex";         // botón visible
+    menuDrop.style.display = menuAbierto ? "flex" : "none"; // menú hamburguesa
+  } else { // desktop o tablet
+    btnHamburguesa.style.display = "none";         // botón oculto
+    menuDrop.style.display = "flex";               // menú normal visible
+    menuAbierto = false;                            // menú hamburguesa cerrado
+    // quitar blur
+    for (let i = 0; i < elementosBorrosos.length; i++) {
+      elementosBorrosos[i].style.filter = "none";
+    }
+  }
+}
+
+//--- TOGGLE DEL MENU HAMBURGUESA v2---
+btnHamburguesa.addEventListener("click", () => {
+  menuAbierto = !menuAbierto;
+
+  if (menuAbierto) {
+    document.body.style.overflow = 'hidden';
+    menuDrop.style.display = 'flex';
+    menuDrop.style.visibility = 'visible';   // ← FALTABA
+    menuDrop.classList.add('menu-overlay');
+
+    for (let i = 0; i < elementosBorrosos.length; i++) {
+      elementosBorrosos[i].style.filter = "blur(5px) brightness(0.3)";
+    }
+
+  } else {
+    document.body.style.overflow = '';
+    menuDrop.style.display = 'none';
+    menuDrop.style.visibility = 'hidden';   // ← FALTABA
+    menuDrop.classList.remove('menu-overlay');
+
+    for (let i = 0; i < elementosBorrosos.length; i++) {
+      elementosBorrosos[i].style.filter = "none";
+    }
+  }
+  menuDrop.addEventListener("click", (e) => {
+
+if (e.target === menuDrop) {
+
+  menuAbierto = false;
+  menuDrop.style.display = "none";
+  menuDrop.style.visibility = "hidden";
+  document.body.style.overflow = '';
+
+  for (let i = 0; i < elementosBorrosos.length; i++) {
+    elementosBorrosos[i].style.filter = "none";
+  }
+
+}
+
+});
+});
+
+// --- EFECTO DE SCROLL EN EL TOP ---
+window.addEventListener('scroll', () => {
+  const posicionActual = window.scrollY;
+
+  // Si está en el tope
+  if (posicionActual === 0) {
+    menu_cny.style.backgroundColor = "transparent";
+    footerStyle.style.backgroundColor = "transparent";
+  } else {
+    // Si baja o sube (cualquier movimiento de scroll)
+    menu_cny.style.backgroundColor = "black";   
+   footerStyle.style.backgroundColor = "black";
+  }
+
+  // Actualiza la posición actual del scroll
+  ultimaPosicionScroll = posicionActual;
+});
+
+// --- EVENTOS PARA CARGA Y REDIMENSIÓN ---
+window.addEventListener('load', actualizarUI);
+window.addEventListener('resize', actualizarUI);
+    })
+    .catch(err => console.error("Header load error", err));
 });
 
 
