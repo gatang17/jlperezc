@@ -127,59 +127,96 @@
       
         <section id="contact" class="fade-section">
           <div class="pixel-overlay"></div>
-
+        
           <div class="container">
-
             <h1 class="text-center mt-5 mb-5">Contact</h1>
-             <div>
-              <p class="mb-5 text-center">
-                For questions, service requests, or feedback, please fill out the form below.
-          I’ll get back to you shortly!
-              </p>
-             </div>
-                      
-             <form class="d_grid" action="https://formsubmit.co/jlprezc@gmail.com" method="POST">
-            
-             
-                <!-- Name -->
-              
-                <div class="mb-3 input-box has-value">
-                  <input type="text" name="name" id="name" required>
-                  <label for="name" class="form-label">Name</label>
-                </div>
-                
-                <!-- Email -->
-                <div class="mb-3 input-box has-value">       
-                  <input type="email" name="email" id="email" required>
-                  <label for="email" class="form-label">Email</label>
-                </div>
-                
-                <!-- Message -->
-                <div class="mb-3 input-box has-value">
-                  
-                  <textarea name="message" id="message" rows="5" required style="overflow:hidden;"></textarea>
-                  <label for="email" class="form-label">message</label>
-          
-                </div>
-            
-                <!-- Botón de envío -->
-                <div class="text-center">
-                  <button type="submit" class="mb-3 boton text-center">Send Message</button>
-                </div>
-            
-                <!-- Opcionales (evita spam y redirecciones) -->
-                
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-            
-              </form>
+            <p class="mb-5 text-center">
+              For questions, service requests, or feedback, please fill out the form below.
+              I’ll get back to you shortly!
+            </p>
+        
+            <form id="contactForm" class="d_grid"
+                  action="https://formsubmit.co/jlprezc@gmail.com"
+                  method="POST">
+        
+              <!-- Nombre -->
+              <div class="mb-3 input-box has-value">
+                <input type="text" name="name" id="name" required>
+                <label for="name" class="form-label">Name</label>
               </div>
+        
+              <!-- Email -->
+              <div class="mb-3 input-box has-value">
+                <input type="email" name="email" id="email" required>
+                <label for="email" class="form-label">Email</label>
+              </div>
+        
+              <!-- Mensaje -->
+              <div class="mb-3 input-box has-value">
+                <textarea name="message" id="message" rows="5" required style="overflow:hidden;"></textarea>
+                <label for="message" class="form-label">Message</label>
+              </div>
+        
+              <!-- Botón -->
+              <div class="text-center">
+                <button type="submit" class="mb-3 boton text-center">Send Message</button>
+              </div>
+        
+              <!-- Campos ocultos para FormSubmit -->
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" value="index.html">
+            </form>
+          </div>
         </section>
       </main>
       
+  <div class="popup" id="pop_up">
+    <div class="innerpop">
+  
+      <button class="closeBtn" onclick="closePopup()"><i class="fa-solid fa-xmark"></i></button> 
+      
+  
+      <h5>Thank you for your message. I'll respond shortly.</h5>
+  
+    </div>
+  </div>
+
       
 
 <script>
+  //=================================================CONTACT
+  const popup = document.getElementById("pop_up");
+const form = document.getElementById("contactForm");
+
+function openPopup() {
+  popup.classList.add("active");
+}
+
+function closePopup() {
+  popup.classList.remove("active");
+}
+
+// cerrar si hacen click fuera del cuadro
+popup.addEventListener("click", function(e) {
+  if(e.target === popup) closePopup();
+});
+
+// cerrar con tecla ESC
+document.addEventListener("keydown", function(e) {
+  if(e.key === "Escape") closePopup();
+});
+
+// mostrar popup y luego dejar que FormSubmit haga la redirección
+form.addEventListener("submit", function(e) {
+  openPopup();
+  // opcional: retraso para que el usuario vea el popup antes de redirigir
+  setTimeout(() => {
+    form.submit(); // envía normalmente a FormSubmit
+  }, 1500); // 1.5 segundos
+});
+
+//=========================================Animacion pixels
   
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll(".fade-section");

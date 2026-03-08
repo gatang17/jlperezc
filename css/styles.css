@@ -477,7 +477,7 @@ label {
   text-transform: uppercase;
 }
 /* Flotar label al tener foco, checked o si el contenedor tiene clase .has-value */
-input:focus + label, textarea:focus+label {
+input:focus + label, textarea:focus+label{
   transform: translateY(-20px);
   font-size: 10px;
   transition: 0.3s ease;
@@ -498,4 +498,24 @@ input:focus + label, textarea:focus+label {
   border-radius: 15px;
   margin: 2rem;
   padding: 1rem;
+}
+.popup {
+  display: none;
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.5);
+  z-index: 9999;
+}
+
+.popup.active {
+  display: flex;
+}
+
+.innerpop {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  text-align: center;
 }
