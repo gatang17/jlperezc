@@ -12,22 +12,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">  
 <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
+
 <link rel="stylesheet" href="css/styles.css">
   <title>Dark Multi-Section Page</title>
 
 </head>
 <body>
   <header >    
-    <nav id="home">  
-      <a href="#"> logo</a>
-      <a href="#about">about</a>
-      <a href="#work">myWork</a>
-      <a href="#contact">Contact</a> 
+    <nav id="home">    
+      <a href="#init">
+        <span class="flip"><span class="front">home</span>  <span class="back">home</span></span>
+      </a>
+      <a href="#sec_1">
+        <span class="flip"> <span class="front">resume</span><span class="back">resume</span>
+        </span>
+      </a>
+
+        <a href="#about">
+          <span class="flip">
+            <span class="front">about</span>
+            <span class="back">about</span>
+          </span>
+        </a>
+        
+        <a href="#work">
+          <span class="flip">
+            <span class="front">work</span>
+            <span class="back">work</span>
+          </span>
+        </a>
+        
+        <a href="#contact">
+          <span class="flip">
+            <span class="front">contact</span>
+            <span class="back">contact</span>
+          </span>
+        </a>
+        
     </nav>    
   </header>
-
+<style>
+  
+</style>
     <main>     
-      <section class="section-gallery fade-section">
+      <section id="init" class="section-gallery fade-section">
         <div class="pixel-overlay"></div>
         <div class="d_grid0">
           <div class="d_sub_grid0">
@@ -59,7 +87,7 @@
             <div class="d_grid d_sub_grid"><p>Photographer</p>
              <p>|</p>
              <p>Visual Storyteller</p></div>
-             <a class="btn" href="#about" data-scroll>Lets work together!</a>
+             <a class="boton" href="#contact" data-scroll>Lets work together!</a>
            </div>
            
 
@@ -99,7 +127,53 @@
       
         <section id="contact" class="fade-section">
           <div class="pixel-overlay"></div>
-          <h1>Contact</h1>
+
+          <div class="container">
+
+            <h1 class="text-center mt-5 mb-5">Contact</h1>
+             <div>
+              <p class="mb-5 text-center">
+                For questions, service requests, or feedback, please fill out the form below.
+          I’ll get back to you shortly!
+              </p>
+             </div>
+                      
+             <form class="d_grid" action="https://formsubmit.co/jlprezc@gmail.com" method="POST">
+            
+             
+                <!-- Name -->
+              
+                <div class="mb-3 input-box has-value">
+                  <input type="text" name="name" id="name" required>
+                  <label for="name" class="form-label">Name</label>
+                </div>
+                
+                <!-- Email -->
+                <div class="mb-3 input-box has-value">       
+                  <input type="email" name="email" id="email" required>
+                  <label for="email" class="form-label">Email</label>
+                </div>
+                
+                <!-- Message -->
+                <div class="mb-3 input-box has-value">
+                  
+                  <textarea name="message" id="message" rows="5" required style="overflow:hidden;"></textarea>
+                  <label for="email" class="form-label">message</label>
+          
+                </div>
+            
+                <!-- Botón de envío -->
+                <div class="text-center">
+                  <button type="submit" class="mb-3 boton text-center">Send Message</button>
+                </div>
+            
+                <!-- Opcionales (evita spam y redirecciones) -->
+                
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+            
+              </form>
+              </div>
         </section>
       </main>
       
@@ -158,6 +232,8 @@ links.forEach(link => {
 });
 
 //myWork
+const workSection = document.getElementById("work");
+
 const carousel = document.getElementById("carrusel");
 const images = Array.from(carousel.getElementsByClassName("carousel-item"));
 
@@ -200,11 +276,16 @@ function updateCarousel() {
     let yOffset = 0;
 
     if (offset === 0) {
-      // centro
-      scale = 1.1;
-      zIndex = 10;
-      document.getElementById("carousel-title").textContent =img.dataset.title || "";
-    } else {
+  scale = 1.1;
+  zIndex = 10;
+
+  document.getElementById("carousel-title").textContent =
+    img.dataset.title || "";
+
+  // Obtener el background real
+  const bg = getComputedStyle(img).backgroundImage;
+  workSection.style.setProperty("--bg-image", bg);
+} else {
       const pairIndex = Math.min(absOffset, maxPairs);
 
       scale = 1 - scaleStep * pairIndex;

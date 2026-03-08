@@ -25,8 +25,8 @@ html {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans", sans-serif;
-  background-color: #262424;
-  color: #efdfbb;
+  /* background-color: #262424; */
+  color: #ffffff;
   text-shadow: 2px 2px 6px #252525;
   scroll-behavior: smooth;
   scrollbar-gutter: stable;
@@ -47,19 +47,29 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #14232e;
-  padding: 4rem 1rem 0 1rem ;
+  /* background-color: #14232e; */
+  padding: 4rem 1rem 0 1rem;
 }
-.btn {
-  border: 2px solid #4b1208;
+.boton {
+  background-color: none;
+  border: 2px solid #ffffff92;
   border-radius: 10px;
   padding: 5px;
-  letter-spacing: 0.15em;
   text-decoration: none;
+  font-weight: 100;
   color: inherit;
   flex: 1;
   text-align: center;
+  color: #ffffff;
   z-index: 10000;
+}
+.boton:hover {
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border: 2px solid #ffffff;
 }
 
 h1 {
@@ -75,7 +85,8 @@ h3 {
   text-transform: capitalize;
 }
 h2,
-.btn {
+.boton {
+  background-color: transparent;
   font-size: 1rem;
   z-index: 1;
   position: relative;
@@ -120,39 +131,75 @@ header {
   width: 100vw;
   z-index: 100;
 }
+/* ===============================================nav  */
 nav {
   display: flex;
-  height: 25px;
   padding: 10px;
+  border-bottom: 2px solid #4b1208;
+  perspective: 800px;
 }
+
 nav a {
-  display: block;
   flex: 1;
   text-align: center;
-  padding-bottom: 2rem;
   text-decoration: none;
   color: inherit;
-  border-bottom: 2px solid #4b1208;
+  display: flex;
+  justify-content: center;
 }
+
+.flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+nav a:hover .flip {
+  transform: rotatey(180deg);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.front,
+.back {
+  display: block;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+
 /*=================================SECTION 0*/
 .section-gallery {
   height: 100vh; /* altura completa de la ventana */
 }
-
+.wrapp {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
+  padding: 1rem;
+}
 .d_grid0 {
   display: flex;
   height: 100%;
 }
 
 .d_sub_grid0 {
-  width: 20%; /* o width: 25%; si quieres proporcional */
+  width: 30%; /* o width: 25%; si quieres proporcional */
   min-width: 200px; /* opcional, para que no se haga muy pequeño */
-  height: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0rem 0rem 5rem 0rem;
+  margin: 0rem 2rem 0rem 0rem;
   background-image: url(/images/01.jpg);
 
   background-position: center;
@@ -173,7 +220,7 @@ body #gallery {
   flex: 1;
   display: grid;
   grid-template-rows: auto 1fr;
-  gap: 1rem;
+
   overflow-y: auto; /* scroll solo aquí */
   height: 100%; /* ocupar toda la sección sticky */
   padding: 1rem;
@@ -183,7 +230,7 @@ body #gallery {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* se adapta al ancho */
   grid-auto-rows: 1fr; /* todas las filas iguales y llenan el espacio */
-  gap: 2rem;
+  gap: 1rem;
 
   height: 100%; /* ocupa toda la altura disponible */
 }
@@ -218,7 +265,7 @@ body #gallery {
   max-height: 80vh;
   object-fit: contain;
 }
-
+/*========================================Carousel*/
 #prevBtn,
 #nextBtn {
   position: absolute;
@@ -235,6 +282,7 @@ body #gallery {
 #nextBtn {
   right: 2rem;
 }
+
 
 /*ABOUT - gallery_1*/
 #about {
@@ -256,11 +304,28 @@ body #gallery {
 
 /**mywork*/
 #work {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
+  overflow: hidden;
 }
+
+
+#work::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  height: 100%;
+  background-image:var(--bg-image);
+  background-size:cover;
+  background-position:center;
+  filter:blur(10px);
+  transform:scale(1.1);
+  background-color: #25252553;
+  z-index:0;
+}
+
+
 #prev,
 #next {
   position: relative; /* CLAVE */
@@ -295,7 +360,20 @@ body #gallery {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   object-fit: cover;
 }
-
+.carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  max-height: 64vh;
+  aspect-ratio: 1 / 1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
 @media (max-width: 785px) {
   .carousel-item {
     position: absolute;
@@ -312,10 +390,10 @@ body #gallery {
     flex-direction: column;
   }
   .d_sub_grid0 {
-    min-width: 100%;
-    margin: 5rem 0 0 0;
+    min-width: 100vw;
+    margin: -1rem 0 0 0;
     padding: 0 0 0 0;
-    height: 200px;
+    height: fit-content;
   }
   #gallery {
     flex: 1;
@@ -351,4 +429,73 @@ body #gallery {
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
+}
+
+/*=============================FORM*/
+#contact {
+  background-color: #252525;
+}
+
+form {
+  margin-top: 20px;
+  width: 100%;
+  color: #ffffff;
+}
+.input-box {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+textarea,
+input {
+  overflow: hidden;
+  resize: none;
+  margin-bottom: 2rem;
+  width: 100%;
+  padding: 12px 10px;
+  font-size: 1rem;
+  line-height: 20px; /* mismo que el input */
+  border: none; /* Quita todos los bordes */
+  border-bottom: 2px solid #bfb6b6da; /* Solo línea inferior */
+  outline: none;
+  background: none;
+  vertical-align: top;
+  resize: none;
+  color: #ffffff;
+}
+/* Label inicial */
+label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 0 4px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+/* Flotar label al tener foco, checked o si el contenedor tiene clase .has-value */
+input:focus + label, textarea:focus+label {
+  transform: translateY(-20px);
+  font-size: 10px;
+  transition: 0.3s ease;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 30%;
+  left: 4%;
+  z-index: 100 !important;
+  padding: 10px;
+}
+
+.thankyou-container {
+  border: 1px solid transparent; /* el borde no se ve */
+  box-shadow: 0 4px 10px rgba(74, 74, 74, 0.5); /* sombra visible */
+  border-radius: 15px;
+  margin: 2rem;
+  padding: 1rem;
 }
