@@ -190,35 +190,45 @@
     document.getElementById("pop_up").classList.add("active");
   }
 });
-
-  const popup = document.getElementById("pop_up");
+const popup = document.getElementById("pop_up");
 const form = document.getElementById("contactForm");
 
-function openPopup() {
+function openPopup(){
   popup.classList.add("active");
 }
 
-function closePopup() {
+function closePopup(){
   popup.classList.remove("active");
 }
 
-// cerrar si hacen click fuera del cuadro
-popup.addEventListener("click", function(e) {
+// cerrar si hacen click fuera del popup
+popup.addEventListener("click", (e) => {
   if(e.target === popup) closePopup();
 });
 
-// cerrar con tecla ESC
-document.addEventListener("keydown", function(e) {
+// cerrar con ESC
+document.addEventListener("keydown", (e) => {
   if(e.key === "Escape") closePopup();
 });
 
-// mostrar popup y luego dejar que FormSubmit haga la redirección
-form.addEventListener("submit", function(e) {
-  openPopup();
-  // opcional: retraso para que el usuario vea el popup antes de redirigir
-  setTimeout(() => {
-    form.submit(); // envía normalmente a FormSubmit
-  }, 1500); // 1.5 segundos
+// enviar formulario sin recargar
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form)
+  })
+  .then((response) => {
+    if(response.ok || response.type === "opaque"){ 
+      // FormSubmit devuelve "opaque" porque no permite CORS, pero se envía
+      openPopup();
+      form.reset();
+    } else {
+      alert("There was an error sending the message.");
+    }
+  })
+  .catch(() => alert("Network error. Please try again."));
 });
 
 //=========================================Animacion pixels
