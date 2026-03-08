@@ -9,7 +9,7 @@
           <i class="fas fa-bars"></i>
         </button>    
       </div>
-      <div class="" id="navbarMenu">
+      <nav id="navbarMenu">
        
         <a href="#sec_1">
             <span class="flip"> <span class="front">Home</span><span class="back">Home</span>
@@ -38,7 +38,7 @@
                 <span class="back">contact</span>
               </span>
             </a>   
-      </div>
+      </nav>
 
 
 <!-- menu web display-->
@@ -103,7 +103,7 @@ nav {
 }
 
 
-nav a {
+nav a , #navbarMenu a{
   flex: 1;
   text-align: center;
   text-decoration: none;
@@ -200,10 +200,14 @@ nav a:hover .flip {
     border: none;
     font-size: 2rem;
     color: #ffffff8f;
+    filter: drop-shadow(2px 4px 6px black);
 }
 #btnHamburguesa:hover{
     font-size: 2.5rem;
     color: #ffffff;
+}
+i,a{
+    text-decoration: none;
 }
 
 
@@ -299,6 +303,9 @@ footer {
   #navbarMenu {
     visibility: hidden;
   }
+  #navbarMenu a{
+  flex: 0;
 
+}
 }
 </style>
