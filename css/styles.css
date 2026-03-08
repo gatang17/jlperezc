@@ -52,7 +52,7 @@ section {
 
 }
 .boton {
-  font-size: clamp(1rem , 5vw, 2.5rem);
+  font-size: clamp(1rem , 1.5vw, 2.5rem);
   background-color: transparent;
   border: 2px solid #ffffff92;
   font-family: "Sen", sans-serif;
@@ -73,6 +73,7 @@ section {
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   border: 2px solid #ffffff;
+  text-transform: uppercase;
 }
 
 h1 {
@@ -289,18 +290,30 @@ body #gallery {
 #about {
   width: 100vw;
   display: flex;
-  flex-direction: row;
-  justify-content: left;
+  color: #252525;
+
+  text-shadow:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 #gallery_1 {
   margin: 0 2rem 0 2rem;
-  display: grid;
-  grid-template-columns: repeat(1, 1fr); /* 2 columnas de cuadritos */
+  display: flex;
+  flex-wrap: wrap; 
   gap: 1rem;
-
+ 
+  align-items: center;
+  text-align: center;
 }
-#gallery_1 img {
-  height: 200px;
+#gallery_1 img{
+ width: 200px;
+}
+
+.d_work{
+  flex-grow: 1;
+  flex-basis: 300px;
 }
 
 /**mywork*/
