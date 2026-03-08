@@ -166,7 +166,9 @@ header {
 }
 
 /*=================================SECTION 0 la Galeria*/
-#init{height: fit-content;
+#init{
+  
+  height: 100vh;;
   background-color: #252525;
 }
 .section-gallery {
@@ -189,7 +191,7 @@ header {
 .d_sub_grid0 {
   width: 25%; /* o width: 25%; si quieres proporcional */
   min-width: 200px; /* opcional, para que no se haga muy pequeño */
-  height: 100vh;
+  height: stretch;
   display: flex;
   flex-direction: column;
   justify-content: center;
