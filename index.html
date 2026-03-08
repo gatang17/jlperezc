@@ -36,9 +36,7 @@
       </div> 
      </section>
 
-      <section id="init" class="section-gallery">
-      
-
+      <section id="init" class="section-gallery">     
         <div class="d_grid0">
           <div class="d_sub_grid0" id="">
             <div class="wrapp">
@@ -46,10 +44,8 @@
              
               <p>Hi, I'm Jose. Welcome to my portfolio!
                 I’m a product photography student at JCTC focused on clean lighting, strong composition, and creative product storytelling. </p>
-            </div>
-           
-          </div>
-      
+            </div>           
+          </div>      
           <div class="container-fluid" id="gallery">
             <div id="gallery_grid"></div>
             <div class="text-center"></div>
@@ -158,6 +154,15 @@
   
     </div>
   </div>
+    <!-- Botón flotante móvil -->
+   <!-- Botón flotante móvil -->
+<div id="mobile-menu-btn">
+  <a href="#sec_1"><i class="fa-solid fa-circle-arrow-up"></i></a>
+</div>
+
+
+ 
+
 
       <!--FOOTER-->
   <footer class="" id="foot_bar">
@@ -169,6 +174,28 @@
   </footer>
 
 <script>
+
+//==================================== Botón flotante móvil
+const mobileBtn = document.querySelector('#mobile-menu-btn');
+const mobileLink = document.querySelector('#mobile-menu-btn a');
+const introSection = document.getElementById('sec_1');
+
+// Mostrar u ocultar el botón según scroll
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 0) {
+    mobileBtn.classList.add('show');   // mostrar si no estamos en top
+  } else {
+    mobileBtn.classList.remove('show'); // ocultar si estamos en top
+  }
+});
+
+// Scroll suave al hacer clic
+mobileLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (introSection) {
+    introSection.scrollIntoView({ behavior: 'smooth' });
+  }
+});
   //=================================Carousel
   document.addEventListener('DOMContentLoaded', () => {
   const cont = document.getElementById('cont_background');
@@ -684,7 +711,6 @@ window.addEventListener('resize', actualizarUI);
     })
     .catch(err => console.error("Header load error", err));
 });
-
 
 </script>
 </body>
