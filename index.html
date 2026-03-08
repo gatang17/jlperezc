@@ -199,7 +199,8 @@ mobileLink.addEventListener('click', (e) => {
     introSection.scrollIntoView({ behavior: 'smooth' });
   }
 });
-  //=================================Carousel
+  //==================================================Carousel
+
   document.addEventListener('DOMContentLoaded', () => {
   const cont = document.getElementById('cont_background');
   const images = [
@@ -347,22 +348,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.3 });
   sections.forEach(section => observer.observe(section));
 });
+//=============================sticky
   
+// const links = document.querySelectorAll('a[href^="#"]');
+// let currentZ = 10;
+// links.forEach(link => {
+//   link.addEventListener("scroll", e => {
+//     const id = link.getAttribute("href");
+
+//     if (!id.startsWith("#")) return;
+//     const target = document.querySelector(id);
+//     if (!target) return;
+//     currentZ++;
+//     target.style.zIndex = currentZ;
+//   });
+// });
 const links = document.querySelectorAll('a[href^="#"]');
 let currentZ = 10;
-links.forEach(link => {
-  link.addEventListener("click, scroll", e => {
-    const id = link.getAttribute("href");
 
-    if (!id.startsWith("#")) return;
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    const id = link.getAttribute("href");
     const target = document.querySelector(id);
     if (!target) return;
     currentZ++;
     target.style.zIndex = currentZ;
   });
 });
-
-//myWork
+//=========================================================myWork
 const workSection = document.getElementById("work");
 
 const carousel = document.getElementById("carrusel");
@@ -473,7 +487,7 @@ function handleSwipe() {
   else prev();
 }
 
-//GALERIAAAAAAAA 
+//=======================================================GALERIAAAAAAAA 
 document.addEventListener("DOMContentLoaded", () => {
 
 // Leer servicio desde URL
