@@ -496,10 +496,13 @@ input:focus + label, textarea:focus+label{
 .popup.active {
   display: flex;
 }
-
+.closeBtn i{
+  color: #ffffff;
+}
+.closeBtn i:hover{font-size: 1.5rem;}
 .innerpop {
   position: relative;          /* necesario para posicionar el botón dentro */
-  background: white;
+  background: rgb(34, 34, 34);
   padding: 2rem;
   border-radius: 8px;
   text-align: center;
@@ -514,6 +517,6 @@ input:focus + label, textarea:focus+label{
   right: 10px;
   background: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
 }
