@@ -164,8 +164,7 @@
         
               <!-- Campos ocultos para FormSubmit -->
               <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="index.html">
+              <input type="hidden" name="_next" value="index.html#pop_up">
             </form>
           </div>
         </section>
@@ -186,6 +185,12 @@
 
 <script>
   //=================================================CONTACT
+  window.addEventListener("DOMContentLoaded", () => {
+  if(window.location.hash === "#pop_up") {
+    document.getElementById("pop_up").classList.add("active");
+  }
+});
+
   const popup = document.getElementById("pop_up");
 const form = document.getElementById("contactForm");
 
