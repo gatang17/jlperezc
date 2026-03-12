@@ -15,14 +15,14 @@
   <!-- <header >    
    
   </header> -->
-  <div id="header"></div>
-<style>
-  
-</style>
-    <main class="borroso">
-      <div id="cont_background" class="container hero"></div> 
+<div id="header"></div>
+<div id="cont_background" class="container hero"></div>
 
+    <main class="borroso">
+      
       <section  id="sec_1"  class="fade-section">
+ 
+
         <div class="pixel-overlay"></div>
         <div>
         <div class="d_grid" id="">
@@ -61,18 +61,14 @@
         
       
         <section id="about" >    
-          <h1>About ME</h1>
-            
-            <div id="gallery_1">
-             
-              <img src="/images/01.jpg" class="d_work">
+          <h1>About ME</h1>            
+            <div id="gallery_1">             
+              <img src="images/selfportrait/0-3.jpg" class="d_work">
               <p class="about_text d_work">I’m a photographer based in Louisville, Kentucky, currently focusing on product photography. My work explores how careful lighting, composition, and attention to detail can highlight the character and quality of everyday objects.
   
                 I originally studied information technology and discovered photography as a hobby. Over time my interest grew beyond simply capturing moments—I became more interested in designing the final image through lighting, staging, and technical control.
-                
-                Before focusing on product photography, I worked with family and portrait photography, experiences that helped shape my attention to detail and visual storytelling. Today I continue exploring how thoughtful image design can transform simple products into engaging photographs.</p>
-         
-      
+                                Before focusing on product photography, I worked with family and portrait photography, experiences that helped shape my attention to detail and visual storytelling. Today I continue exploring how thoughtful image design can transform simple products into engaging photographs.</p>
+              
               </div>
          
         </section>
@@ -88,13 +84,13 @@
             
             
             <div id="carrusel">       
-                <div class="carousel-item" data-title="portrait" style="background-image: url('images/01.jpg');"></div>
-                <div class="carousel-item" data-title="enviromental" style="background-image: url('images/02.jpg');"></div>
-                <div class="carousel-item" data-title="product" style="background-image: url('images/03.jpg');"></div>
-                <div class="carousel-item" data-title="manipulations" style="background-image: url('images/04.jpg');"></div>
-                <div class="carousel-item" data-title="groups" style="background-image: url('images/05.jpg');"></div>
-                <div class="carousel-item" data-title="architecture" style="background-image: url('images/01.jpg');"></div>
-                <div class="carousel-item" data-title="creative" style="background-image: url('images/01.jpg');"></div> 
+                <div class="carousel-item" data-title="portrait" style="background-image: url('images/Portraits/0-10.jpg');"></div>
+                <div class="carousel-item" data-title="architecture" style="background-image: url('images/Architecture/0-3.jpg');"></div>
+                <div class="carousel-item" data-title="product" style="background-image: url('images/product/0-1.jpg');"></div>
+                <div class="carousel-item" data-title="creative" style="background-image: url('images/arte/1.jpg');"></div>
+                <div class="carousel-item" data-title="food" style="background-image: url('images/food/0-2.jpg');"></div>
+                <div class="carousel-item" data-title="beauty" style="background-image: url('images/bornthisway/0-4.jpg');"></div>
+                <div class="carousel-item" data-title="creative" style="background-image: url('images/belaire/0-1.jpg');"></div> 
 
           </div>
           <i id="next" class="fa-solid fa-angle-right"></i>
@@ -199,15 +195,36 @@ mobileLink.addEventListener('click', (e) => {
     introSection.scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+  //==================================== z-index dinamico
+  const links = document.querySelectorAll('a[href^="#"]');
+let currentZ = 10;
+
+links.forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault(); // para scroll suave controlado por JS
+    const id = link.getAttribute("href");
+    const target = document.querySelector(id);
+    if (!target) return;
+
+    currentZ++;
+    target.style.zIndex = currentZ;
+
+    // Opcional: scroll suave
+    target.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
   //=================================Carousel
   document.addEventListener('DOMContentLoaded', () => {
   const cont = document.getElementById('cont_background');
   const images = [
-    "images/g_gallery/11.jpg",
-    "images/g_gallery/13.jpg",
-    "images/g_gallery/10.jpg",
-    "images/g_gallery/15.jpg",
-    "images/g_gallery/18.jpg"
+    "images/0-1.jpg",
+    "images/0-4.jpg",
+    "images/0-2.jpg",
+    "images/0-5.jpg",
+    "images/0-10.jpg",
+    "images/0-21.jpg"
   ];  
   // Crear contenedor
   const divCarrusel = document.createElement('div');
@@ -229,6 +246,7 @@ mobileLink.addEventListener('click', (e) => {
     img.style.objectPosition = 'top';
     img.style.opacity = i === 0 ? '1' : '0';
     img.style.transition = 'opacity 3s ease-in-out';
+    img.style.zIndex='0';
     divCarrusel.appendChild(img);
   });
 
@@ -347,22 +365,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }, { threshold: 0.3 });
   sections.forEach(section => observer.observe(section));
 });
-  
-const links = document.querySelectorAll('a[href^="#"]');
-let currentZ = 10;
-links.forEach(link => {
-  link.addEventListener("click, scroll", e => {
-    const id = link.getAttribute("href");
 
-    if (!id.startsWith("#")) return;
-    const target = document.querySelector(id);
-    if (!target) return;
-    currentZ++;
-    target.style.zIndex = currentZ;
-  });
-});
-
-//myWork
+//==================================================myWork
 const workSection = document.getElementById("work");
 
 const carousel = document.getElementById("carrusel");
@@ -473,7 +477,7 @@ function handleSwipe() {
   else prev();
 }
 
-//GALERIAAAAAAAA 
+//=============================================GALERIAAAAAAAA 
 document.addEventListener("DOMContentLoaded", () => {
 
 // Leer servicio desde URL
@@ -589,7 +593,7 @@ document.addEventListener("keydown", e => {
 
 
 
-//header injection
+//====================================================header injection
 document.addEventListener("DOMContentLoaded", () => {
   fetch("data/header.html")
     .then(res => res.text())
@@ -612,6 +616,7 @@ const footerOriginalHTML = divFoot.innerHTML;
 
 let menuAbierto = false; // estado del menú hamburguesa
 let ultimaPosicionScroll = 0; // posición anterior del scroll
+
 
 // Selecciona todos los enlaces <a>
 // Selecciona todos los enlaces <a>

@@ -196,7 +196,7 @@ header {
   justify-content: center;
   align-items: center;
   margin: 0rem 2rem 0rem 0rem;
-  background-image: url(/images/01.jpg);
+  background-image: url(/images/selfportrait/0-3.jpg);
 
   background-position: center;
   background-repeat: no-repeat;
@@ -292,6 +292,7 @@ body #gallery {
   width: 100vw;
   display: flex;
   color: #252525;
+  height: 100vh;
 
   text-shadow:none;
   flex-direction: column;
