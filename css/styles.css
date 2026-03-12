@@ -1,7 +1,224 @@
-/* Declarar la fuente */
 
 @import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Sen:wght@400..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Sen:wght@400..800&display=swap');
+ /* ===============================================nav  */
+ #navbarMenu{
+  gap:40px;
+  text-align:center;
+}
+nav {
+  display: flex;
+  padding: 10px;
+  border-bottom: 2px solid #4b1208;
+  perspective: 800px;
+
+}
+
+
+nav a , #navbarMenu a{
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  text-shadow: none;
+  display: flex;
+  justify-content: center;
+}
+footer a,#navbarMenu a {
+  
+  color: #ffffff;
+  text-shadow: none;
+  width:100%;
+  display:flex;
+  justify-content:center;
+
+}
+
+
+.flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+nav a:hover .flip {
+  transform: rotatey(180deg);
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+.front,
+.back {
+  display: block;
+  backface-visibility: hidden;
+}
+
+.back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+    /* ===============================================nav  */
+  /* offset para anclas cuando hay menú fijo */
+:target { 
+  scroll-margin-top: 40px; 
+}
+
+/* ===== HEADER ===== */
+
+#header { 
+  z-index: 100000; 
+}
+
+.container_top { 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  padding-bottom: 15px;
+}
+
+#container_top {
+  transition: background-color 0s ease;
+}
+
+/* ===== LOGO ===== */
+
+.imgLogo_v2 {
+  max-height: 100px;
+  filter: invert(1);
+}
+
+.logo-principal {
+  text-align: center;
+  margin-top: 1rem;
+  z-index: 1100;
+  position: relative;
+}
+#div_menubotom{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+/* ===== BOTÓN HAMBURGUESA ===== */
+
+
+#btnHamburguesa{
+    max-width: 50px;
+    border: none;
+    font-size: 2rem;
+    color: #ffffff8f;
+    filter: drop-shadow(2px 4px 6px black);
+}
+#btnHamburguesa:hover{
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+i,a{
+    text-decoration: none;
+}
+
+
+/* ===== MENÚ HAMBURGUESA ===== */
+
+#navbarMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+
+  z-index: 300000;
+  visibility: hidden;
+}
+
+/* overlay cuando se abre el menú */
+
+.menu-overlay {
+  padding-top: 10px;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.7) 100%
+  );
+
+  backdrop-filter: blur(8px);
+}
+
+/* ===== MENÚ DESKTOP ===== */
+
+/* ===== ELEMENTOS BORROSOS ===== */
+
+.borroso {
+  filter: none;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 1.5rem;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  background-color: transparent;
+  z-index: 1000;
+}
+
+#foot_bar {
+  border-top: #4b1208 solid;
+  transition: background-color 0s ease;
+}
+#menu_hamburguer {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+  width: 100%;
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+  /* mostrar hamburguesa */
+  #menu_hamburguer {
+    visibility: visible;
+  }
+
+  /* ocultar menú desktop */
+  #div_menutop {
+    display: none;
+  }
+
+  /* menú móvil oculto por defecto */
+  #navbarMenu {
+    visibility: hidden;
+  }
+  #navbarMenu a{
+  flex: 0;
+
+}
+}
+
 /*solopara Tagline */
 .tagline,h1,h2 {
   font-family: "Sen", sans-serif;
@@ -19,37 +236,41 @@
   box-sizing: border-box;
 } /* los hijos y todos se ajustan al tamano del body*/
 
-body,
-html {
+  body, html {
   margin: 0;
   padding: 0;
   font-family: "Nunito Sans", sans-serif;
   /* background-color: #262424; */
   color: #ffffff;
   text-shadow: 2px 2px 6px #252525;
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-  overflow-x: hidden;
 }
 
-#sec_1 {
-  /* background-image: url(/images/01.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+.panel{
+  height:100vh;
 }
-section {
+
+section{
+  position:sticky;
+  top:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#sec_1 { z-index:1 }
+#init { z-index:2 }
+#about { z-index:3 }
+#work { z-index:4 }
+#contact { z-index:5 }
+
+#menu_container{
   position: sticky;
-  height: fit-content;
-  top: 0px;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1rem 0 1rem;
-
+  top: 0;
+  z-index: 10;
+  background: white;
 }
+
 .boton {
   font-size: clamp(1rem , 1.5vw, 2.5rem);
   background-color: transparent;
@@ -64,6 +285,7 @@ section {
   text-align: center;
   color: #ffffff;
   z-index: 10000;
+  position: relative; 
 }
 .boton:hover {
   font-weight: 900;
@@ -95,9 +317,29 @@ h2 {
   font-weight: 700;
   text-transform: uppercase;
 }
+
+/* Overlay de cuadritos */
+.pixel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr); /* 20 columnas de cuadritos */
+  grid-template-rows: repeat(20, 1fr);   /* 20 filas */
+  gap: 2px;
+  z-index: 2;
+}
+
+.pixel-overlay div {
+  background-color: #252525;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
 /*====================================== /* Botón flotante móvil */
    
-    #mobile-menu-btn {
+#mobile-menu-btn {
       position: fixed;
       bottom: 5rem;
       right: 2rem;
@@ -124,8 +366,7 @@ h2 {
     color: rgb(255, 255, 255);
     font-size: 2.5rem;
   }
-
-  /*=========================grid general para home*/
+/*=========================grid general para home*/
 .d_grid {
   justify-content: center; /* centra en horizontal */
   text-align: center;
@@ -134,39 +375,8 @@ h2 {
   display: flex;
   gap: 1rem;
 }
-
-/*================================= Overlay de cuadritos */
-.pixel-overlay,
-.pixel-overlay * {
-  pointer-events: none;
-}
-.pixel-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(20, 1fr); /* 20 columnas de cuadritos */
-  grid-template-rows: repeat(20, 1fr); /* 20 filas */
-  gap: 2px;
-  z-index: 90000;
-}
-.pixel-overlay div {
-  background-color: #ffffff;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-header {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  z-index: 100;
-}
-
 /*=================================SECTION 0 la Galeria*/
-#init{
-  
+#init{  
   height: 100vh;;
   background-color: #252525;
 }
@@ -286,7 +496,6 @@ body #gallery {
   right: 2rem;
 }
 
-
 /*ABOUT - gallery_1*/
 #about {
   width: 100vw;
@@ -405,87 +614,6 @@ body #gallery {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   transition: all 0.5s ease;
 }
-@media (min-width: 785px) and (max-width: 1085px) {
-  /* aquí van tus estilos para tablet */
-  #section-gallery {
-    padding: 0;
-    margin: 0;
-  }
-  .d_grid0 {
-    flex-direction: column;
-  }
-  .d_sub_grid0 {
-    min-width: 100vw;
-    margin: -1rem 0 0 0;
-    padding: 0 0 0 0;
-    height: fit-content;
-  }
-}
-
-@media (max-width: 785px) {
-  .carousel-item {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 680px;
-    aspect-ratio: 1 / 1;
-  }
-  #section-gallery {
-    padding: 0;
-    margin: 0;
-  }
-  .d_grid0 {
-    flex-direction: column;
-  }
-  .d_sub_grid0 {
-    min-width: 100vw;
-    margin: -1rem 0 0 0;
-    padding: 0 0 0 0;
-    height: fit-content;
-  }
-  
-.gallery_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem; /* espacio entre imágenes */
-  grid-auto-rows: 1fr; /* todas las filas iguales y llenan el espacio */
-  gap: 1rem;
-
-  height: 100%; /* ocupa toda la altura disponible */
-}
-
-.gallery_grid img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 6px;
-  aspect-ratio: 1 / 1;
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-.carousel-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 680px;
-  aspect-ratio: 1 / 1; /*  siempre cuadrado */
-
-  background-size: cover; /* no deforma */
-  background-position: center;
-  background-repeat: no-repeat;
-
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
-}
-#prev {
-  left: 3rem;               /* más cerca del borde izquierdo */
-}
-
-#next {
-  right: 3rem;              /* más cerca del borde derecho */
-}
-}
 /*=============================FORM*/
 #contact {
   background-color: #252525;
@@ -577,4 +705,85 @@ label {
   border: none;
   font-size: 1rem;
   cursor: pointer;
+}
+@media (min-width: 785px) and (max-width: 1085px) {
+  /* aquí van tus estilos para tablet */
+  #section-gallery {
+    padding: 0;
+    margin: 0;
+  }
+  .d_grid0 {
+    flex-direction: column;
+  }
+  .d_sub_grid0 {
+    min-width: 100vw;
+    margin: -1rem 0 0 0;
+    padding: 0 0 0 0;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 785px) {
+  .carousel-item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 680px;
+    aspect-ratio: 1 / 1;
+  }
+  #section-gallery {
+    padding: 0;
+    margin: 0;
+  }
+  .d_grid0 {
+    flex-direction: column;
+  }
+  .d_sub_grid0 {
+    min-width: 100vw;
+    margin: -1rem 0 0 0;
+    padding: 0 0 0 0;
+    height: fit-content;
+  }
+  
+.gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem; /* espacio entre imágenes */
+  grid-auto-rows: 1fr; /* todas las filas iguales y llenan el espacio */
+  gap: 1rem;
+
+  height: 100%; /* ocupa toda la altura disponible */
+}
+
+.gallery_grid img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 6px;
+  aspect-ratio: 1 / 1;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+.carousel-item {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 680px;
+  aspect-ratio: 1 / 1; /*  siempre cuadrado */
+
+  background-size: cover; /* no deforma */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
+#prev {
+  left: 3rem;               /* más cerca del borde izquierdo */
+}
+
+#next {
+  right: 3rem;              /* más cerca del borde derecho */
+}
 }
