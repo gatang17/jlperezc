@@ -544,8 +544,8 @@ body #gallery {
 
 #prev,
 #next {
-  position: absolute;
-  top: unset;
+  position: fixed;
+  top: 75%;
   /* transform: translateY(30vh); */
   z-index: 200;
   background: none;
@@ -555,11 +555,11 @@ body #gallery {
 }
 
 #prev {
-  left: 0rem;               /* más cerca del borde izquierdo */
+  left: 20rem;               /* más cerca del borde izquierdo */
 }
 
 #next {
-  right: 0rem;              /* más cerca del borde derecho */
+  right: 20rem;              /* más cerca del borde derecho */
 }
 
 
@@ -582,6 +582,7 @@ body #gallery {
   top: 50%;
   left: 50%;
   width: 60%;
+  
   height: auto;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
@@ -594,8 +595,8 @@ body #gallery {
   top: 50%;
   left: 50%;
   min-width: 100%;
-  max-height: 64vh;
-  aspect-ratio: 1 / 1;
+  min-height: 40vh;
+  aspect-ratio: 1/ 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -774,5 +775,10 @@ label {
 
 #next {
   right: 3rem;              /* más cerca del borde derecho */
+}
+#prev,
+#next {
+  position: fixed;
+  top: 80%;
 }
 }

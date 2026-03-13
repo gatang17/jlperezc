@@ -165,11 +165,11 @@ form.addEventListener("submit", function(e){
     }
     updateCarousel();
   }
-  
+
   // Función que actualiza estilos según la posición
   
   const maxPairs = 3;   // máximo de capas visibles a cada lado
-  const baseGap = 2;    // rem de separación horizontal
+  const baseGap = 5;    // rem de separación horizontal
   const scaleStep = 0.1;
   let currentIndex = 0;
   
@@ -210,11 +210,17 @@ form.addEventListener("submit", function(e){
   
         //mobile 
         if (!isMobile) {
+            
           x = (offset > 0 ? 4 : -4) * baseGap * pairIndex;
         }
       }
       img.style.transform = ` translate( calc(-50% + ${x}rem),  calc(-50% + ${yOffset}rem) ) scale(${scale})  rotateY(${rotateY}deg)  `;
       img.style.zIndex = zIndex;
+      if (offset === 0) {
+        img.style.filter = "none"; // imagen central sin filtro
+    } else {
+        img.style.filter = "brightness(0.5) blur(5px)"; // las demás más oscuras y borrosas
+    }
     });
   }
   
