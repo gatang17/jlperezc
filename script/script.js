@@ -235,19 +235,16 @@ document.addEventListener("DOMContentLoaded", () => {
     if (diff > 0) next();
     else prev();
   }
+
   
   //=============================================GALERIAAAAAAAA 
   document.addEventListener("DOMContentLoaded", () => {
-  
-  // Leer servicio desde URL
-  // Elegir galería según URL o fallback general
+const container = document.getElementById("gallery_grid");
+  if (!container) return; // si no existe, no hacemos nada
+
   const params = new URLSearchParams(window.location.search);
-  const serviceKey = params.get("service") || "photography"; // "photography" es la galería general
-  sessionStorage.setItem("selectedService", serviceKey.toLowerCase());
-  const service = sessionStorage.getItem("selectedService");
-  
-  // Contenedor
-  const container = document.getElementById("gallery_grid");
+  const serviceKey = params.get("service") || "photography";
+
   container.innerHTML = "";
   container.style.display = "flex";
   container.style.flexDirection = "column";
@@ -267,8 +264,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Cargar JSON
   fetch("data/data.json")
+  
     .then(res => res.json())
     .then(data => {
+
   
       const galleryData = data.galleries[serviceKey] || data.galleries.photography;
   
@@ -296,7 +295,8 @@ document.addEventListener("DOMContentLoaded", () => {
       //  Crear array de imágenes
       imagesList = Array.from(
         { length: galleryData.count || 18 },
-        (_, i) => `${galleryData.src}/${i + 1}.jpg`
+        // (_, i) => `${galleryData.src}/${i + 1}.jpg`
+        (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
       );
   
       // Mezclar
@@ -320,6 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   
     })
+    
     .catch(error => console.error("Error loading gallery:", error));
   
   //Navegación

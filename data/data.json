@@ -1,11 +1,64 @@
 {
-    "galleries": {
-        "photography": {
-          "title": "",
-          "description": "",
-          "src": "images/g_gallery",
-          "count": 18
-        }
-       
-      }
+  "galleries": {
+    "photography": {
+      "hero": "images/0-1.jpg",
+      "title": "jose luis perez cespedes",
+      "description": "Hi, I'm Jose. Welcome to my portfolio! I’m a product photography student at JCTC focused on clean lighting, strong composition, and creative product storytelling.",
+      "src": "images/g_gallery",
+      "count": 18
+    },
+    "portrait": {
+      "hero": "images/Portraits/0-26.jpg",
+      "title": "Portrait Photography",
+      "description": "Studio and natural light portraits",
+      "src": "images/Portraits",
+      "count": 30
+    },
+
+    "architecture": {
+      "hero": "images/Architecture/0-2.jpg",
+      "title": "Architecture",
+      "description": "Architectural photography",
+      "src": "images/Architecture",
+      "count": 8
+    },
+
+    "product": {
+      "hero": "images/product/0-6.jpg",
+      "title": "Product Photography",
+      "description": "Commercial product images",
+      "src": "images/product",
+      "count": 15
+    },
+    "creative": {
+      "hero": "images/cretaive/0-14.jpg",
+      "title": "Creative",
+      "description": "Commercial product images",
+      "src": "images/creative",
+      "count": 15
+    },
+    "food": {
+      "hero": "images/food/0-7.jpg",
+      "title": "Food Photography",
+      "description": "Commercial product images",
+      "src": "images/food",
+      "count": 15
+    },
+    "beauty": {
+      "hero": "images/bornthisway/0-4.jpg",
+      "title": "beauty Photography",
+      "description": "Commercial product images",
+      "src": "images/beauty",
+      "count": 15
+    },
+    "belaire": {
+      "hero": "images/belaire/0-1.jpg",
+      "title": "belaire campaing",
+      "description": "Commercial product images",
+      "src": "images/belaire",
+      "count": 15
     }
+
+    
+  }
+}
