@@ -1,5 +1,16 @@
-
+function goToSection(link) {
+    // Tomamos el id de destino desde el data-section
+    const sectionId = link.dataset.section;
+    const section = document.getElementById(sectionId);
+  
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      // Animación opcional de cuadritos
+      animateSection(section);
+    }
+  }
 document.addEventListener("DOMContentLoaded", () => {
+
     const sections = document.querySelectorAll(".fade-section");
   
     // Crear cuadritos dentro del overlay
