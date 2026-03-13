@@ -17,14 +17,13 @@ nav a , #navbarMenu a{
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  text-shadow: none;
+  text-shadow: #252525;
   display: flex;
   justify-content: center;
 }
-footer a,#navbarMenu a {
-  
+footer a,#navbarMenu a {  
   color: #ffffff;
-  text-shadow: none;
+  text-shadow: #252525;
   width:100%;
   display:flex;
   justify-content:center;
@@ -75,7 +74,8 @@ nav a:hover .flip {
   width: 100%;
   background-color: transparent;
   z-index: 1000;
-  padding-bottom: 15px;
+  margin-bottom: 2px;
+
 }
 
 #container_top {
@@ -84,17 +84,6 @@ nav a:hover .flip {
 
 /* ===== LOGO ===== */
 
-.imgLogo_v2 {
-  max-height: 100px;
-  filter: invert(1);
-}
-
-.logo-principal {
-  text-align: center;
-  margin-top: 1rem;
-  z-index: 1100;
-  position: relative;
-}
 #div_menubotom{
     display: flex;
     flex-direction: row;
@@ -247,13 +236,14 @@ footer {
 }
 
 section{
-  position:sticky;
+  position:sticky;  
   top:0;
   height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
 }
+.g_page{padding-top: 150px;}
 
 #sec_1 { z-index:1 }
 #init { z-index:2 }
@@ -295,7 +285,7 @@ section{
 }
 
 h1 {
-  font-size: clamp(1.85rem , 5vw, 3rem);
+  font-size: clamp(1.85rem , 5vw, 2.5rem);
   z-index: 1;
   position: relative;
   text-transform: uppercase;
@@ -376,9 +366,10 @@ h2 {
 #init{  
   height: 100vh;;
   background-color: #252525;
+  
 }
 .section-gallery {
-  padding-top: 100px;
+  
   height: 100vh; /* altura completa de la ventana */
 }
 .wrapp {
