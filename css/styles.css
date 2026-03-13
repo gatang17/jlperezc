@@ -544,7 +544,7 @@ body #gallery {
 
 #prev,
 #next {
-  position: fixed;
+  position: absolute;
   top: 85%;
   /* transform: translateY(30vh); */
   z-index: 200;
@@ -555,11 +555,11 @@ body #gallery {
 }
 
 #prev {
-  left: 20rem;               /* más cerca del borde izquierdo */
+  left: -10rem;               /* más cerca del borde izquierdo */
 }
 
 #next {
-  right: 20rem;              /* más cerca del borde derecho */
+  right: -10rem;              /* más cerca del borde derecho */
 }
 
 
@@ -769,15 +769,15 @@ label {
   transition: all 0.5s ease;
 }
 #prev {
-  left: 3rem;               /* más cerca del borde izquierdo */
+  left: 0rem;               /* más cerca del borde izquierdo */
 }
 
 #next {
-  right: 3rem;              /* más cerca del borde derecho */
+  right: 0rem;              /* más cerca del borde derecho */
 }
 #prev,
 #next {
-  position: fixed;
+  position: absolute;
   top: 80%;
 }
 }
