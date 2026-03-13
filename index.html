@@ -25,11 +25,12 @@
            <div class="pixel-overlay"></div>
           <div>
           <div class="d_grid" id="">
-           <h3 class="tagline">Photography, tailored for impact.</h3>            
+           <h3 class="tagline">Photography, tailored for impact.</h3>
+            
            <div class="d_grid d_sub_grid"><p>Jose Perez</p>
             <p>|</p>
             <p>Portfolio</p></div>
-            <a class="boton" href="#init">View gallery</a>
+            <a class="boton" href="#init" data-scroll>View gallery</a>
           </div>
         </div> 
        </section>
@@ -38,13 +39,10 @@
       <div class="panel">
         <section id="init" class="section-gallery">     
           <div class="d_grid0">
-            <div class="d_sub_grid0" id="">
+            <div class="d_sub_grid0" id="d_sub_grid0">
               <div class="wrapp">
-                <h1>jose luis perez cespedes</h1>
-               
-                <p>Hi, I'm Jose. Welcome to my portfolio!
-                  I’m a product photography student at JCTC focused on clean lighting, strong composition, and creative product storytelling. </p>
-              </div>           
+                <h1 id="gallery_title"></h1>               
+                <p id="gallery_desc"></p> </div>             
             </div>      
             <div class="container-fluid" id="gallery">
               <div id="gallery_grid"></div>
@@ -81,22 +79,43 @@
           <div id="carrusel-container">
             <i id="prev" class="fa-solid fa-angle-left"></i>
                       
-            <div id="carrusel">       
-              <a href="gallery.html?service=portrait"><div class="carousel-item" data-title="portrait"  style="background-image: url('images/Portraits/0-10.jpg');"></div>
-              </a>              
-              <a href="gallery.html?service=architecture"> <div class="carousel-item" data-title="architecture" style="background-image: url('images/Architecture/0-3.jpg');"></div>
-              </a>              
-              <a href="gallery.html?service=product"> <div class="carousel-item" data-title="product"  style="background-image: url('images/product/0-1.jpg');"></div>
+            <div id="carrusel">
+              <a href="gallery.html?service=portrait">
+                <div class="carousel-item" data-title="portrait"
+                     style="background-image:url('images/Portraits/0-10.jpg')"></div>
               </a>
-              <a href="gallery.html?service=creative"> <div class="carousel-item" data-title="creative"  style="background-image: url('images/cretive/0-1.jpg');"></div>
+              
+              <a href="gallery.html?service=architecture">
+                <div class="carousel-item" data-title="architecture"
+                     style="background-image:url('images/Architecture/0-3.jpg')"></div>
               </a>
-              <a href="gallery.html?service=food"> <div class="carousel-item" data-title="food"  style="background-image: url('images/food/0-1.jpg');"></div>
+              
+              <a href="gallery.html?service=product">
+                <div class="carousel-item" data-title="product"
+                     style="background-image:url('images/product/0-1.jpg')"></div>
               </a>
-              <a href="gallery.html?service=beauty"> <div class="carousel-item" data-title="beauty"  style="background-image: url('images/beauty/0-1.jpg');"></div>
+              
+              <a href="gallery.html?service=creative">
+                <div class="carousel-item" data-title="creative"
+                     style="background-image:url('images/creative/0-1.jpg')"></div>
               </a>
-              <a href="gallery.html?service=belaire"> <div class="carousel-item" data-title="belaire"  style="background-image: url('images/belaire/0-1.jpg');"></div>
+              
+              <a href="gallery.html?service=belaire">
+                <div class="carousel-item" data-title="belaire"
+                     style="background-image:url('images/belaire/0-1.jpg')"></div>
               </a>
-              </div>
+              
+              <a href="gallery.html?service=food">
+                <div class="carousel-item" data-title="food"
+                     style="background-image:url('images/food/0-2.jpg')"></div>
+              </a>
+              
+              <a href="gallery.html?service=beauty">
+                <div class="carousel-item" data-title="beauty"
+                     style="background-image:url('images/beauty/0-4.jpg')"></div>
+              </a>
+               
+          </div>
           <i id="next" class="fa-solid fa-angle-right"></i>
           
           </div>

@@ -11,10 +11,7 @@ nav {
   padding: 10px;
   border-bottom: 2px solid #4b1208;
   perspective: 800px;
-
 }
-
-
 nav a , #navbarMenu a{
   flex: 1;
   text-align: center;
@@ -381,6 +378,7 @@ h2 {
   background-color: #252525;
 }
 .section-gallery {
+  padding-top: 100px;
   height: 100vh; /* altura completa de la ventana */
 }
 .wrapp {
@@ -406,7 +404,7 @@ h2 {
   justify-content: center;
   align-items: center;
   margin: 0rem 2rem 0rem 0rem;
-  background-image: url(/images/selfportrait/0-3.jpg);
+  /*background-image: url(/images/selfportrait/0-3.jpg);*/
 
   background-position: center;
   background-repeat: no-repeat;

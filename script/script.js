@@ -88,28 +88,31 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contactForm");
   
   function openPopup(){
-    popup.classList.add("active");
+    if(popup) popup.classList.add("active");
   }
   
   function closePopup(){
-    popup.classList.remove("active");
-    window.scrollTo(0, 0);
+    if(popup) popup.classList.remove("active");
+    window.scrollTo(0,0);
   }
   
   // cerrar si hacen click fuera del popup
-  popup.addEventListener("click", (e) => {
-    if(e.target === popup) closePopup();
-  });
-  
-  // cerrar con ESC
+
+  if (popup) {
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) closePopup();
+    });
+     // cerrar con ESC
   document.addEventListener("keydown", (e) => {
     if(e.key === "Escape") closePopup();
   });
+  }
   
-  // enviar formulario sin recargar
-  form.addEventListener("submit", function(e){
-    e.preventDefault();
-  
+
+if (form) {
+// enviar formulario sin recargar
+form.addEventListener("submit", function(e){
+    e.preventDefault();  
     fetch(form.action, {
       method: "POST",
       body: new FormData(form)
@@ -125,12 +128,19 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch(() => alert("Network error. Please try again."));
   });
+}
+ 
+  
+  
   //==================================================myWork
-  const workSection = document.getElementById("work");
-  
   const carousel = document.getElementById("carrusel");
-  const images = Array.from(carousel.getElementsByClassName("carousel-item"));
+
+  if (carousel) {
   
+    const workSection = document.getElementById("work");
+    const images = Array.from(carousel.getElementsByClassName("carousel-item"));
+  
+   
   let positions = []; // array que guarda la posición de cada imagen
   
   // Inicializamos las posiciones
@@ -234,16 +244,25 @@ document.addEventListener("DOMContentLoaded", () => {
   
     if (diff > 0) next();
     else prev();
+  }  
+  
   }
-
   
   //=============================================GALERIAAAAAAAA 
   document.addEventListener("DOMContentLoaded", () => {
-const container = document.getElementById("gallery_grid");
-  if (!container) return; // si no existe, no hacemos nada
-
+  
+  // Leer servicio desde URL
+  // Elegir galería según URL o fallback general
   const params = new URLSearchParams(window.location.search);
-  const serviceKey = params.get("service") || "photography";
+  const serviceKey = params.get("service") || "photography"; // "photography" es la galería general
+  sessionStorage.setItem("selectedService", serviceKey.toLowerCase());
+  const service = sessionStorage.getItem("selectedService");
+  
+  // Contenedores
+  const container = document.getElementById("gallery_grid");
+  const g_hero = document.getElementById("d_sub_grid0");
+  const title = document.getElementById("gallery_title");
+  const desc = document.getElementById("gallery_desc");
 
   container.innerHTML = "";
   container.style.display = "flex";
@@ -264,27 +283,19 @@ const container = document.getElementById("gallery_grid");
   
   // Cargar JSON
   fetch("data/data.json")
-  
     .then(res => res.json())
     .then(data => {
-
   
       const galleryData = data.galleries[serviceKey] || data.galleries.photography;
   
-      // Título
-      const title = document.createElement("h1");
+      // Título   
       title.textContent = galleryData.title;
-      title.style.textAlign = "center";
-      title.style.margin = "0";
-      container.appendChild(title);
-  
+      if (g_hero && galleryData.hero) {
+        g_hero.style.backgroundImage = `url(${galleryData.hero})`;
+      }
       // Descripción
-      if (galleryData.description) {
-        const desc = document.createElement("p");
-        desc.textContent = galleryData.description;
-        desc.style.maxWidth = "700px";
-        desc.style.margin = "2.5rem 0";
-        container.appendChild(desc);
+      if (galleryData.description) {      
+        desc.textContent = galleryData.description;   
       }
   
       // Contenedor de imágenes
@@ -295,7 +306,6 @@ const container = document.getElementById("gallery_grid");
       //  Crear array de imágenes
       imagesList = Array.from(
         { length: galleryData.count || 18 },
-        // (_, i) => `${galleryData.src}/${i + 1}.jpg`
         (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
       );
   
@@ -320,7 +330,6 @@ const container = document.getElementById("gallery_grid");
       });
   
     })
-    
     .catch(error => console.error("Error loading gallery:", error));
   
   //Navegación
