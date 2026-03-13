@@ -545,7 +545,7 @@ body #gallery {
 #prev,
 #next {
   position: fixed;
-  top: 75%;
+  top: 85%;
   /* transform: translateY(30vh); */
   z-index: 200;
   background: none;
@@ -581,8 +581,7 @@ body #gallery {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 60%;
-  
+  width: 60%;  
   height: auto;
   transform: translate(-50%, -50%);
   transition: all 0.5s ease;
@@ -595,8 +594,8 @@ body #gallery {
   top: 50%;
   left: 50%;
   min-width: 100%;
-  min-height: 40vh;
-  aspect-ratio: 1/ 1;
+  min-height: 50vh;
+  aspect-ratio: 1.25 / 1;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
