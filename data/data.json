@@ -31,10 +31,10 @@
       "count": 15
     },
     "creative": {
-      "hero": "images/cretaive/0-14.jpg",
+      "hero": "images/cretaive/0-1.jpg",
       "title": "Creative",
       "description": "Commercial product images",
-      "src": "images/creative",
+      "src": "images/cretaive",
       "count": 15
     },
     "food": {
