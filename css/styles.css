@@ -204,9 +204,17 @@ footer {
 
 }
 }
+.tagline{
+  line-height: 0;
+  letter-spacing: 0.5em;
+}
+.p_tagline{
+  line-height: 12px;
+  text-transform: capitalize;
 
+}
 /*solopara Tagline */
-.tagline,h1,h2 {
+h1,h2 {
   font-family: "Sen", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -354,6 +362,10 @@ h2 {
     font-size: 2.5rem;
   }
 /*=========================grid general para home*/
+.hero_wraper{
+  height: 75vh;
+  align-content: end;
+}
 .d_grid {
   justify-content: center; /* centra en horizontal */
   text-align: center;
@@ -366,8 +378,7 @@ h2 {
 #init{  
   height: 100vh;;
   background-color: #252525;
-  
-}
+  }
 .section-gallery {
   
   height: 100vh; /* altura completa de la ventana */
