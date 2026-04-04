@@ -185,6 +185,7 @@ footer {
 
 @media (max-width: 768px) {
 
+
   /* mostrar hamburguesa */
   #menu_hamburguer {
     visibility: visible;
@@ -206,21 +207,21 @@ footer {
 }
 .tagline{
   line-height: 0;
-  letter-spacing: 0.5em;
+  letter-spacing:clamp(0.025em, 1vw, 0.5em); 
 }
 .p_tagline{
   line-height: 12px;
   text-transform: capitalize;
 
 }
-/*solopara Tagline */
+/*solo para Tagline */
 h1,h2 {
   font-family: "Sen", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-weight: 100;
   font-size: clamp(2.5rem, 8vw, 10rem);
-  letter-spacing: 0.05em;
+
   line-height: 1.2;
   text-transform: none;
 }
@@ -237,6 +238,9 @@ h1,h2 {
   /* background-color: #262424; */
   color: #ffffff;
   text-shadow: 2px 2px 6px #252525;
+}
+.braquet {
+  font-size: clamp(3rem, 8vw, 11rem);
 }
 
 .panel{

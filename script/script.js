@@ -1,14 +1,4 @@
-function goToSection(link) {
-    // Tomamos el id de destino desde el data-section
-    const sectionId = link.dataset.section;
-    const section = document.getElementById(sectionId);
   
-    if (section) {
-      section.scrollIntoView({ behavior: "instant" });
-      // Animación opcional de cuadritos
-      animateSection(section);
-    }
-  }
 document.addEventListener("DOMContentLoaded", () => {
 
     const sections = document.querySelectorAll(".fade-section");
@@ -200,6 +190,7 @@ form.addEventListener("submit", function(e){
     // Obtener el background real
     const bg = getComputedStyle(img).backgroundImage;
     workSection.style.setProperty("--bg-image", bg);
+    
   } else {
         const pairIndex = Math.min(absOffset, maxPairs);
   
@@ -220,6 +211,7 @@ form.addEventListener("submit", function(e){
         img.style.filter = "none"; // imagen central sin filtro
     } else {
         img.style.filter = "brightness(0.5) blur(5px)"; // las demás más oscuras y borrosas
+         img.style.pointerEvents = "none"; // deshabilitar click
     }
     });
   }

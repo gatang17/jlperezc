@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-<link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+ <!--fontaweson for links-->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-...tuhash..."  crossorigin="anonymous"  referrerpolicy="no-referrer" />
+ <!-- At the Head ->  AOS CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 
 <link rel="stylesheet" href="css/styles.css">
@@ -22,10 +25,10 @@
       
       <div class="panel">
         <section  id="sec_1"  class="fade-section">
-           <div class="pixel-overlay"></div>
+          <div class="pixel-overlay"></div>
           <div class="hero_wraper">
-          <div class="d_grid" id="">
-           <h1 class="tagline">Photography</h1>
+          <div class="d_grid" data-aos="fade-up" data-aos-duration="800" id="">
+           <h1 class="tagline"><span class="braquet">[</span>Photography<span class="braquet">]</span></h1>
            <p class="p_tagline">tailored for impact.</p>
             
            <div class="d_grid d_sub_grid"><p>Jose Perez</p>
@@ -37,7 +40,7 @@
        </section>
       </div>
       
-      <div class="panel">
+      <div class="panel" >
         <section id="init" class="section-gallery">     
           <div class="d_grid0">
             <div class="d_sub_grid0" id="d_sub_grid0">
@@ -46,7 +49,7 @@
                 <p id="gallery_desc"></p> </div>             
             </div>      
             <div class="container-fluid" id="gallery">
-              <div id="gallery_grid"></div>
+              <div id="gallery_grid" data-aos="fade-up" data-aos-duration="800"></div>
               <div class="text-center"></div>
             </div>
           </div>
@@ -59,7 +62,7 @@
     <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
   </div>
   
-      <div class="panel">
+      <div class="panel" data-aos="fade-up" data-aos-duration="800">
           <section id="about" >    
           <h1>About ME</h1>            
             <div id="gallery_1">             
@@ -73,7 +76,7 @@
          
         </section>
       </div>
-      <div class="panel">
+      <div class="panel" data-aos="fade-up" data-aos-duration="800">
         <section id="work" >
           <h1>Areas of expertise</h1>
    
@@ -125,7 +128,7 @@
         </section>
     </div>
       
-      <div class="panel">
+      <div class="panel" data-aos="fade-up" data-aos-duration="800">
         <section id="contact">
          
           <h1 >Contact</h1>
@@ -191,12 +194,30 @@
         <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
          <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
          <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-      </div>
+           </div>
+           <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank"> <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p></a>
+   
     </footer>
 
 <script>
 
 </script>
+<!-- MY JS -->
 <script src="script/script.js"></script>
+
+<!-- AOS JS -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, // duración por defecto en ms
+    once: true     // animar solo una vez al hacer scroll
+  });
+</script>
+<!-- COPYRIGTH -->
+<script>
+   const footer = document.getElementById('copyright');
+  const year = new Date().getFullYear();
+  footer.textContent = `© ${year} GATANG desings. All rigths reseved.`;
+</script>
 </body>
 </html>
