@@ -349,6 +349,8 @@ h2 {
   display: flex;
   gap: 1rem;
 }
+
+
 /*=================================SECTION 0 la Galeria*/
 #init{  
   height: 100vh;;
@@ -378,7 +380,7 @@ h2 {
   height: stretch;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin: 0rem 2rem 0rem 0rem;
   /*background-image: url(/images/selfportrait/0-3.jpg);*/
@@ -489,7 +491,7 @@ body #gallery {
   display: flex;
   flex-wrap: wrap; 
   gap: 1rem;
- 
+
   align-items: center;
   text-align: center;
 }
@@ -498,8 +500,13 @@ body #gallery {
 }
 
 .d_work{
+  min-width: 300px;
   flex-grow: 1;
-  flex-basis: 300px;
+  flex-basis: 400px;
+}
+.about_text p{
+  padding: clamp(1rem, 2vw + 1rem, 10rem);
+  line-height: clamp(1.25rem, 1.75rem, 2.25rem);
 }
 
 /**mywork*/
