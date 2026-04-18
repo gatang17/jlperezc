@@ -208,11 +208,14 @@ form.addEventListener("submit", function(e){
       img.style.transform = ` translate( calc(-50% + ${x}rem),  calc(-50% + ${yOffset}rem) ) scale(${scale})  rotateY(${rotateY}deg)  `;
       img.style.zIndex = zIndex;
       if (offset === 0) {
-        img.style.filter = "none"; // imagen central sin filtro
-    } else {
-        img.style.filter = "brightness(0.5) blur(5px)"; // las demás más oscuras y borrosas
-         img.style.pointerEvents = "none"; // deshabilitar click
-    }
+        img.style.filter = "none";
+        img.style.pointerEvents = "auto";   // la activa sí se puede clicar
+        img.style.cursor = "pointer";
+      } else {
+        img.style.filter = "brightness(0.5) blur(5px)";
+        img.style.pointerEvents = "none";   // las demás no
+        img.style.cursor = "default";
+      }
     });
   }
   

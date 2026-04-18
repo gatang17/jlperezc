@@ -20,7 +20,7 @@
       "title": "Architecture",
       "description": "Architectural photography",
       "src": "images/Architecture",
-      "count": 8
+      "count": 3
     },
 
     "product": {
@@ -28,35 +28,35 @@
       "title": "Product Photography",
       "description": "Commercial product images",
       "src": "images/product",
-      "count": 15
+      "count": 7
     },
     "creative": {
       "hero": "images/cretaive/0-1.jpg",
       "title": "Creative",
       "description": "Commercial product images",
       "src": "images/cretaive",
-      "count": 15
+      "count": 2
     },
     "food": {
       "hero": "images/food/0-7.jpg",
       "title": "Food Photography",
       "description": "Commercial product images",
       "src": "images/food",
-      "count": 15
+      "count": 5
     },
     "beauty": {
-      "hero": "images/bornthisway/0-4.jpg",
+      "hero": "images/beauty/0-1.jpg",
       "title": "beauty Photography",
       "description": "Commercial product images",
       "src": "images/beauty",
-      "count": 15
+      "count": 5
     },
     "belaire": {
       "hero": "images/belaire/0-1.jpg",
       "title": "belaire campaing",
       "description": "Commercial product images",
       "src": "images/belaire",
-      "count": 15
+      "count": 5
     }
 
     

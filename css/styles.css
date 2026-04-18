@@ -517,10 +517,8 @@ body #gallery {
   align-items: center;
   justify-items: center;
   overflow: hidden;
- 
+  position: relative;
 }
-
-
 #work::before{
   content:"";
   position:absolute;
@@ -533,18 +531,18 @@ body #gallery {
   transform:scale(1.1);
   background-color: #25252553;
   z-index:0;
+  pointer-events: none;
 }
 
 #prev,
 #next {
   position: absolute;
   top: 85%;
-  /* transform: translateY(30vh); */
   z-index: 200;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 2rem;        /* tamaño de los iconos */
+  font-size: 2rem;
 }
 
 #prev {
@@ -559,11 +557,12 @@ body #gallery {
 #carrusel-container {
   position: relative;
   width: 100%;
-  /* margin: 50px auto; */
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 }
+
 #carrusel {
   position: relative;
   width: 100%;
