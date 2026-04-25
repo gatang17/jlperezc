@@ -322,8 +322,9 @@ function initGallery() {
       img.loading = "lazy";
   
       img.addEventListener("click", () => {
-        const realIndex = imagesList.indexOf(imgSrc);
-        openOverlay(realIndex >= 0 ? realIndex : index);
+        currentIndex = imagesList.indexOf(imgSrc);
+        imgBig.src = imagesList[currentIndex];
+        overlay.style.display = "flex";
       });
   
       grid.appendChild(img);

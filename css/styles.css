@@ -536,37 +536,63 @@ body #gallery {
 #previewImage {
   max-width: 350px;
 }
+
 #popupOverlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
+  inset: 3rem;
+  background: rgba(0, 0, 0, 0.92);
   display: none;
-  justify-content: center;
   align-items: center;
-  z-index: 999999;
+  justify-content: center;
+  z-index: 9999;
+  padding: 2rem;
+}
+
+#popupOverlay.active {
+  display: flex;
 }
 
 #popupImage {
-  max-width: 80vw;
-  max-height: 80vh;
+  max-width: 85%;
+  max-height: 85vh;
   object-fit: contain;
 }
 
 #prevBtn,
 #nextBtn {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
   color: white;
+  font-size: 2.5rem;
   cursor: pointer;
+  z-index: 10000;
 }
 
 #prevBtn {
   left: 2rem;
 }
+
 #nextBtn {
   right: 2rem;
+}
+
+@media (max-width: 768px) {
+  #popupImage {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+
+  #prevBtn,
+  #nextBtn {
+    font-size: 2rem;
+  }
+
+  #prevBtn {
+    left: 1rem;
+  }
+
+  #nextBtn {
+    right: 1rem;
+  }
 }
 
 /*ABOUT - gallery_1*/
