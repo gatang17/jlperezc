@@ -281,6 +281,10 @@ function initExpertiseCarousel() {
 /* =========================================
    GALLERY
 ========================================= */
+document.addEventListener("DOMContentLoaded", () => {
+  initGallery();
+});
+
 function initGallery() {
   const params = new URLSearchParams(window.location.search);
   const serviceKey = (params.get("service") || "photography").toLowerCase();
@@ -289,18 +293,16 @@ function initGallery() {
   const heroPanel = document.getElementById("d_sub_grid0");
   const title = document.getElementById("gallery_title");
   const desc = document.getElementById("gallery_desc");
+  const btnViewMore = document.getElementById("btnViewMore");
 
   const overlay = document.getElementById("popupOverlay");
   const imgBig = document.getElementById("popupImage");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
+
   const mobileToggleBtn = document.getElementById("mobileGalleryToggle");
 
   if (!container || !overlay || !imgBig || !prevBtn || !nextBtn) return;
-
-  function getCollapsedCount() {
-    return window.innerWidth <= 768 ? 1 : 6;
-  }
 
   function renderGallery() {
     container.innerHTML = "";
@@ -309,12 +311,15 @@ function initGallery() {
     grid.className = "gallery_grid";
     container.appendChild(grid);
   
-    const collapsedCount = getCollapsedCount();
-    const imagesToRender = isExpanded
-      ? imagesList
-      : imagesList.slice(0, collapsedCount);
+    const isGalleryPage =
+      window.location.pathname.includes("gallery.html") ||
+      window.location.pathname.includes("gallery");
   
-    imagesToRender.forEach((imgSrc, index) => {
+    const imagesToRender = isGalleryPage
+      ? imagesList
+      : imagesList.slice(0, 6);
+  
+    imagesToRender.forEach((imgSrc) => {
       const img = document.createElement("img");
       img.src = imgSrc;
       img.className = "gallery-img";
@@ -330,36 +335,15 @@ function initGallery() {
       grid.appendChild(img);
     });
   
-    updateViewMoreButton();
-  }
-function updateViewMoreButton() {
-    if (!btnViewMore) return;
-
-    const collapsedCount = getCollapsedCount();
-
-    if (imagesList.length <= collapsedCount) {
-      btnViewMore.style.display = "none";
-      return;
-    }
-
-    btnViewMore.style.display = "inline-flex";
-    btnViewMore.textContent = isExpanded ? "View Less" : "View More";
-  }
-
-  function handleViewMoreClick() {
-    isExpanded = !isExpanded;
-    renderGallery();
-
-    if (!isExpanded) {
-      container.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (btnViewMore) {
+      if (isGalleryPage) {
+        btnViewMore.style.display = "none";
+      } else {
+        btnViewMore.style.display = "inline-flex";
+        btnViewMore.href = `gallery.html?service=${serviceKey}`;
+      }
     }
   }
-
-
-  if (btnViewMore) {
-    btnViewMore.onclick = handleViewMoreClick;
-  }
-
 
   let currentIndex = 0;
   let imagesList = [];
@@ -367,9 +351,11 @@ function updateViewMoreButton() {
   fetch("data/data.json")
     .then((res) => res.json())
     .then((data) => {
+
       const galleryData = data.galleries[serviceKey] || data.galleries.photography;
       if (!galleryData) return;
 
+  
       sessionStorage.setItem("selectedService", serviceKey);
 
       if (title && (!title.textContent.trim() || serviceKey !== "photography")) {
@@ -384,12 +370,7 @@ function updateViewMoreButton() {
         heroPanel.style.backgroundImage = `url(${galleryData.hero})`;
       }
 
-      container.innerHTML = "";
-
-      const grid = document.createElement("div");
-      grid.className = "gallery_grid";
-      container.appendChild(grid);
-
+      
       imagesList = Array.from(
         { length: galleryData.count || 0 },
         (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
@@ -397,21 +378,7 @@ function updateViewMoreButton() {
 
       shuffleArray(imagesList);
 
-      imagesList.forEach((src, index) => {
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = galleryData.title || "Gallery image";
-        img.loading = "lazy";
-
-        img.addEventListener("click", () => {
-          currentIndex = index;
-          imgBig.src = imagesList[currentIndex];
-          overlay.style.display = "flex";
-        });
-
-        grid.appendChild(img);
-      });
-      isExpanded = false;
+      
       renderGallery();
     })
     .catch((error) => {
