@@ -317,7 +317,7 @@ function initGallery() {
   
     const imagesToRender = isGalleryPage
       ? imagesList
-      : imagesList.slice(0, 6);
+      : imagesList.slice(0, 8);
   
     imagesToRender.forEach((imgSrc) => {
       const img = document.createElement("img");

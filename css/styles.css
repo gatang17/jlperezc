@@ -129,14 +129,12 @@ p {
   font-size: clamp(1rem, 1.2vw, 1.1rem);
   max-width: 780px;
   margin: 0 auto;
+
 }
 
 /* =========================
    MENU / HEADER / FOOTER
 ========================= */
-#header {
-  z-index: 100000;
-}
 
 .container_top {
   position: fixed;
@@ -144,6 +142,7 @@ p {
   left: 0;
   width: 100%;
   z-index: 1000;
+  height: 20px!important;
   margin-bottom: 2px;
   background: transparent;
   transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
@@ -197,7 +196,7 @@ footer a,
 }
 
 footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -215,8 +214,7 @@ footer {
 }
 
 #menu_hamburguer {
-  visibility: hidden;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding-top: 24px;
@@ -438,7 +436,7 @@ section {
   background-color: #252525;
   }
 .section-gallery {
-  
+  padding: 0 0 0 2rem;
   height: 100vh; /* altura completa de la ventana */
 }
 .wrapp {
@@ -464,6 +462,7 @@ section {
   justify-content: flex-end;
   align-items: center;
   margin: 0rem 2rem 0rem 0rem;
+  height: 100vh;
   /*background-image: url(/images/selfportrait/0-3.jpg);*/
 
   background-position: center;
@@ -480,20 +479,19 @@ body #gallery {
   scrollbar-width: none; /* Firefox */
 }
 
+.selected-work-layout {
+  margin-top: 90px;
+}
+
 #gallery {
   flex: 1;
   display: grid;
   grid-template-rows: auto 1fr;
-  overflow-y: auto; /* scroll solo aquí */
-  height: 100%; /* ocupar toda la sección sticky */
+  overflow-y: scroll; /* scroll solo aquí */
+  height: 100vh; /* ocupar toda la sección sticky */
   padding: 1rem;
 }
 
-.gallery_grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
 
 .gallery_grid img,
 .gallery-img {
@@ -504,30 +502,17 @@ body #gallery {
 }
 
 .gallery_grid {
-  flex-wrap: wrap;
-  display: flex;
-  grid-template-columns: 4 1fr;
-  gap: 1rem;
-  grid-auto-rows: unset;
-  gap: 1rem;
-  height: 100%;
+  column-count: 4;
+  column-gap: 1rem;
+  display: block;
 }
 
 .gallery_grid img {
-
-    /* width: 100%; */
-    flex-grow: 1;
-    flex-basis: 200px;
-    width: 180px;
-    height: auto;
-    /* height: auto; */
-    object-fit: cover;
-    /* aspect-ratio: 1 / 1; */
-    transition: transform 0.3s ease;
-    cursor: pointer;
-
-
-
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  break-inside: avoid;
+  object-fit: contain;
 }
 
 .gallery_grid img:hover {
@@ -1100,6 +1085,8 @@ label {
   }
 
 }
+
+
 /* =========================================
    MOBILE FINAL LAYOUT
 ========================================= */
@@ -1173,7 +1160,7 @@ label {
   .selected-work-intro .d_sub_grid0 {
     width: 100%;
     min-width: 100%;
-    min-height: 320px;
+    height: 320px;
     margin: 0;
     display: flex;
     align-items: flex-end;
@@ -1216,19 +1203,21 @@ label {
     background: transparent;
     border: none;
     box-shadow: none;
+    margin: 0 1.25rem;
   }
 
   .gallery_grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
-    grid-auto-rows: 120px;
+    column-count: 3;
+    column-gap: 1rem;
+    display: block;
   }
-
+  
   .gallery_grid img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    margin-bottom: 1rem;
+    break-inside: avoid;
+    object-fit: contain;
   }
 
   /* SOLO MOSTRAR 4 */
@@ -1352,5 +1341,194 @@ label {
 
   #div_menutop {
     display: none !important;
+  }
+}
+
+
+/* =========================================
+   MOBILE FINAL LAYOUT
+========================================= */
+@media (max-width: 1600px) {
+
+  
+
+  /* ---------- SELECTED WORK ---------- */
+  #init {
+    min-height: auto;
+    height: auto;
+    padding: 0.75rem;
+    background: #050505;
+  }
+
+  .section-gallery {
+    min-height: auto;
+    height: auto;
+    display: block;
+  }
+
+  .d_grid0,
+  .selected-work-layout.d_grid0 {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 0.75rem;
+  }
+
+  .d_sub_grid0,
+  .selected-work-intro .d_sub_grid0 {
+    width: 100%;
+    min-width: 100%;
+    height: 320px;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .wrapp {
+    width: 100%;
+    margin: 0;
+    min-height: 320px;
+    padding: 0.9rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    text-align: left;
+    gap: 0.35rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.18));
+  }
+
+
+  #gallery_desc {
+    margin: 0;
+    max-width: 100%;
+  }
+
+  .explore-btn {
+    min-width: 0;
+    width: auto;
+    padding: 0.35rem 0.55rem;
+  }
+
+  #gallery {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0 1.25rem;
+  }
+
+  .gallery_grid {
+    column-count: 3;
+    column-gap: 1rem;
+    display: block;
+  }
+  
+  .gallery_grid img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    break-inside: avoid;
+    object-fit: contain;
+  }
+ /* BOTÓN */
+  .mobile-gallery-toggle-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.7rem;
+  }
+
+  .mobile-gallery-toggle {
+    padding: 0.35rem 0.6rem;
+    min-width: 90px;
+    letter-spacing: 0.12em;
+  }
+
+  /* ---------- ABOUT ---------- */
+  #about {
+    min-height: auto;
+    height: auto;
+    padding: 3rem 2rem 3.5rem;
+  }
+
+  .section-heading {
+    margin: 0 auto 1.5rem;
+  }
+
+  #gallery_1.about-layout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .about-image-wrap {
+    width: 100%;
+  }
+
+  .about_text {
+    padding: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    text-align: center;
+    gap: 0.85rem;
+  }
+
+ 
+
+  .about-highlights {
+    gap: 0.45rem;
+    text-align: left;
+  }
+
+    /* ---------- CONTACT ---------- */
+  #contact {
+    padding: 3.2rem 1rem 6.5rem;
+    justify-content: center;
+  }
+
+  #contact .section-heading {
+    margin-bottom: 1rem;
+  }
+
+
+  .contact-intro {
+
+    max-width: 240px;
+  }
+
+  form {
+    width: 100%;
+    max-width: 100%;
+    padding: 2rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+
+  textarea,
+  input {
+
+    padding: 14px 6px 8px;
+    margin-bottom: 1.3rem;
+  }
+
+  label {
+    left: 4px;
+    top: 12px;
+
+    letter-spacing: 0.12em;
+  }
+
+  form .boton {
+    min-width: 82px;
+    padding: 0.3rem 0.5rem;
+  
   }
 }
