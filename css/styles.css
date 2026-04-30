@@ -142,7 +142,6 @@ p {
   left: 0;
   width: 100%;
   z-index: 1000;
-  height: 20px!important;
   margin-bottom: 2px;
   background: transparent;
   transition: background-color 0.25s ease, backdrop-filter 0.25s ease;
@@ -176,10 +175,21 @@ nav a,
   font-size: 0.72rem;
 }
 
-#home a {
-flex: 1;
+#home {
+  display: flex;
+  justify-content: center;
+  gap: clamp(3rem, 10vw, 14rem);
 }
 
+#home a {
+  flex: 0 0 auto;
+}
+
+#home {
+  display: flex;
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--line-strong);
+}
 footer a,
 #navbarMenu a {
   color: #ffffff;
@@ -582,38 +592,39 @@ body #gallery {
 
 /*ABOUT - gallery_1*/
 #about {
-  width: 100vw;
-  display: flex;
-  color: #252525;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 6rem 2rem;
+  background:
+    linear-gradient(to bottom, rgba(245, 243, 239, 0.95), rgba(230, 226, 220, 0.96));
+}
 
-  text-shadow:none;
+#gallery_1.about-layout {
+  width: min(100%, 1100px);
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 0;
+  align-items: center;
+}
+
+.about-image-wrap {
+  height: 460px;
+  transform: translateX(40px);
+  z-index: 2;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about_text {
+  min-height: 520px;
+  padding: 4rem 3rem 4rem 5rem;
+  background: rgba(255, 255, 255, 0.72);
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-#gallery_1 {
-  margin: 0 2rem 0 2rem;
-  display: flex;
-  flex-wrap: wrap; 
-  gap: 1rem;
-
-  align-items: center;
-  text-align: center;
-}
-#gallery_1 img{
- width: 200px;
-}
-
-.d_work{
-  min-width: 300px;
-  flex-grow: 1;
-  flex-basis: 400px;
-}
-.about_text p{
-  padding: clamp(1rem, 2vw + 1rem, 10rem);
-  line-height: clamp(1.25rem, 1.75rem, 2.25rem);
 }
 /* =========================
    GALLERY OVERLAY
@@ -667,9 +678,11 @@ body #gallery {
 #about {
   background:
     linear-gradient(to bottom, rgba(245, 243, 239, 0.95), rgba(230, 226, 220, 0.96));
+  filter: opacity(100%);
   color: #171717;
   text-shadow: none;
   flex-direction: column;
+  padding: 5rem 2rem;
 }
 
 #about,
@@ -680,68 +693,31 @@ body #gallery {
 }
 
 #gallery_1.about-layout {
-  width: min(100%, var(--content-width));
+  width: min(100%, 1150px);
   display: grid;
-  grid-template-columns: minmax(320px, 0.95fr) minmax(320px, 1.05fr);
-  gap: 2.2rem;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 0;
   align-items: center;
 }
 
 .about-image-wrap {
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22);
+  height: 430px;
+  transform: translateX(70px);
+  z-index: 2;
 }
 
-#gallery_1 img {
+.about-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.d_work {
-  min-width: 0;
-}
-
 .about_text {
-  display: grid;
-  gap: 1.25rem;
-  text-align: left;
-  background: rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: clamp(1.4rem, 2vw, 2.2rem);
-
-}
-
-.about-lead {
-  font-size: clamp(1.05rem, 1.3vw, 1.22rem);
-  font-weight: 700;
-  line-height: 1.7;
-}
-
-.about_text p {
-  padding: 0;
-  line-height: 1.9;
-}
-
-.about-highlights {
-  margin-top: 0.5rem;
-  display: grid;
-  gap: 0.75rem;
-}
-
-.about-highlights li {
-  position: relative;
-  padding-left: 1.4rem;
-}
-
-.about-highlights li::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  color: var(--accent);
-  font-size: 1.1rem;
-  line-height: 1.2;
+  min-height: 500px;
+  padding: 4rem 3rem 4rem 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*========================================
@@ -821,19 +797,19 @@ body #gallery {
 }
 
 #carousel-title {
-  position: relative;
-  z-index: 2;
-  margin-top: 1.5rem;
+  margin-top: 0.8rem;
   text-align: center;
+  color: white;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
 }
 
 #prev,
 #next {
   position: absolute;
-  top: 85%;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 20;
   background: none;
   border: none;
@@ -843,11 +819,11 @@ body #gallery {
 }
 
 #prev {
-  left: -3rem;
+  left: -20vw;
 }
 
 #next {
-  right: -3rem;
+  right: -20vw;
 }
 
 /* ===== MOBILE ===== */
@@ -1348,9 +1324,7 @@ label {
 /* =========================================
    MOBILE FINAL LAYOUT
 ========================================= */
-@media (max-width: 1600px) {
-
-  
+@media (max-width: 1600px) {  
 
   /* ---------- SELECTED WORK ---------- */
   #init {
@@ -1452,8 +1426,6 @@ label {
 
   /* ---------- ABOUT ---------- */
   #about {
-    min-height: auto;
-    height: auto;
     padding: 3rem 2rem 3.5rem;
   }
 
