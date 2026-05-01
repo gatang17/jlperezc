@@ -406,9 +406,11 @@ section {
   z-index: 5;
 }
 
+
 .tagline.hero-title {
-  line-height: 0.95;
-  letter-spacing: 0.08em;
+ /* line-height: 0.95;
+  letter-spacing: 0.08em;*/
+  margin-bottom: 2rem;
 }
 
 .hero-subtitle {
@@ -591,13 +593,6 @@ body #gallery {
 }
 
 /*ABOUT - gallery_1*/
-#about {
-  min-height: 100vh;
-  padding: 6rem 2rem;
-  background:
-    linear-gradient(to bottom, rgba(245, 243, 239, 0.95), rgba(230, 226, 220, 0.96));
-}
-
 #gallery_1.about-layout {
   width: min(100%, 1100px);
   display: grid;
@@ -678,7 +673,6 @@ body #gallery {
 #about {
   background:
     linear-gradient(to bottom, rgba(245, 243, 239, 0.95), rgba(230, 226, 220, 0.96));
-  filter: opacity(100%);
   color: #171717;
   text-shadow: none;
   flex-direction: column;
@@ -718,6 +712,72 @@ body #gallery {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+@media (max-width: 768px) {
+  #about {
+    padding: 3rem 1.2rem 4rem !important;
+  }
+
+  #about .section-heading h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #gallery_1.about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0;
+  }
+
+  .about-image-wrap {
+    width: 100%;
+    max-width: 360px;
+    height: 320px;
+    transform: none;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .about-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .about_text {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .about-lead {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .about_text p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: left;
+  }
+
+  .about-highlights {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    gap: 0.4rem;
+  }
+
+  .about_text .boton {
+    width: 100%;
+    margin: 1rem 0 0;
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+  }
 }
 
 /*========================================
@@ -1213,43 +1273,7 @@ label {
     min-width: 90px;
     letter-spacing: 0.12em;
   }
-
-  /* ---------- ABOUT ---------- */
-  #about {
-    min-height: auto;
-    height: auto;
-    padding: 3rem 2rem 3.5rem;
-  }
-
-  .section-heading {
-    margin: 0 auto 1.5rem;
-  }
-
-  #gallery_1.about-layout {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .about-image-wrap {
-    width: 100%;
-  }
-
-  .about_text {
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    text-align: center;
-    gap: 0.85rem;
-  }
-
- 
-
-  .about-highlights {
-    gap: 0.45rem;
-    text-align: left;
-  }
-
+  
     /* ---------- CONTACT ---------- */
   #contact {
     padding: 3.2rem 1rem 6.5rem;
@@ -1269,12 +1293,8 @@ label {
   form {
     width: 100%;
     max-width: 100%;
-    padding: 2rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
-  }
+    padding: 2rem;  
+   }
 
   textarea,
   input {
@@ -1324,7 +1344,7 @@ label {
 /* =========================================
    MOBILE FINAL LAYOUT
 ========================================= */
-@media (max-width: 1600px) {  
+@media (min-width: 769px) and (max-width: 1600px) {
 
   /* ---------- SELECTED WORK ---------- */
   #init {
@@ -1424,65 +1444,8 @@ label {
     letter-spacing: 0.12em;
   }
 
-  /* ---------- ABOUT ---------- */
-  #about {
-    padding: 3rem 2rem 3.5rem;
-  }
+     /* ---------- CONTACT ---------- */
 
-  .section-heading {
-    margin: 0 auto 1.5rem;
-  }
-
-  #gallery_1.about-layout {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .about-image-wrap {
-    width: 100%;
-  }
-
-  .about_text {
-    padding: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    text-align: center;
-    gap: 0.85rem;
-  }
-
- 
-
-  .about-highlights {
-    gap: 0.45rem;
-    text-align: left;
-  }
-
-    /* ---------- CONTACT ---------- */
-  #contact {
-    padding: 3.2rem 1rem 6.5rem;
-    justify-content: center;
-  }
-
-  #contact .section-heading {
-    margin-bottom: 1rem;
-  }
-
-
-  .contact-intro {
-
-    max-width: 240px;
-  }
-
-  form {
-    width: 100%;
-    max-width: 100%;
-    padding: 2rem;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
-  }
 
   textarea,
   input {
