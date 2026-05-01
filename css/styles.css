@@ -527,9 +527,15 @@ body #gallery {
   object-fit: contain;
 }
 
-.gallery_grid img:hover {
-  transform: scale(1.05);
+.gallery_grid img {
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+.gallery_grid img:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
 #previewImage {
   max-width: 350px;
 }
@@ -671,6 +677,8 @@ body #gallery {
    ABOUT
 ========================= */
 #about {
+
+  background-size: cover;
   background:
     linear-gradient(to bottom, rgba(245, 243, 239, 0.95), rgba(230, 226, 220, 0.96));
   color: #171717;
@@ -678,6 +686,8 @@ body #gallery {
   flex-direction: column;
   padding: 5rem 2rem;
 }
+
+
 
 #about,
 #about .section-intro,
@@ -786,6 +796,8 @@ body #gallery {
 #work {
   min-height: 100vh;
   display: grid;
+  grid-template-rows: 300px 1fr;
+  row-gap: 0;
   align-items: center;
   justify-items: center;
   overflow: hidden;
@@ -812,7 +824,7 @@ body #gallery {
   z-index: 2;
   text-align: center;
   width: min(100%, 820px);
-  margin-bottom: 2rem;
+  margin:rem;
 }
 
 .work-heading h2 {
@@ -837,7 +849,7 @@ body #gallery {
 #carrusel {
   position: relative;
   width: 100%;
-  height: 340px;
+  height: 540px;
   perspective: 1000px;
 }
 
