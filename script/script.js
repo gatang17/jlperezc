@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   await initHeaderInjection();
 
   initExpertiseCarousel();
-  initGallery();
-  initHeroBackgroundCarousel();
+  await initGallery();
+  await initHeroBackgroundCarousel();
   initCopyright();
 });
 
@@ -33,6 +33,7 @@ function initPixelEffect() {
 
   function animateSection(section) {
     const blocks = section.querySelectorAll(".pixel-overlay div");
+
     blocks.forEach((block) => {
       setTimeout(() => {
         block.style.opacity = "0";
@@ -300,12 +301,12 @@ async function initGallery() {
 
   if (!container || !overlay || !imgBig || !prevBtn || !nextBtn) return;
 
-  let currentIndex = 0;
-  let imagesList = [];
-
   const isGalleryPage =
     window.location.pathname.includes("gallery.html") ||
     window.location.pathname.includes("gallery");
+
+  let currentIndex = 0;
+  let imagesList = [];
 
   function renderGallery() {
     container.innerHTML = "";
@@ -339,7 +340,7 @@ async function initGallery() {
         btnViewMore.style.display = "none";
       } else {
         btnViewMore.style.display = "inline-flex";
-        btnViewMore.href = `gallery.html?service=${serviceKey}`;
+        btnViewMore.href = "gallery.html?service=photography";
       }
     }
   }
@@ -381,19 +382,20 @@ async function initGallery() {
   });
 
   try {
-    const res = await fetch("data/data.json");
-    const data = await res.json();
+    const data = await loadPortfolioData();
 
-    const galleryData = data.galleries[serviceKey] || data.galleries.photography;
+    const galleryData =
+      data.galleries[serviceKey] || data.galleries.photography;
+
     if (!galleryData) return;
 
     sessionStorage.setItem("selectedService", serviceKey);
 
-    if (title && (!title.textContent.trim() || serviceKey !== "photography")) {
+    if (title) {
       title.textContent = galleryData.title || "Selected Work";
     }
 
-    if (desc && (!desc.textContent.trim() || serviceKey !== "photography")) {
+    if (desc) {
       desc.textContent = galleryData.description || "";
     }
 
@@ -401,12 +403,12 @@ async function initGallery() {
       heroPanel.style.backgroundImage = `url(${galleryData.hero})`;
     }
 
-    imagesList = Array.from(
-      { length: galleryData.count || 0 },
-      (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
-    );
+    if (serviceKey === "photography") {
+      imagesList = buildGeneralGalleryImages(data);
+    } else {
+      imagesList = buildGalleryImages(galleryData);
+    }
 
-    shuffleArray(imagesList);
     renderGallery();
   } catch (error) {
     console.error("Error loading gallery:", error);
@@ -521,25 +523,17 @@ async function initHeaderInjection() {
 
 /* =========================================
    HERO BACKGROUND CAROUSEL
-   Takes 5 random images from data/data.json photography gallery
 ========================================= */
 async function initHeroBackgroundCarousel() {
   const cont = document.getElementById("cont_background");
   if (!cont) return;
 
   try {
-    const res = await fetch("data/data.json");
-    const data = await res.json();
+    const data = await loadPortfolioData();
 
-    const galleryData = data.galleries?.photography;
-    if (!galleryData) return;
+    let images = buildGeneralGalleryImages(data);
 
-    let images = Array.from(
-      { length: galleryData.count || 0 },
-      (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
-    );
-
-    images = shuffleArray(images).slice(0, 5);
+    images = shuffleArray([...images]).slice(0, 5);
 
     if (!images.length) return;
 
@@ -599,8 +593,36 @@ function initCopyright() {
 }
 
 /* =========================================
-   HELPERS
+   DATA HELPERS
 ========================================= */
+async function loadPortfolioData() {
+  const res = await fetch("data/data.json");
+  return await res.json();
+}
+
+function buildGalleryImages(gallery) {
+  return Array.from(
+    { length: gallery.count || 0 },
+    (_, i) => `${gallery.src}/0-${i + 1}.jpg`
+  );
+}
+
+function buildGeneralGalleryImages(data) {
+  const order = data.generalGallery?.order || [];
+
+  let allImages = [];
+
+  order.forEach((key) => {
+    const gallery = data.galleries[key];
+    if (!gallery) return;
+
+    const images = buildGalleryImages(gallery);
+    allImages.push(...images);
+  });
+
+  return allImages;
+}
+
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
