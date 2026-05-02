@@ -533,15 +533,19 @@ async function initHeroBackgroundCarousel() {
 
     let images = buildGeneralGalleryImages(data);
 
-    images = shuffleArray([...images]).slice(0, 5);
+    images = shuffleArray([...images]);
 
-    if (!images.length) return;
+    const horizontalImages = await filterHorizontalImages(images);
+
+    const selectedImages = horizontalImages.slice(0, 5);
+
+    if (!selectedImages.length) return;
 
     const divCarrusel = document.createElement("div");
     divCarrusel.id = "carr_ind";
     cont.appendChild(divCarrusel);
 
-    images.forEach((src, i) => {
+    selectedImages.forEach((src, i) => {
       const img = document.createElement("img");
 
       img.src = src;
@@ -554,7 +558,7 @@ async function initHeroBackgroundCarousel() {
       img.style.width = "100%";
       img.style.height = "100%";
       img.style.objectFit = "cover";
-      img.style.objectPosition = "top";
+      img.style.objectPosition = "center";
       img.style.opacity = i === 0 ? "1" : "0";
       img.style.transition = "opacity 3s ease-in-out";
       img.style.zIndex = "0";
@@ -580,7 +584,6 @@ async function initHeroBackgroundCarousel() {
     console.error("Error loading hero carousel:", error);
   }
 }
-
 /* =========================================
    COPYRIGHT
 ========================================= */
@@ -630,4 +633,30 @@ function shuffleArray(array) {
   }
 
   return array;
+}
+function isHorizontalImage(src) {
+  return new Promise((resolve) => {
+    const img = new Image();
+
+    img.onload = () => {
+      resolve(img.naturalWidth > img.naturalHeight);
+    };
+
+    img.onerror = () => {
+      resolve(false);
+    };
+
+    img.src = src;
+  });
+}
+
+async function filterHorizontalImages(images) {
+  const results = await Promise.all(
+    images.map(async (src) => {
+      const isHorizontal = await isHorizontalImage(src);
+      return isHorizontal ? src : null;
+    })
+  );
+
+  return results.filter(Boolean);
 }
