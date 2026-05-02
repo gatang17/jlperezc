@@ -12,15 +12,15 @@
       "title": "Portrait Photography",
       "description": "Studio and natural light portraits",
       "src": "images/Portraits",
-      "count": 29
+      "count": 12
     },
 
-    "architecture": {
-      "hero": "images/Architecture/0-2.jpg",
-      "title": "Architecture",
-      "description": "Architectural photography",
-      "src": "images/Architecture",
-      "count": 3
+    "campaign": {
+      "hero": "images/campaign/0-2.jpg",
+      "title": "campaign",
+      "description": "campaign photography",
+      "src": "images/campaign",
+      "count": 13
     },
 
     "product": {
@@ -28,35 +28,35 @@
       "title": "Product Photography",
       "description": "Commercial product images",
       "src": "images/product",
-      "count": 7
+      "count": 22
     },
     "creative": {
-      "hero": "images/cretaive/0-1.jpg",
+      "hero": "images/creative/0-19.jpg",
       "title": "Creative",
       "description": "Commercial product images",
-      "src": "images/cretaive",
-      "count": 2
+      "src": "images/creative",
+      "count": 9
     },
     "food": {
       "hero": "images/food/0-7.jpg",
       "title": "Food Photography",
       "description": "Commercial product images",
       "src": "images/food",
-      "count": 5
+      "count": 9
     },
-    "beauty": {
-      "hero": "images/beauty/0-1.jpg",
-      "title": "beauty Photography",
+    "environmental": {
+      "hero": "images/environmental/0-1.jpg",
+      "title": "environmental",
       "description": "Commercial product images",
-      "src": "images/beauty",
-      "count": 5
+      "src": "images/environmental",
+      "count": 6
     },
-    "belaire": {
-      "hero": "images/belaire/0-1.jpg",
-      "title": "belaire campaing",
-      "description": "Commercial product images",
-      "src": "images/belaire",
-      "count": 5
+    "fashion": {
+      "hero": "images/fashion/0-1.jpg",
+      "title": "fashion",
+      "description": "Fashion & Corporate",
+      "src": "images/fashion",
+      "count": 11
     }
 
     

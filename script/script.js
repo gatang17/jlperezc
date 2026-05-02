@@ -1,12 +1,13 @@
-  
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   initPixelEffect();
   initMobileScrollButton();
   initFloatingLabels();
   initContactPopup();
+
+  await initHeaderInjection();
+
   initExpertiseCarousel();
   initGallery();
-  initHeaderInjection();
   initHeroBackgroundCarousel();
   initCopyright();
 });
@@ -142,7 +143,7 @@ function initContactPopup() {
 
     fetch(form.action, {
       method: "POST",
-      body: new FormData(form)
+      body: new FormData(form),
     })
       .then((response) => {
         if (response.ok || response.type === "opaque") {
@@ -241,6 +242,7 @@ function initExpertiseCarousel() {
         scale(${scale})
         rotateY(${rotateY}deg)
       `;
+
       item.style.zIndex = String(zIndex);
       item.style.opacity = String(opacity);
     });
@@ -281,11 +283,7 @@ function initExpertiseCarousel() {
 /* =========================================
    GALLERY
 ========================================= */
-document.addEventListener("DOMContentLoaded", () => {
-  initGallery();
-});
-
-function initGallery() {
+async function initGallery() {
   const params = new URLSearchParams(window.location.search);
   const serviceKey = (params.get("service") || "photography").toLowerCase();
 
@@ -300,41 +298,42 @@ function initGallery() {
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
 
-  const mobileToggleBtn = document.getElementById("mobileGalleryToggle");
-
   if (!container || !overlay || !imgBig || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+  let imagesList = [];
+
+  const isGalleryPage =
+    window.location.pathname.includes("gallery.html") ||
+    window.location.pathname.includes("gallery");
 
   function renderGallery() {
     container.innerHTML = "";
-  
+
     const grid = document.createElement("div");
     grid.className = "gallery_grid";
     container.appendChild(grid);
-  
-    const isGalleryPage =
-      window.location.pathname.includes("gallery.html") ||
-      window.location.pathname.includes("gallery");
-  
+
     const imagesToRender = isGalleryPage
       ? imagesList
       : imagesList.slice(0, 8);
-  
+
     imagesToRender.forEach((imgSrc) => {
       const img = document.createElement("img");
       img.src = imgSrc;
       img.className = "gallery-img";
       img.alt = title?.textContent || "Gallery image";
       img.loading = "lazy";
-  
+
       img.addEventListener("click", () => {
         currentIndex = imagesList.indexOf(imgSrc);
         imgBig.src = imagesList[currentIndex];
         overlay.style.display = "flex";
       });
-  
+
       grid.appendChild(img);
     });
-  
+
     if (btnViewMore) {
       if (isGalleryPage) {
         btnViewMore.style.display = "none";
@@ -344,46 +343,6 @@ function initGallery() {
       }
     }
   }
-
-  let currentIndex = 0;
-  let imagesList = [];
-
-  fetch("data/data.json")
-    .then((res) => res.json())
-    .then((data) => {
-
-      const galleryData = data.galleries[serviceKey] || data.galleries.photography;
-      if (!galleryData) return;
-
-  
-      sessionStorage.setItem("selectedService", serviceKey);
-
-      if (title && (!title.textContent.trim() || serviceKey !== "photography")) {
-        title.textContent = galleryData.title || "Selected Work";
-      }
-
-      if (desc && (!desc.textContent.trim() || serviceKey !== "photography")) {
-        desc.textContent = galleryData.description || "";
-      }
-
-      if (heroPanel && galleryData.hero) {
-        heroPanel.style.backgroundImage = `url(${galleryData.hero})`;
-      }
-
-      
-      imagesList = Array.from(
-        { length: galleryData.count || 0 },
-        (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
-      );
-
-      shuffleArray(imagesList);
-
-      
-      renderGallery();
-    })
-    .catch((error) => {
-      console.error("Error loading gallery:", error);
-    });
 
   function showNext() {
     if (!imagesList.length) return;
@@ -420,183 +379,233 @@ function initGallery() {
     if (e.key === "ArrowLeft") showPrev();
     if (e.key === "Escape") overlay.style.display = "none";
   });
+
+  try {
+    const res = await fetch("data/data.json");
+    const data = await res.json();
+
+    const galleryData = data.galleries[serviceKey] || data.galleries.photography;
+    if (!galleryData) return;
+
+    sessionStorage.setItem("selectedService", serviceKey);
+
+    if (title && (!title.textContent.trim() || serviceKey !== "photography")) {
+      title.textContent = galleryData.title || "Selected Work";
+    }
+
+    if (desc && (!desc.textContent.trim() || serviceKey !== "photography")) {
+      desc.textContent = galleryData.description || "";
+    }
+
+    if (heroPanel && galleryData.hero) {
+      heroPanel.style.backgroundImage = `url(${galleryData.hero})`;
+    }
+
+    imagesList = Array.from(
+      { length: galleryData.count || 0 },
+      (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
+    );
+
+    shuffleArray(imagesList);
+    renderGallery();
+  } catch (error) {
+    console.error("Error loading gallery:", error);
+  }
 }
 
+/* =========================================
+   HEADER INJECTION
+========================================= */
+async function initHeaderInjection() {
+  const header = document.getElementById("header");
+  if (!header) return;
+
+  try {
+    const res = await fetch("data/header.html");
+    const html = await res.text();
+
+    header.innerHTML = html;
+
+    const footerStyle = document.getElementById("foot_bar");
+    const btnHamburguesa = document.getElementById("btnHamburguesa");
+    const elementosBorrosos = document.getElementsByClassName("borroso");
+    const menuDrop = document.getElementById("navbarMenu");
+    const menuCny = document.getElementById("container_top");
+
+    if (!btnHamburguesa || !menuDrop || !menuCny) return;
+
+    let menuAbierto = false;
+
+    function closeMenu() {
+      document.body.style.overflow = "";
+      menuDrop.style.display = "none";
+      menuDrop.style.visibility = "hidden";
+      menuDrop.classList.remove("menu-overlay");
+
+      for (let i = 0; i < elementosBorrosos.length; i++) {
+        elementosBorrosos[i].style.filter = "none";
+      }
+
+      menuAbierto = false;
+    }
+
+    function openMenu() {
+      document.body.style.overflow = "hidden";
+      menuDrop.style.display = "flex";
+      menuDrop.style.visibility = "visible";
+      menuDrop.classList.add("menu-overlay");
+
+      for (let i = 0; i < elementosBorrosos.length; i++) {
+        elementosBorrosos[i].style.filter = "blur(5px) brightness(0.3)";
+      }
+
+      menuAbierto = true;
+    }
+
+    function actualizarUI() {
+      const ancho = window.innerWidth;
+
+      if (ancho < 765) {
+        btnHamburguesa.style.display = "flex";
+        menuDrop.style.display = menuAbierto ? "flex" : "none";
+        menuDrop.style.visibility = menuAbierto ? "visible" : "hidden";
+      } else {
+        btnHamburguesa.style.display = "none";
+        menuDrop.style.display = "none";
+        menuDrop.style.visibility = "hidden";
+
+        for (let i = 0; i < elementosBorrosos.length; i++) {
+          elementosBorrosos[i].style.filter = "none";
+        }
+
+        menuAbierto = false;
+      }
+    }
+
+    btnHamburguesa.addEventListener("click", () => {
+      if (menuAbierto) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    menuDrop.addEventListener("click", (e) => {
+      if (e.target === menuDrop) {
+        closeMenu();
+      }
+    });
+
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (menuAbierto) closeMenu();
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      const isTop = window.scrollY === 0;
+
+      menuCny.style.backgroundColor = isTop ? "transparent" : "black";
+
+      if (footerStyle) {
+        footerStyle.style.backgroundColor = isTop ? "transparent" : "black";
+      }
+    });
+
+    window.addEventListener("resize", actualizarUI);
+    actualizarUI();
+  } catch (err) {
+    console.error("Header load error", err);
+  }
+}
+
+/* =========================================
+   HERO BACKGROUND CAROUSEL
+   Takes 5 random images from data/data.json photography gallery
+========================================= */
+async function initHeroBackgroundCarousel() {
+  const cont = document.getElementById("cont_background");
+  if (!cont) return;
+
+  try {
+    const res = await fetch("data/data.json");
+    const data = await res.json();
+
+    const galleryData = data.galleries?.photography;
+    if (!galleryData) return;
+
+    let images = Array.from(
+      { length: galleryData.count || 0 },
+      (_, i) => `${galleryData.src}/0-${i + 1}.jpg`
+    );
+
+    images = shuffleArray(images).slice(0, 5);
+
+    if (!images.length) return;
+
+    const divCarrusel = document.createElement("div");
+    divCarrusel.id = "carr_ind";
+    cont.appendChild(divCarrusel);
+
+    images.forEach((src, i) => {
+      const img = document.createElement("img");
+
+      img.src = src;
+      img.className = "img_carr";
+      img.alt = "Background photography image";
+
+      img.style.position = "absolute";
+      img.style.top = "0";
+      img.style.left = "0";
+      img.style.width = "100%";
+      img.style.height = "100%";
+      img.style.objectFit = "cover";
+      img.style.objectPosition = "top";
+      img.style.opacity = i === 0 ? "1" : "0";
+      img.style.transition = "opacity 3s ease-in-out";
+      img.style.zIndex = "0";
+      img.style.filter = "brightness(0.8)";
+
+      divCarrusel.appendChild(img);
+    });
+
+    let current = 0;
+
+    setInterval(() => {
+      const imgs = divCarrusel.querySelectorAll(".img_carr");
+      if (!imgs.length) return;
+
+      const next = (current + 1) % imgs.length;
+
+      imgs[current].style.opacity = "0";
+      imgs[next].style.opacity = "1";
+
+      current = next;
+    }, 5000);
+  } catch (error) {
+    console.error("Error loading hero carousel:", error);
+  }
+}
+
+/* =========================================
+   COPYRIGHT
+========================================= */
+function initCopyright() {
+  const footer = document.getElementById("copyright");
+  if (!footer) return;
+
+  const year = new Date().getFullYear();
+  footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
+}
+
+/* =========================================
+   HELPERS
+========================================= */
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [array[i], array[j]] = [array[j], array[i]];
   }
+
+  return array;
 }
-  
-  //====================================================header injection
-  document.addEventListener("DOMContentLoaded", () => {
-    fetch("data/header.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("header").innerHTML = html;
-  
-        // --- VARIABLES INICIALES ---
-  const divMenu = document.getElementById('div_menutop');       // menú top
-  const divFoot = document.getElementById('div_menubotom');     // footer
-  const footerStyle = document.getElementById('foot_bar');      // contenedor footer
-  const btnHamburguesa = document.getElementById('btnHamburguesa'); // botón hamburguesa
-  const elementosBorrosos = document.getElementsByClassName('borroso'); // elementos que se desenfocan
-  const menuDrop = document.getElementById('navbarMenu');       // menú desplegable hamburguesa
-  const menu_cny = document.getElementById('container_top')
-  /* para notas*/ 
-  
-  // Guardar HTML original
-  const menuOriginalHTML = divMenu.innerHTML;
-  const footerOriginalHTML = divFoot.innerHTML;
-  
-  let menuAbierto = false; // estado del menú hamburguesa
-  let ultimaPosicionScroll = 0; // posición anterior del scroll
-  
-  
-  // Selecciona todos los enlaces <a>
-  // Selecciona todos los enlaces <a>
-  const todosLosLinks = document.querySelectorAll("a");
-  
-  // Recorrerlos y agregar evento
-  todosLosLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      
-      document.body.style.overflow = '';
-      menuDrop.style.visibility = "hidden";
-      for (let i = 0; i < elementosBorrosos.length; i++) {
-        elementosBorrosos[i].style.filter = "none";
-  
-      }
-      menuAbierto = false;
-    });
-  });
-  
-  // --- FUNCION PARA ACTUALIZAR UI SEGÚN TAMAÑO ---
-  function actualizarUI() {
-    const ancho = window.innerWidth;
-  
-    if (ancho < 765) { // móvil
-      btnHamburguesa.style.display = "flex";         // botón visible
-      menuDrop.style.display = menuAbierto ? "flex" : "none"; // menú hamburguesa
-    } else { // desktop o tablet
-      btnHamburguesa.style.display = "none";         // botón oculto
-      menuDrop.style.display = "flex";               // menú normal visible
-      menuAbierto = false;                            // menú hamburguesa cerrado
-      // quitar blur
-      for (let i = 0; i < elementosBorrosos.length; i++) {
-        elementosBorrosos[i].style.filter = "none";
-      }
-    }
-  }
-  
-  //--- TOGGLE DEL MENU HAMBURGUESA v2---
-  btnHamburguesa.addEventListener("click", () => {
-    menuAbierto = !menuAbierto;
-  
-    if (menuAbierto) {
-      document.body.style.overflow = 'hidden';
-      menuDrop.style.display = 'flex';
-      menuDrop.style.visibility = 'visible';   // ← FALTABA
-      menuDrop.classList.add('menu-overlay');
-  
-      for (let i = 0; i < elementosBorrosos.length; i++) {
-        elementosBorrosos[i].style.filter = "blur(5px) brightness(0.3)";
-      }
-  
-    } else {
-      document.body.style.overflow = '';
-      menuDrop.style.display = 'none';
-      menuDrop.style.visibility = 'hidden';   // ← FALTABA
-      menuDrop.classList.remove('menu-overlay');
-  
-      for (let i = 0; i < elementosBorrosos.length; i++) {
-        elementosBorrosos[i].style.filter = "none";
-      }
-    }
-    menuDrop.addEventListener("click", (e) => {
-  
-  if (e.target === menuDrop) {
-  
-    menuAbierto = false;
-    menuDrop.style.display = "none";
-    menuDrop.style.visibility = "hidden";
-    document.body.style.overflow = '';
-  
-    for (let i = 0; i < elementosBorrosos.length; i++) {
-      elementosBorrosos[i].style.filter = "none";
-    }
-  
-  }
-  
-  });
-  });
-  
-  // --- EFECTO DE SCROLL EN EL TOP ---
-  window.addEventListener('scroll', () => {
-    const posicionActual = window.scrollY;
-  
-    // Si está en el tope
-    if (posicionActual === 0) {
-      menu_cny.style.backgroundColor = "transparent";
-      footerStyle.style.backgroundColor = "transparent";
-    } else {
-      // Si baja o sube (cualquier movimiento de scroll)
-      menu_cny.style.backgroundColor = "black";   
-     footerStyle.style.backgroundColor = "black";
-    }
-  
-    // Actualiza la posición actual del scroll
-    ultimaPosicionScroll = posicionActual;
-  });
-  
-  // --- EVENTOS PARA CARGA Y REDIMENSIÓN ---
-  window.addEventListener('load', actualizarUI);
-  window.addEventListener('resize', actualizarUI);
-      })
-      .catch(err => console.error("Header load error", err));
-  });
-  //=================================Carousel
-  document.addEventListener('DOMContentLoaded', () => {
-    const cont = document.getElementById('cont_background');
-    const images = [
-      "images/0-1.jpg",
-      "images/0-4.jpg",
-      "images/0-2.jpg",
-      "images/0-5.jpg",
-      "images/0-10.jpg",
-      "images/0-21.jpg"
-    ];  
-    // Crear contenedor
-    const divCarrusel = document.createElement('div');
-    divCarrusel.id = 'carr_ind';
-    cont.appendChild(divCarrusel);
-  
-    // aqui esta el efecto fade!!!!!!
-    images.forEach((src, i) => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.className = 'img_carr';
-      img.style.position = 'absolute';
-      img.style.filter= 'brightnes(0.1)'
-      img.style.top = '0';
-      img.style.left = '0';
-      img.style.width = '100%';
-      img.style.height = '100%';
-      img.style.objectFit = 'cover';
-      img.style.objectPosition = 'top';
-      img.style.opacity = i === 0 ? '1' : '0';
-      img.style.transition = 'opacity 3s ease-in-out';
-      img.style.zIndex='0';
-      divCarrusel.appendChild(img);
-    });
-  
-    let current = 0;
-    setInterval(() => {
-      const imgs = divCarrusel.querySelectorAll('.img_carr');
-      const next = (current + 1) % imgs.length;
-      imgs[current].style.opacity = '0.0';
-      imgs[next].style.opacity = '1';
-      current = next;
-    }, 5000);
-  });
