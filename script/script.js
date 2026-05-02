@@ -537,7 +537,7 @@ async function initHeroBackgroundCarousel() {
 
     const horizontalImages = await filterHorizontalImages(images);
 
-    const selectedImages = horizontalImages.slice(0, 5);
+    const selectedImages = horizontalImages.slice(0, 10);
 
     if (!selectedImages.length) return;
 
