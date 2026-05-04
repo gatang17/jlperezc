@@ -1479,3 +1479,9 @@ label {
   
   }
 }
+
+@media (max-width: 768px) {
+  .section-gallery {
+    padding-left: 0 !important;
+  }
+}
