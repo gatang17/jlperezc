@@ -50,29 +50,37 @@
         <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
       </div>
     </main>
-    <!--FOOTER-->
-    <footer class="" id="foot_bar">
-      <div id="div_menubotom">
-        <a href="https://facebook.com" target="_blank"
-          ><i class="fab fa-facebook-f"></i
-        ></a>
-        <a href="https://instagram.com" target="_blank"
-          ><i class="fab fa-instagram"></i
-        ></a>
-        <a href="https://twitter.com" target="_blank"
-          ><i class="fab fa-twitter"></i
-        ></a>
-      </div>
-    </footer>
+   
+  <!-- footer -->
+  <footer id="foot_bar">
+    <div id="div_menubotom">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
 
-    <!-- AOS JS -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 800, // duración por defecto en ms
-        once: true, // animar solo una vez al hacer scroll
-      });
-    </script>
-    <script src="script/script.js"></script>
-  </body>
+    <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
+      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
+    </a>
+  </footer>
+
+  <!-- JS -->
+  <script src="script/script.js"></script>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- COPYRIGHT -->
+  <script>
+    const footer = document.getElementById('copyright');
+    const year = new Date().getFullYear();
+    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
+  </script>
+</body>
 </html>
