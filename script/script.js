@@ -598,9 +598,13 @@ function initCopyright() {
 /* =========================================
    DATA HELPERS
 ========================================= */
+let portfolioDataPromise = null;
+
 async function loadPortfolioData() {
-  const res = await fetch("data/data.json");
-  return await res.json();
+  if (!portfolioDataPromise) {
+    portfolioDataPromise = fetch("data/data.json").then((res) => res.json());
+  }
+  return portfolioDataPromise;
 }
 
 function buildGalleryImages(gallery) {

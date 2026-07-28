@@ -42,11 +42,6 @@
         <div class="hero_wraper">
           <div class="d_grid hero-content" data-aos="fade-up" data-aos-duration="800">
           <img class="tagline hero-title logo" src="images/joseLogoW.png">
-        <!--    <h1 class="tagline hero-title">Jose Luis Perez Cespedes</h1>
-
-            <p class="hero-subtitle">
-              Product, Portrait &amp; Creative Photography
-            </p> -->
 
             <p class="hero-copy">
               Clean lighting and strong composition, and thoughtful visual storytelling.
@@ -78,7 +73,8 @@
           <div class="container-fluid" id="gallery">
             <div id="gallery_grid" data-aos="fade-in" data-aos-duration="500"></div>
             <div class="text-center mt-3">
-              <a href="gallery.html?service=photography" 
+              <a href="gallery.html?service=photography"
+              id="btnViewMore"
               class="btn boton boton-secondary mybtn">
              View More
            </a>
@@ -225,7 +221,7 @@
             <button type="submit" class="mb-3 boton text-center">Send Message</button>
           </div>
 
-          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_captcha" value="true" />
           <input type="hidden" name="_next" value="index.html#pop_up" />
         </form>
   
@@ -272,13 +268,6 @@
       duration: 800,
       once: true
     });
-  </script>
-
-  <!-- COPYRIGHT -->
-  <script>
-    const footer = document.getElementById('copyright');
-    const year = new Date().getFullYear();
-    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
   </script>
 </body>
 </html>
