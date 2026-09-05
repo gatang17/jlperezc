@@ -220,14 +220,32 @@
     }
   ],
 
-  "testimonials": [
-    {
-      "quote": "Example testimonial placeholder.",
-      "name": "Client Name",
-      "company": "Company",
-      "published": false
-    }
-  ],
+ "testimonials": [
+  {
+    "quote": "Working with Jose has always been an experience where I not only get the result I’m looking for, but usually end up learning something along the way. He is patient, understands what is being asked, and takes the time to find the best way to achieve it. His friendly personality also makes it easy to speak openly, share ideas, and feel part of the process.",
+    "name": "JJ",
+    "company": "Handyman DMD",
+    "published": true
+  },
+  {
+    "quote": "Jose is very detail-oriented and takes his work seriously. He pays attention to the small things, from the lighting to the composition, and that level of care really shows in the final images. He takes the time to get things right, and the result always feels polished and professional.",
+    "name": "Gretel",
+    "company": "GATANG Designs",
+    "published": true
+  },
+  {
+    "quote": "From the first time we spoke with Jose, we had the feeling the experience was going to go well. He is patient, approachable, and easy to communicate with, which makes it comfortable to share ideas and be honest about what you want.",
+    "name": "Client Name",
+    "company": "Company or Role",
+    "published": true
+  },
+  {
+    "quote": "Add a verified testimonial here about the final delivery, professionalism, or how the images supported the project.",
+    "name": "Client Name",
+    "company": "Company or Role",
+    "published": false
+  }
+],
 
   "about": {
     "lead": "I’m a Louisville-based commercial photographer focused on product, beverage, brand content, and portrait imagery.",
