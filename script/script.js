@@ -2,13 +2,15 @@ const portfolioState = {
   dataPromise: null,
   lightboxImages: [],
   lightboxIndex: 0,
-  heroTimer: null
+  heroTimer: null,
+  scrollLockY: 0
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
   initCopyright();
   initLightbox();
   initContactPopup();
+  initImageProtection();
   await initHeaderInjection();
 
   try {
@@ -153,12 +155,16 @@ function initSelectedWork(data) {
     img.alt = item.alt || "Selected photography work";
     img.loading = "lazy";
     img.decoding = "async";
+    img.draggable = false;
+    img.classList.add("protected-photo");
+
+    const rights = createRightsMark();
 
     const label = document.createElement("span");
     label.className = "selected-work-label";
     label.textContent = item.category || "Selected Work";
 
-    button.append(img, label);
+    button.append(img,label);
     grid.appendChild(button);
   });
 }
@@ -239,9 +245,11 @@ function createLightboxButton({ src, alt, group, className, imageClassName = "",
   img.alt = alt;
   img.loading = eager ? "eager" : "lazy";
   img.decoding = "async";
-  if (imageClassName) img.className = imageClassName;
+  img.draggable = false;
+  img.classList.add("protected-photo");
+  if (imageClassName) img.classList.add(imageClassName);
 
-  button.appendChild(img);
+  button.append(img);
   return button;
 }
 
@@ -388,9 +396,11 @@ function initGalleryArchive(data) {
       img.alt = `${gallery.title}, image ${imageIndex + 1}`;
       img.loading = groupIndex === 0 && imageIndex === 0 ? "eager" : "lazy";
       img.decoding = "async";
+      img.draggable = false;
+      img.classList.add("protected-photo");
       if (groupIndex === 0 && imageIndex === 0) img.fetchPriority = "high";
 
-      button.appendChild(img);
+      button.append(img);
       grid.appendChild(button);
     });
 
@@ -482,10 +492,11 @@ async function initHeroBackgroundCarousel(data) {
 
 function createHeroFrame(isPrimary) {
   const img = document.createElement("img");
-  img.className = "hero-carousel-image";
+  img.className = "hero-carousel-image protected-photo";
   img.alt = "";
   img.setAttribute("aria-hidden", "true");
   img.decoding = "async";
+  img.draggable = false;
   img.loading = isPrimary ? "eager" : "lazy";
   if (isPrimary) img.fetchPriority = "high";
   return img;
@@ -581,11 +592,30 @@ function initLightbox() {
 
   if (!overlay || !image || !prev || !next || !close) return;
 
+  let lastFocusedElement = null;
+
+  const lockLightboxScroll = () => {
+    portfolioState.scrollLockY = window.scrollY;
+    document.documentElement.classList.add("lightbox-open");
+    document.body.classList.add("lightbox-open");
+    document.body.style.top = `-${portfolioState.scrollLockY}px`;
+  };
+
+  const unlockLightboxScroll = () => {
+    const y = portfolioState.scrollLockY || 0;
+    document.documentElement.classList.remove("lightbox-open");
+    document.body.classList.remove("lightbox-open");
+    document.body.style.top = "";
+    window.scrollTo(0, y);
+  };
+
   const closeLightbox = () => {
+    if (overlay.hidden) return;
     overlay.hidden = true;
     image.src = "";
     image.alt = "";
-    document.body.classList.remove("menu-open");
+    unlockLightboxScroll();
+    if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
   };
 
   const showImage = (index) => {
@@ -601,6 +631,9 @@ function initLightbox() {
     const trigger = event.target.closest("[data-lightbox-src]");
     if (!trigger) return;
 
+    event.preventDefault();
+    lastFocusedElement = trigger;
+
     const group = trigger.dataset.lightboxGroup;
     const triggers = Array.from(document.querySelectorAll(`[data-lightbox-group="${cssEscape(group)}"]`));
 
@@ -610,8 +643,8 @@ function initLightbox() {
     }));
 
     portfolioState.lightboxIndex = Math.max(0, triggers.indexOf(trigger));
+    lockLightboxScroll();
     overlay.hidden = false;
-    document.body.classList.add("menu-open");
     showImage(portfolioState.lightboxIndex);
     close.focus();
   });
@@ -690,11 +723,30 @@ function initContactPopup() {
 ========================================= */
 function initCopyright() {
   const copyright = document.getElementById("copyright");
+  if (!copyright) return;
+  copyright.textContent = `© ${new Date().getFullYear()} Jose Perez. All rights reserved.`;
+}
 
-  if (copyright) {
-    const year = new Date().getFullYear();
-    copyright.textContent = `© ${year} Jose Perez. All rights reserved. Image use requires permission.`;
-  }
+function createRightsMark() {
+  const mark = document.createElement("span");
+  mark.className = "image-rights-mark";
+  mark.textContent = "© Jose Perez · Usage restricted";
+  mark.setAttribute("aria-hidden", "true");
+  return mark;
+}
+
+function initImageProtection() {
+  document.addEventListener("contextmenu", (event) => {
+    if (event.target.closest(".protected-photo, [data-lightbox-src] img")) {
+      event.preventDefault();
+    }
+  });
+
+  document.addEventListener("dragstart", (event) => {
+    if (event.target.closest(".protected-photo, [data-lightbox-src] img")) {
+      event.preventDefault();
+    }
+  });
 }
 
 function escapeHTML(value = "") {
