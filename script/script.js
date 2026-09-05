@@ -672,15 +672,22 @@ function initContactPopup() {
   const popup = document.getElementById("pop_up");
   const form = document.getElementById("contactForm");
 
-  window.openPopup = () => popup?.classList.add("active");
-  window.closePopup = () => popup?.classList.remove("active");
+  window.openPopup = () => {
+    popup?.classList.add("active");
+  };
+
+  window.closePopup = () => {
+    popup?.classList.remove("active");
+  };
 
   if (window.location.hash === "#pop_up" && popup) {
     popup.classList.add("active");
   }
 
   popup?.addEventListener("click", (event) => {
-    if (event.target === popup) window.closePopup();
+    if (event.target === popup) {
+      window.closePopup();
+    }
   });
 
   if (!form) return;
@@ -689,26 +696,45 @@ function initContactPopup() {
     event.preventDefault();
 
     const submitButton = form.querySelector('button[type="submit"]');
+
     if (submitButton) {
       submitButton.disabled = true;
       submitButton.textContent = "Sending…";
     }
 
     try {
-      const response = await fetch(form.action, {
-        method: "POST",
-        body: new FormData(form)
-      });
+      const formData = new FormData(form);
 
-      if (!response.ok && response.type !== "opaque") {
-        throw new Error(`Form request failed (${response.status})`);
+      const data = Object.fromEntries(formData.entries());
+
+      const response = await fetch(
+        "https://formsubmit.co/ajax/jlprezc@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data)
+        }
+      );
+
+      const result = await response.json();
+
+      if (!response.ok || result.success === false) {
+        throw new Error(result.message || "Unable to send form");
       }
 
       form.reset();
       window.openPopup();
+
     } catch (error) {
       console.error("Contact form error:", error);
-      alert("There was an error sending the message. Please try again.");
+
+      alert(
+        "Your message could not be sent. Please try again or contact Jose directly."
+      );
+
     } finally {
       if (submitButton) {
         submitButton.disabled = false;
