@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4EHWHLPM66');
+</script>
+
+    <!--fontaweson for links-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <!-- At the Head ->  AOS CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <title>Jose Luis Perez Portfolio</title>
+  </head>
+  <body>
+    <!-- <header >    
+   
+  </header> -->
+    <div id="header"></div>
+    <main class="borroso">
+      <!-- SELECTED WORK -->
+      <div class="panel panel-gallery">
+        <section id="" class="section-gallery">
+          <div class="d_grid0 selected-work-layout">
+            <div class="d_sub_grid0 selected-work-intro" id="d_sub_grid0">
+              <div class="wrapp">
+                <h2 id="gallery_title"></h2>
+                <p id="gallery_desc"></p>
+              </div>
+            </div>
+
+            <div class="container-fluid" id="gallery">
+              <div     id="gallery_grid"    data-aos="fade-in"          data-aos-duration="500"    ></div>             
+              <div class="text-center"></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Overlay para galería -->
+      <div id="popupOverlay">
+        <i class="fa-solid fa-chevron-left" id="prevBtn"></i>
+        <img id="popupImage" alt="Expanded gallery image" />
+        <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
+      </div>
+    </main>
+   
+  <!-- footer -->
+  <footer id="foot_bar">
+    <div id="div_menubotom">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+
+    <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
+      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
+    </a>
+  </footer>
+
+  <!-- JS -->
+  <script src="script/script.js"></script>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- COPYRIGHT -->
+  <script>
+    const footer = document.getElementById('copyright');
+    const year = new Date().getFullYear();
+    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
+  </script>
+</body>
+</html>

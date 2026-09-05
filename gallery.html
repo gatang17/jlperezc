@@ -1,96 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse commercial product, beverage, brand content, portrait, food, and environmental photography by Jose Perez." />
 
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4EHWHLPM66');
+  </script>
 
-  gtag('config', 'G-4EHWHLPM66');
-</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <title>Work Archive | Jose Perez Photography</title>
+</head>
+<body class="page-gallery">
+  <div id="header"></div>
 
-    <!--fontaweson for links-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-    <!-- At the Head ->  AOS CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="css/styles.css" />
-    <title>Jose Luis Perez Portfolio</title>
-  </head>
-  <body>
-    <!-- <header >    
-   
-  </header> -->
-    <div id="header"></div>
-    <main class="borroso">
-      <!-- SELECTED WORK -->
-      <div class="panel panel-gallery">
-        <section id="" class="section-gallery">
-          <div class="d_grid0 selected-work-layout">
-            <div class="d_sub_grid0 selected-work-intro" id="d_sub_grid0">
-              <div class="wrapp">
-                <h2 id="gallery_title"></h2>
-                <p id="gallery_desc"></p>
-              </div>
-            </div>
-
-            <div class="container-fluid" id="gallery">
-              <div     id="gallery_grid"    data-aos="fade-in"          data-aos-duration="500"    ></div>             
-              <div class="text-center"></div>
-            </div>
-          </div>
-        </section>
+  <main id="main-content" class="archive-main">
+    <section class="archive-hero">
+      <div class="section-shell archive-hero-inner">
+        <p class="archive-back"><a href="index.html#projects">← Back to Projects</a></p>
+        <h1 id="gallery_title">Work Archive</h1>
+        <p id="gallery_desc">A complete archive of selected photography, organized by area of work.</p>
+        <nav id="galleryCategoryNav" class="archive-nav" aria-label="Gallery categories"></nav>
       </div>
+    </section>
 
-      <!-- Overlay para galería -->
-      <div id="popupOverlay">
-        <i class="fa-solid fa-chevron-left" id="prevBtn"></i>
-        <img id="popupImage" alt="Expanded gallery image" />
-        <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
+    <section class="archive-section">
+      <div class="section-shell">
+        <div id="gallery_grid" class="archive-groups" aria-live="polite"></div>
       </div>
-    </main>
-   
-  <!-- footer -->
-  <footer id="foot_bar">
-    <div id="div_menubotom">
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+    </section>
+  </main>
+
+  <div id="popupOverlay" class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded photograph" hidden>
+    <button type="button" class="lightbox-close" id="closeLightbox" aria-label="Close image">×</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="prevBtn" aria-label="Previous image">←</button>
+    <img id="popupImage" alt="" />
+    <button type="button" class="lightbox-nav lightbox-next" id="nextBtn" aria-label="Next image">→</button>
+  </div>
+
+  <footer class="site-footer" id="foot_bar">
+    <div class="site-footer-brand"><img src="images/logoMarkwhite.png" alt="Jose Perez logo mark" /></div>
+    <div class="site-footer-links" id="div_menubotom">
+      <a href="https://www.instagram.com/jlperezc87" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/in/jlperezc87" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://www.facebook.com/jlperezc" target="_blank" rel="noreferrer">Facebook</a>
     </div>
-
-    <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
-      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
-    </a>
+    <div class="site-footer-copy">
+      <a href="https://gatangdesigns.io/" target="_blank" rel="noreferrer"><span id="copyright"></span></a>
+    </div>
   </footer>
 
-  <!-- JS -->
   <script src="script/script.js"></script>
-
-  <!-- AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  </script>
-
-  <!-- COPYRIGHT -->
-  <script>
-    const footer = document.getElementById('copyright');
-    const year = new Date().getFullYear();
-    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
-  </script>
 </body>
 </html>

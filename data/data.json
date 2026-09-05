@@ -1,23 +1,65 @@
 {
+  "site": {
+    "hero": {
+      "fallbackImage": "images/product/0-20.jpg"
+    },
+    "heroCarousel": {
+      "count": 5,
+      "candidateLimit": 18,
+      "selectionKey": "jlprezcHeroSelectionV3"
+    },
+    "selectedWork": [
+      {
+        "src": "images/product/0-20.jpg",
+        "alt": "Commercial product photograph with controlled lighting and a clean composition.",
+        "category": "Product"
+      },
+      {
+        "src": "images/campaign/0-4.jpg",
+        "alt": "Beauty campaign concept photograph with polished product-focused styling.",
+        "category": "Brand Content"
+      },
+      {
+        "src": "images/food/0-7.jpg",
+        "alt": "Food photograph emphasizing color, texture, and presentation.",
+        "category": "Food & Beverage"
+      },
+      {
+        "src": "images/environmental/0-2.jpg",
+        "alt": "Environmental photograph using architecture, light, and atmosphere.",
+        "category": "Environmental"
+      },
+      {
+        "src": "images/fashion/0-5.jpg",
+        "alt": "Editorial portrait photograph emphasizing styling, texture, and controlled light.",
+        "category": "Commercial Portrait"
+      },
+      {
+        "src": "images/Portraits/0-11.jpg",
+        "alt": "Portrait photograph with intentional composition and controlled lighting.",
+        "category": "Portrait"
+      }
+    ]
+  },
+
   "generalGallery": {
     "order": [
       "product",
-      "portrait",
       "campaign",
-      "creative",
       "food",
+      "fashion",
+      "portrait",
       "environmental",
-      "fashion"
+      "creative"
     ]
   },
 
   "galleries": {
     "photography": {
-      "hero": "images/0-1.jpg",
-      "title": "Jose Luis Perez Cespedes",
-      "description": "Hi, I'm Jose. Welcome to my portfolio! I’m a product photography student at JCTC focused on clean lighting, strong composition, and creative product storytelling."
+      "hero": "images/product/0-20.jpg",
+      "title": "Work Archive",
+      "description": "A complete archive of product, beverage, brand content, portrait, food, environmental, and creative photography."
     },
-
     "product": {
       "hero": "images/product/0-20.jpg",
       "title": "Product Photography",
@@ -25,23 +67,20 @@
       "src": "images/product",
       "count": 22
     },
-
     "portrait": {
       "hero": "images/Portraits/0-11.jpg",
       "title": "Portrait Photography",
-      "description": "Studio and natural light portraits focused on expression, mood, and controlled composition.",
+      "description": "Studio and natural-light portraits focused on expression, mood, and controlled composition.",
       "src": "images/Portraits",
       "count": 12
     },
-
     "campaign": {
       "hero": "images/campaign/0-4.jpg",
-      "title": "Campaign Photography",
-      "description": "Brand-focused images created for visual storytelling, advertising, and product presentation.",
+      "title": "Campaign Concepts",
+      "description": "Concept-led brand imagery created to explore visual storytelling, product presentation, and campaign direction.",
       "src": "images/campaign",
       "count": 13
     },
-
     "creative": {
       "hero": "images/creative/0-8.jpg",
       "title": "Creative Photography",
@@ -49,29 +88,154 @@
       "src": "images/creative",
       "count": 9
     },
-
     "food": {
       "hero": "images/food/0-7.jpg",
-      "title": "Food Photography",
-      "description": "Food images focused on texture, color, freshness, and appetizing presentation.",
+      "title": "Food & Beverage",
+      "description": "Food and beverage images focused on texture, color, atmosphere, and presentation.",
       "src": "images/food",
       "count": 9
     },
-
     "environmental": {
       "hero": "images/environmental/0-2.jpg",
-      "title": "Environmental Photography",
-      "description": "Images that place subjects, products, or people within a surrounding environment or story.",
+      "title": "Environmental & Architecture",
+      "description": "Images built around place, architectural detail, light, reflections, and atmosphere.",
       "src": "images/environmental",
       "count": 6
     },
-
     "fashion": {
       "hero": "images/fashion/0-5.jpg",
-      "title": "Fashion Photography",
-      "description": "Fashion and editorial-style photography focused on styling, pose, mood, and visual identity.",
+      "title": "Fashion & Editorial Portraits",
+      "description": "Editorial-style portraits focused on styling, texture, pose, mood, and visual identity.",
       "src": "images/fashion",
       "count": 13
     }
+  },
+
+  "projects": [
+    {
+      "id": "product-still-life",
+      "title": "Product Still Life Studies",
+      "category": "Personal Project",
+      "hero": "images/product/0-20.jpg",
+      "images": [
+        "images/product/0-20.jpg",
+        "images/product/0-6.jpg",
+        "images/product/0-1.jpg"
+      ],
+      "objective": "Create polished product imagery where light, texture, and shape carry the visual message.",
+      "description": "A series of controlled product studies built to make everyday objects feel deliberate, refined, and presentation-ready.",
+      "use": "E-commerce, advertising, launch content",
+      "technical": "Controlled lighting · reflective surfaces · detail retouching",
+      "link": "gallery.html?service=product"
+    },
+    {
+      "id": "beauty-campaign-concept",
+      "title": "Beauty Campaign Concept",
+      "category": "Campaign Concept",
+      "hero": "images/campaign/0-4.jpg",
+      "images": [
+        "images/campaign/0-4.jpg",
+        "images/campaign/0-2.jpg",
+        "images/campaign/0-7.jpg"
+      ],
+      "objective": "Explore a cohesive beauty-focused visual direction across product and campaign imagery.",
+      "description": "A concept-led series centered on rich texture, controlled highlights, and a polished beauty-advertising mood.",
+      "use": "Brand storytelling, social content, campaign concepts",
+      "technical": "Beauty lighting · product detail · color control",
+      "link": "gallery.html?service=campaign"
+    },
+    {
+      "id": "food-beverage-study",
+      "title": "Food & Beverage Study",
+      "category": "Personal Project",
+      "hero": "images/food/0-7.jpg",
+      "images": [
+        "images/food/0-7.jpg",
+        "images/food/0-2.jpg",
+        "images/food/0-4.jpg"
+      ],
+      "objective": "Use color, texture, and controlled composition to make food and beverage imagery feel immediate and tactile.",
+      "description": "A visual study of ingredients, surfaces, and presentation with an emphasis on clarity and appetite appeal.",
+      "use": "Menus, hospitality content, social campaigns",
+      "technical": "Texture · color balance · still-life composition",
+      "link": "gallery.html?service=food"
+    },
+    {
+      "id": "editorial-portrait-study",
+      "title": "Editorial Portrait Study",
+      "category": "Personal Project",
+      "hero": "images/fashion/0-5.jpg",
+      "images": [
+        "images/fashion/0-5.jpg",
+        "images/fashion/0-6.jpg",
+        "images/fashion/0-10.jpg"
+      ],
+      "objective": "Build portraits with a clear visual mood while keeping lighting and composition controlled.",
+      "description": "An editorial portrait series using styling, texture, and directional light to create a stronger sense of character.",
+      "use": "Editorial, personal branding, commercial portraiture",
+      "technical": "Directional light · posing · texture",
+      "link": "gallery.html?service=fashion"
+    }
+  ],
+
+  "services": [
+    {
+      "id": "product",
+      "title": "Product Photography",
+      "description": "Focused imagery for products that need clean detail, stronger presence, and a consistent visual language."
+    },
+    {
+      "id": "beverage",
+      "title": "Beverage Photography",
+      "description": "Bottle, glass, texture, and atmosphere photographed with careful control of reflections and highlights."
+    },
+    {
+      "id": "brand-content",
+      "title": "Brand Content",
+      "description": "A flexible set of images for launches, websites, social content, and campaign concepts."
+    },
+    {
+      "id": "commercial-portraits",
+      "title": "Commercial Portraits",
+      "description": "Portraits shaped around the person, role, or brand—from simple professional images to more editorial direction."
+    }
+  ],
+
+  "process": [
+    {
+      "title": "Share the idea",
+      "description": "Send the product, goal, reference, or even the rough version of what you have in mind."
+    },
+    {
+      "title": "Plan the shoot",
+      "description": "We define the visual direction, practical needs, and the images the project should deliver."
+    },
+    {
+      "title": "Create the images",
+      "description": "Lighting, composition, styling, and capture are handled around the agreed direction."
+    },
+    {
+      "title": "Receive final assets",
+      "description": "Final edited images are prepared for the intended use and delivered as agreed."
+    }
+  ],
+
+  "testimonials": [
+    {
+      "quote": "Example testimonial placeholder.",
+      "name": "Client Name",
+      "company": "Company",
+      "published": false
+    }
+  ],
+
+  "about": {
+    "lead": "I’m a Louisville-based commercial photographer focused on product, beverage, brand content, and portrait imagery.",
+    "body": "My approach starts with controlled lighting and strong composition, then pushes toward images with character and visual intention. The goal is not simply to document a product or person, but to create photographs that help the subject feel considered, polished, and ready to compete for attention.",
+    "highlights": [
+      "Louisville, Kentucky",
+      "Product · Beverage · Brand Content · Portraits",
+      "Lighting, composition, and visual direction"
+    ]
   }
 }

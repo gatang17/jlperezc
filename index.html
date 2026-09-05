@@ -3,282 +3,213 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Commercial product, beverage, brand content, and portrait photography by Jose Perez in Louisville, Kentucky." />
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4EHWHLPM66');
+  </script>
 
-  gtag('config', 'G-4EHWHLPM66');
-</script>
-
-  <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-
-  <!-- AOS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="images/product/0-20.jpg" fetchpriority="high" />
 
   <link rel="stylesheet" href="css/styles.css" />
-  <title>Jose Luis Perez Portfolio</title>
+  <title>Jose Perez | Commercial Photographer</title>
 </head>
-<body>
+<body class="page-home">
   <div id="header"></div>
-  <div id="cont_background" class="container hero"></div>
 
-  <main class="borroso">
+  <!-- Immediate visual fallback. JS replaces this progressively with a session-stable random selection. -->
+  <div id="cont_background" class="hero-background" aria-hidden="true"></div>
 
+  <main id="main-content">
     <!-- HERO -->
-    <div class="panel hero-panel">
-      <section id="sec_1" class="fade-section hero-section">
-        <div class="pixel-overlay"></div>
-
-        <div class="hero_wraper">
-          <div class="d_grid hero-content" data-aos="fade-up" data-aos-duration="800">
-          <img class="tagline hero-title logo" src="images/joseLogoW.png">
-        <!--    <h1 class="tagline hero-title">Jose Luis Perez Cespedes</h1>
-
-            <p class="hero-subtitle">
-              Product, Portrait &amp; Creative Photography
-            </p> -->
-
-            <p class="hero-copy">
-              Clean lighting and strong composition, and thoughtful visual storytelling.
-            </p>
-
-            <div class="hero-actions">
-              <a class="boton" href="#init" data-scroll>View Portfolio</a>
-              <a class="boton boton-secondary" href="#contact" data-scroll>Let’s Work Together</a>
-            </div>
-          </div>
+    <section id="top" class="hero-section">
+      <div class="hero-inner">
+        <img class="hero-logo" src="images/joseLogoW.png" alt="Jose Perez Photography" />
+        <h1 class="hero-title">
+          Your product deserves to be
+<span class="viewfinder-word">
+  <span class="viewfinder-text">seen</span>
+</span>.
+        </h1>
+        <p class="hero-copy">
+          Commercial photography for products, beverages, brand content, and portraits. You do not need a perfect brief to start—we can shape the visual direction together.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="#contact">Start a Project</a>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
     <!-- SELECTED WORK -->
-    <div class="panel panel-gallery">
-      <section id="init" class="section-gallery">
-        <div class="d_grid0 selected-work-layout">
-          <div class="d_sub_grid0 selected-work-intro" id="d_sub_grid0">
-            <div class="wrapp">
-              <h2 id="gallery_title">Selected Work</h2>
-              <p id="gallery_desc">
-                A curated collection of portraits, product images, and visual experiments.
-              </p>
-
-            </div>
-          </div>
-
-          <div class="container-fluid" id="gallery">
-            <div id="gallery_grid" data-aos="fade-in" data-aos-duration="500"></div>
-            <div class="text-center mt-3">
-              <a href="gallery.html?service=photography" 
-              class="btn boton boton-secondary mybtn">
-             View More
-           </a>
-            </div>
-            <div class="text-center"></div>
-          </div>
+    <section id="selected-work" class="section section-dark selected-work-section">
+      <div class="section-shell">
+        <div class="section-heading section-heading-left">
+          <h2>Selected Work</h2>
+          <p>A focused selection of product, beverage, food, portrait, and visual studies.</p>
         </div>
-      </section>
-    </div>
 
-    <!-- Overlay para galería -->
-    <div id="popupOverlay">
-      <i class="fa-solid fa-chevron-left" id="prevBtn"></i>
-      <img id="popupImage" alt="Expanded gallery image" />
-      <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
-    </div>
+        <div id="selectedWorkGrid" class="selected-work-grid" aria-live="polite"></div>
+
+        <a class="text-link" href="gallery.html?service=photography">View the full work archive <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS -->
+    <section id="projects" class="section section-light projects-section">
+      <div class="section-shell">
+        <div class="section-heading section-heading-left">
+          <h2>Featured Projects</h2>
+          <p>Selected bodies of work with the idea, visual direction, and intended use behind the images.</p>
+        </div>
+        <div id="featuredProjects" class="projects-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section section-dark services-section">
+      <div class="section-shell">
+        <div class="section-heading section-heading-left">
+          <h2>What We Can Create Together</h2>
+          <p>Clear options for businesses that know exactly what they need—and for those still shaping the idea.</p>
+        </div>
+        <div id="servicesGrid" class="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" class="section section-dark process-section">
+      <div class="section-shell">
+        <div class="section-heading section-heading-left">
+          <h2>A Clear Process</h2>
+          <p>Enough structure to keep the project moving, without turning the first conversation into homework.</p>
+        </div>
+        <ol id="processGrid" class="process-grid"></ol>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS: JS hides the entire section if none are published -->
+    <section id="client-experience" class="section section-light testimonials-section" hidden>
+      <div class="section-shell">
+        <div class="section-heading section-heading-left">
+          <h2>The Client Experience</h2>
+        </div>
+        <div id="testimonialsGrid" class="testimonials-grid"></div>
+      </div>
+    </section>
 
     <!-- ABOUT -->
-    <div class="panel panel-about">
-      <section id="about" >
-        <div class="section-heading">
-         <h2>About Me</h2>
+    <section id="about" class="section section-light about-section">
+      <div class="section-shell about-layout">
+        <div class="about-image-wrap">
+          <img src="images/selfportrait/0-3.jpg" alt="Portrait of photographer Jose Perez" loading="lazy" decoding="async" />
         </div>
-
-        <div id="gallery_1" class="about-layout" data-aos="fade-in" data-aos-duration="800">
-          <div class="about-image-wrap d_work">
-            <img src="images/selfportrait/0-3.jpg" class="d_work" alt="Jose Luis Perez self portrait" />
-          </div>
-          <div class="d_work about_text">
-            <p class="about-lead">
-              I’m a Louisville-based photographer focused on product photography,
-              portrait work, and visually driven compositions.
-            </p>
-          
-            <p>
-              My approach combines technical control, lighting precision, and creative
-              direction to create images with clarity and impact. With a strong interest
-              in composition and image-making, I build photographs that feel intentional,
-              polished, and visually memorable.
-            </p>
-          
-            <ul class="about-highlights">
-              <li>Based in Louisville, Kentucky</li>
-              <li>Focused on product, portrait, and creative photography</li>
-              <li>Strong interest in lighting, composition, and image design</li>
-            </ul>
-          
-            <a href="data/RESUME_PEREZ.pdf" class="boton" download >
-              Download Resume
-            </a>
-          </div>
+        <div class="about-copy">
+          <h2>About Jose</h2>
+          <p id="aboutLead" class="about-lead"></p>
+          <p id="aboutBody"></p>
+          <div id="aboutHighlights" class="about-highlights"></div>
+          <a class="text-link resume-link" href="data/RESUME_PEREZ.pdf" download>Download resume <span aria-hidden="true">↓</span></a>
         </div>
-      </section>
-    </div>
-
-
-  <!-- AREAS OF EXPERTISE -->
-<div class="panel panel-work">
-  <section id="work">
-    <div class="work-heading">
-      <h2>Areas of Expertise</h2>
-        <h3 id="carousel-title"></h3>
-    </div>
-
-    <div id="carrusel-container">
-      <i id="prev" class="fa-solid fa-angle-left" aria-label="Previous slide"></i>
-
-      <div id="carrusel">
-        <a href="gallery.html?service=portrait" aria-label="Open portrait gallery">
-          <div class="carousel-item" data-title="Portrait"
-            style="background-image:url('images/Portraits/0-11.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=campaign" aria-label="Open campaign gallery">
-          <div class="carousel-item" data-title="campaign"
-            style="background-image:url('images/campaign/0-4.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=product" aria-label="Open product gallery">
-          <div class="carousel-item" data-title="Product"
-            style="background-image:url('images/product/0-20.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=creative" aria-label="Open creative gallery">
-          <div class="carousel-item" data-title="Creative"
-            style="background-image:url('images/creative/0-8.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=fashion" aria-label="Open Fashion gallery">
-          <div class="carousel-item" data-title="Fashion & Corporate"
-            style="background-image:url('images/fashion/0-5.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=food" aria-label="Open food gallery">
-          <div class="carousel-item" data-title="Food"
-            style="background-image:url('images/food/0-2.jpg')"></div>
-        </a>
-
-        <a href="gallery.html?service=environmental" aria-label="Open environmental gallery">
-          <div class="carousel-item" data-title="Environmental"
-            style="background-image:url('images/environmental/0-2.jpg')"></div>
-        </a>
       </div>
-
-      <i id="next" class="fa-solid fa-angle-right" aria-label="Next slide"></i>
-    </div>
-
-    
-  </section>
-</div>
+    </section>
 
     <!-- CONTACT -->
-    <div class="panel panel-contact" >
-      <section id="contact">
-        <div class="section-heading">
-            <h2>Let’s Work Together</h2>
-          <p class="contact-intro">
-            For bookings, collaborations, or project inquiries, please fill out the form below.
-            I’ll get back to you as soon as possible.
-          </p>
+    <section id="contact" class="section section-dark contact-section">
+      <div class="section-shell contact-layout">
+        <div class="contact-copy">
+          <h2>Tell me about your project.</h2>
+          <p>Share what you know so far. A product, a date, a rough idea, or a complete brief are all enough to begin.</p>
         </div>
 
-        <form
-          id="contactForm"
-          class="d_grid"
-          action="https://formsubmit.co/jlprezc@gmail.com"
-          method="POST"  data-aos="fade-up" data-aos-duration="800" >
-          <div class="mb-3 input-box has-value">
-            <input type="text" name="name" id="name" required />
-            <label for="name" class="form-label">Name</label>
+        <form id="contactForm" action="https://formsubmit.co/jlprezc@gmail.com" method="POST" class="contact-form">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" autocomplete="name" required />
           </div>
 
-          <div class="mb-3 input-box has-value">
-            <input type="email" name="email" id="email" required />
-            <label for="email" class="form-label">Email</label>
+          <div class="form-field">
+            <label for="company">Company <span class="optional">Optional</span></label>
+            <input type="text" name="company" id="company" autocomplete="organization" />
           </div>
 
-          <div class="mb-3 input-box has-value">
-            <textarea name="message" id="message" rows="5" required style="overflow:hidden;"></textarea>
-            <label for="message" class="form-label">Message</label>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" autocomplete="email" required />
           </div>
 
-          <div class="text-center">
-            <button type="submit" class="mb-3 boton text-center">Send Message</button>
+          <div class="form-field">
+            <label for="project_type">Project type</label>
+            <select name="project_type" id="project_type">
+              <option value="">Choose a project type</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="timeline">Preferred date or timeline</label>
+            <input type="text" name="timeline" id="timeline" placeholder="For example: October, next month, or flexible" />
+          </div>
+
+          <div class="form-field form-field-full">
+            <label for="message">Project details</label>
+            <textarea name="message" id="message" rows="6" required></textarea>
+          </div>
+
+          <label class="form-check form-field-full" for="still_figuring">
+            <input type="checkbox" name="still_figuring" id="still_figuring" value="Yes" />
+            <span>I’m still figuring it out.</span>
+          </label>
+
+          <div class="form-actions form-field-full">
+            <button type="submit" class="button button-primary">Start a Project</button>
           </div>
 
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="index.html#pop_up" />
+          <input type="hidden" name="_subject" value="New commercial photography inquiry" />
         </form>
-  
-      </section>
-    
-    </div>
+      </div>
+    </section>
   </main>
 
-  <!-- popup -->
-  <div class="popup" id="pop_up">
+  <!-- LIGHTBOX -->
+  <div id="popupOverlay" class="lightbox" role="dialog" aria-modal="true" aria-label="Expanded photograph" hidden>
+    <button type="button" class="lightbox-close" id="closeLightbox" aria-label="Close image">×</button>
+    <button type="button" class="lightbox-nav lightbox-prev" id="prevBtn" aria-label="Previous image">←</button>
+    <img id="popupImage" alt="" />
+    <button type="button" class="lightbox-nav lightbox-next" id="nextBtn" aria-label="Next image">→</button>
+  </div>
+
+  <div class="popup" id="pop_up" role="status" aria-live="polite">
     <div class="innerpop">
-      <button class="closeBtn" onclick="closePopup()">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+      <button class="closeBtn" type="button" onclick="closePopup()" aria-label="Close message">×</button>
       <p>Thank you for your message. I'll respond shortly.</p>
     </div>
   </div>
 
-  <!-- botón flotante -->
-  <div id="mobile-menu-btn">
-    <a href="#sec_1"><i class="fa-solid fa-circle-arrow-up"></i></a>
-  </div>
-
-  <!-- footer -->
-  <footer id="foot_bar">
-    <div id="div_menubotom">
-      <a href="https://www.instagram.com/jlperezc87" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/jlperezc" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://www.linkedin.com/in/jlperezc87" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <footer class="site-footer" id="foot_bar">
+    <div class="site-footer-brand">
+      <img src="images/logoMarkwhite.png" alt="Jose Perez logo mark" />
     </div>
-
-    <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
-      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
-    </a>
+    <div class="site-footer-links" id="div_menubotom">
+      <a href="https://www.instagram.com/jlperezc87" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://www.linkedin.com/in/jlperezc87" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="https://www.facebook.com/jlperezc" target="_blank" rel="noreferrer">Facebook</a>
+    </div>
+    <div class="site-footer-copy">
+      <a href="copyright.html">
+        <span id="copyright"></span>
+      </a>
+    </div>
   </footer>
 
-  <!-- JS -->
   <script src="script/script.js"></script>
-
-  <!-- AOS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
-  </script>
-
-  <!-- COPYRIGHT -->
-  <script>
-    const footer = document.getElementById('copyright');
-    const year = new Date().getFullYear();
-    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
-  </script>
 </body>
 </html>

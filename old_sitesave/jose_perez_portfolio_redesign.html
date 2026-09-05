@@ -1,0 +1,567 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Outfit:wght@300;400;500&display=swap');
+
+  .jp-site * { box-sizing: border-box; margin: 0; padding: 0; }
+  .jp-site {
+    font-family: 'Outfit', sans-serif;
+    background: #0a0a0a;
+    color: #e8e2d9;
+    width: 100%;
+  }
+
+  .jp-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(10,10,10,0.92);
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+  }
+  .jp-nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    color: #e8e2d9;
+    text-transform: uppercase;
+  }
+  .jp-nav-logo span { color: #c9a96e; }
+  .jp-nav-links { display: flex; gap: 2.5rem; }
+  .jp-nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.55);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .jp-nav-links a:hover { color: #c9a96e; }
+
+  .jp-hero {
+    position: relative;
+    height: 100vh;
+    min-height: 580px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: #0a0a0a;
+  }
+  .jp-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.75) 100%),
+      url('https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=1400&q=80') center/cover no-repeat;
+  }
+  .jp-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 3rem 4rem;
+    max-width: 640px;
+  }
+  .jp-hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 1.2rem;
+  }
+  .jp-hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+  }
+  .jp-hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(232,226,217,0.7);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 420px;
+  }
+  .jp-hero-actions { display: flex; gap: 1rem; align-items: center; }
+  .jp-btn-primary {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: #c9a96e;
+    color: #0a0a0a;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  .jp-btn-primary:hover { background: #e0c080; }
+  .jp-btn-ghost {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    background: transparent;
+    color: #e8e2d9;
+    border: 0.5px solid rgba(232,226,217,0.35);
+    cursor: pointer;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .jp-btn-ghost:hover { border-color: #c9a96e; color: #c9a96e; }
+
+  .jp-section { padding: 5rem 3rem; }
+  .jp-section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 0.75rem;
+  }
+  .jp-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    line-height: 1.2;
+  }
+
+  .jp-work { background: #0f0f0f; }
+  .jp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3px;
+  }
+  .jp-grid-item {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    background: #1a1a1a;
+  }
+  .jp-grid-item.tall { grid-row: span 2; aspect-ratio: auto; }
+  .jp-grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .jp-grid-item:hover img { transform: scale(1.04); }
+  .jp-grid-item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    padding: 1.25rem;
+  }
+  .jp-grid-item:hover .jp-grid-item-overlay { opacity: 1; }
+  .jp-grid-item-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9a96e;
+  }
+
+  .jp-about { background: #0a0a0a; }
+  .jp-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .jp-about-img-wrap {
+    position: relative;
+  }
+  .jp-about-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%);
+  }
+  .jp-about-img-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 60%;
+    height: 60%;
+    border: 0.5px solid rgba(201,169,110,0.3);
+    pointer-events: none;
+  }
+  .jp-about-text p {
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(232,226,217,0.75);
+    margin-bottom: 1.5rem;
+  }
+  .jp-about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 2.5rem 0;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    padding: 2rem 0;
+  }
+  .jp-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #c9a96e;
+    display: block;
+  }
+  .jp-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.45);
+    margin-top: 0.25rem;
+    display: block;
+  }
+
+  .jp-expertise { background: #111111; }
+  .jp-expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+  .jp-expertise-item {
+    background: #111111;
+    padding: 2.5rem 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  .jp-expertise-item:hover,
+  .jp-expertise-item.active {
+    background: #161616;
+    border-bottom-color: #c9a96e;
+  }
+  .jp-expertise-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: rgba(201,169,110,0.4);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .jp-expertise-name {
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #e8e2d9;
+    margin-bottom: 0.5rem;
+  }
+  .jp-expertise-desc {
+    font-size: 0.8rem;
+    color: rgba(232,226,217,0.4);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .jp-contact { background: #0a0a0a; }
+  .jp-contact-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .jp-contact-info p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: rgba(232,226,217,0.6);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .jp-contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .jp-contact-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .jp-contact-detail-label {
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #c9a96e;
+  }
+  .jp-contact-detail-val {
+    font-size: 0.9rem;
+    color: rgba(232,226,217,0.7);
+  }
+  .jp-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .jp-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .jp-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .jp-field label {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.4);
+  }
+  .jp-field input,
+  .jp-field textarea,
+  .jp-field select {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    color: #e8e2d9;
+    padding: 0.85rem 1rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 0;
+    width: 100%;
+  }
+  .jp-field input:focus,
+  .jp-field textarea:focus,
+  .jp-field select:focus {
+    border-color: #c9a96e;
+  }
+  .jp-field textarea { resize: vertical; min-height: 120px; }
+
+  .jp-footer {
+    padding: 2rem 3rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .jp-footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: rgba(232,226,217,0.35);
+    text-transform: uppercase;
+  }
+  .jp-footer-copy {
+    font-size: 0.7rem;
+    color: rgba(232,226,217,0.25);
+    letter-spacing: 0.08em;
+  }
+  .jp-social-links { display: flex; gap: 1.5rem; }
+  .jp-social-links a {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .jp-social-links a:hover { color: #c9a96e; }
+
+  .jp-divider {
+    width: 40px;
+    height: 1px;
+    background: #c9a96e;
+    margin-bottom: 2rem;
+  }
+</style>
+
+<div class="jp-site">
+  <h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Jose Luis Perez — Commercial & Product Photography portfolio website mockup</h2>
+
+  <nav class="jp-nav">
+    <div class="jp-nav-logo">Jose <span>Perez</span></div>
+    <div class="jp-nav-links">
+      <a>Home</a>
+      <a>Gallery</a>
+      <a>About</a>
+      <a>Contact</a>
+    </div>
+  </nav>
+
+  <section class="jp-hero">
+    <div class="jp-hero-bg"></div>
+    <div class="jp-hero-content">
+      <div class="jp-hero-eyebrow">Louisville, Kentucky · Commercial Photography</div>
+      <h1 class="jp-hero-title">Light that<br>tells the story.</h1>
+      <p class="jp-hero-sub">Product and commercial photography for brands that care about how they look. Bourbon, food, beauty, and beyond.</p>
+      <div class="jp-hero-actions">
+        <button class="jp-btn-primary">View Portfolio</button>
+        <button class="jp-btn-ghost">Let's Work Together</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="jp-work jp-section">
+    <div class="jp-section-label">Selected Work</div>
+    <div class="jp-section-title">A curated collection</div>
+    <div class="jp-grid">
+      <div class="jp-grid-item tall">
+        <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&q=80" alt="Bourbon bottle shot" />
+        <div class="jp-grid-item-overlay"><span class="jp-grid-item-label">Spirits · Bourbon</span></div>
+      </div>
+      <div class="jp-grid-item">
+        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80" alt="Cosmetics product" />
+        <div class="jp-grid-item-overlay"><span class="jp-grid-item-label">Beauty · Cosmetics</span></div>
+      </div>
+      <div class="jp-grid-item">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="Food photography" />
+        <div class="jp-grid-item-overlay"><span class="jp-grid-item-label">Food · Editorial</span></div>
+      </div>
+      <div class="jp-grid-item">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="Product watch" />
+        <div class="jp-grid-item-overlay"><span class="jp-grid-item-label">Product · Campaign</span></div>
+      </div>
+      <div class="jp-grid-item">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Skincare product" />
+        <div class="jp-grid-item-overlay"><span class="jp-grid-item-label">Skincare · Brand</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jp-about jp-section">
+    <div class="jp-about-inner">
+      <div class="jp-about-img-wrap">
+        <img class="jp-about-img" src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=600&q=80" alt="Jose Luis Perez photographer portrait" />
+        <div class="jp-about-img-accent"></div>
+      </div>
+      <div class="jp-about-text">
+        <div class="jp-section-label">About</div>
+        <h2 class="jp-section-title" style="margin-bottom:1.5rem">Jose Luis Perez</h2>
+        <div class="jp-divider"></div>
+        <p>I'm a Louisville-based commercial photographer focused on making products look the way they deserve to look — with intention, precision, and a genuine love for light.</p>
+        <p>My work lives at the intersection of technical control and creative direction. Whether it's a bottle of bourbon on a raw wood surface or a skincare product on a clean white field, every frame is built to communicate something.</p>
+        <div class="jp-about-stats">
+          <div>
+            <span class="jp-stat-num">5+</span>
+            <span class="jp-stat-label">Years experience</span>
+          </div>
+          <div>
+            <span class="jp-stat-num">7</span>
+            <span class="jp-stat-label">Specialties</span>
+          </div>
+          <div>
+            <span class="jp-stat-num">KY</span>
+            <span class="jp-stat-label">Louisville based</span>
+          </div>
+        </div>
+        <button class="jp-btn-ghost">Download Resume</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="jp-expertise jp-section">
+    <div class="jp-section-label">Expertise</div>
+    <div class="jp-section-title">Areas of focus</div>
+    <div class="jp-expertise-grid">
+      <div class="jp-expertise-item active">
+        <span class="jp-expertise-num">01</span>
+        <div class="jp-expertise-name">Product & Commercial</div>
+        <div class="jp-expertise-desc">Packshots, campaign imagery, and brand visuals built to sell.</div>
+      </div>
+      <div class="jp-expertise-item">
+        <span class="jp-expertise-num">02</span>
+        <div class="jp-expertise-name">Food & Beverage</div>
+        <div class="jp-expertise-desc">Texture, light, and appetite appeal — from restaurant menus to CPG brands.</div>
+      </div>
+      <div class="jp-expertise-item">
+        <span class="jp-expertise-num">03</span>
+        <div class="jp-expertise-name">Spirits & Bourbon</div>
+        <div class="jp-expertise-desc">Louisville's craft deserves world-class imagery. Bottles, barrels, and brand stories.</div>
+      </div>
+      <div class="jp-expertise-item">
+        <span class="jp-expertise-num">04</span>
+        <div class="jp-expertise-name">Beauty & Cosmetics</div>
+        <div class="jp-expertise-desc">Precision lighting for skin, glass, and formula — clean and campaign-ready.</div>
+      </div>
+      <div class="jp-expertise-item">
+        <span class="jp-expertise-num">05</span>
+        <div class="jp-expertise-name">Fashion & Portrait</div>
+        <div class="jp-expertise-desc">Editorial portraits and fashion lookbooks with strong compositional direction.</div>
+      </div>
+      <div class="jp-expertise-item">
+        <span class="jp-expertise-num">06</span>
+        <div class="jp-expertise-name">Creative Direction</div>
+        <div class="jp-expertise-desc">Concept to final image — for brands that want more than just a photographer.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="jp-contact jp-section">
+    <div class="jp-contact-inner">
+      <div class="jp-contact-info">
+        <div class="jp-section-label">Contact</div>
+        <h2 class="jp-section-title" style="margin-bottom:1.5rem">Let's work<br>together</h2>
+        <div class="jp-divider"></div>
+        <p>Available for commercial projects, brand campaigns, and product shoots in Louisville and beyond. Tell me about your project.</p>
+        <div class="jp-contact-detail">
+          <div class="jp-contact-detail-item">
+            <span class="jp-contact-detail-label">Location</span>
+            <span class="jp-contact-detail-val">Louisville, Kentucky</span>
+          </div>
+          <div class="jp-contact-detail-item">
+            <span class="jp-contact-detail-label">Instagram</span>
+            <span class="jp-contact-detail-val">@jlperezc87</span>
+          </div>
+          <div class="jp-contact-detail-item">
+            <span class="jp-contact-detail-label">Portfolio</span>
+            <span class="jp-contact-detail-val">jlperezc.vercel.app</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="jp-form">
+          <div class="jp-form-row">
+            <div class="jp-field">
+              <label>Name</label>
+              <input type="text" placeholder="Your name" />
+            </div>
+            <div class="jp-field">
+              <label>Email</label>
+              <input type="email" placeholder="your@email.com" />
+            </div>
+          </div>
+          <div class="jp-field">
+            <label>Project type</label>
+            <select>
+              <option>Product photography</option>
+              <option>Food & beverage</option>
+              <option>Spirits & bourbon</option>
+              <option>Beauty & cosmetics</option>
+              <option>Fashion & portrait</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="jp-field">
+            <label>Message</label>
+            <textarea placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="jp-btn-primary" style="align-self:flex-start">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="jp-footer">
+    <div class="jp-footer-logo">Jose Perez</div>
+    <div class="jp-social-links">
+      <a>Instagram</a>
+      <a>LinkedIn</a>
+      <a>Facebook</a>
+    </div>
+    <div class="jp-footer-copy">© 2025 Jose Luis Perez</div>
+  </footer>
+</div>

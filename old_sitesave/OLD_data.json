@@ -1,0 +1,77 @@
+{
+  "generalGallery": {
+    "order": [
+      "product",
+      "portrait",
+      "campaign",
+      "creative",
+      "food",
+      "environmental",
+      "fashion"
+    ]
+  },
+
+  "galleries": {
+    "photography": {
+      "hero": "images/0-1.jpg",
+      "title": "Jose Luis Perez Cespedes",
+      "description": "Hi, I'm Jose. Welcome to my portfolio! I’m a product photography student at JCTC focused on clean lighting, strong composition, and creative product storytelling."
+    },
+
+    "product": {
+      "hero": "images/product/0-20.jpg",
+      "title": "Product Photography",
+      "description": "Commercial product images focused on lighting, detail, texture, and clean presentation.",
+      "src": "images/product",
+      "count": 22
+    },
+
+    "portrait": {
+      "hero": "images/Portraits/0-11.jpg",
+      "title": "Portrait Photography",
+      "description": "Studio and natural light portraits focused on expression, mood, and controlled composition.",
+      "src": "images/Portraits",
+      "count": 12
+    },
+
+    "campaign": {
+      "hero": "images/campaign/0-4.jpg",
+      "title": "Campaign Photography",
+      "description": "Brand-focused images created for visual storytelling, advertising, and product presentation.",
+      "src": "images/campaign",
+      "count": 13
+    },
+
+    "creative": {
+      "hero": "images/creative/0-8.jpg",
+      "title": "Creative Photography",
+      "description": "Experimental and conceptual images using lighting, color, composition, and visual ideas.",
+      "src": "images/creative",
+      "count": 9
+    },
+
+    "food": {
+      "hero": "images/food/0-7.jpg",
+      "title": "Food Photography",
+      "description": "Food images focused on texture, color, freshness, and appetizing presentation.",
+      "src": "images/food",
+      "count": 9
+    },
+
+    "environmental": {
+      "hero": "images/environmental/0-2.jpg",
+      "title": "Environmental Photography",
+      "description": "Images that place subjects, products, or people within a surrounding environment or story.",
+      "src": "images/environmental",
+      "count": 6
+    },
+
+    "fashion": {
+      "hero": "images/fashion/0-5.jpg",
+      "title": "Fashion Photography",
+      "description": "Fashion and editorial-style photography focused on styling, pose, mood, and visual identity.",
+      "src": "images/fashion",
+      "count": 13
+    }
+  }
+}

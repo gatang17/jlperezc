@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4EHWHLPM66"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4EHWHLPM66');
+</script>
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <title>Jose Luis Perez Portfolio</title>
+</head>
+<body>
+  <div id="header"></div>
+  <div id="cont_background" class="container hero"></div>
+
+  <main class="borroso">
+
+    <!-- HERO -->
+    <div class="panel hero-panel">
+      <section id="sec_1" class="fade-section hero-section">
+        <div class="pixel-overlay"></div>
+
+        <div class="hero_wraper">
+          <div class="d_grid hero-content" data-aos="fade-up" data-aos-duration="800">
+          <img class="tagline hero-title logo" src="images/joseLogoW.png">
+        <!--    <h1 class="tagline hero-title">Jose Luis Perez Cespedes</h1>
+
+            <p class="hero-subtitle">
+              Product, Portrait &amp; Creative Photography
+            </p> -->
+
+            <p class="hero-copy">
+              Clean lighting and strong composition, and thoughtful visual storytelling.
+            </p>
+
+            <div class="hero-actions">
+              <a class="boton" href="#init" data-scroll>View Portfolio</a>
+              <a class="boton boton-secondary" href="#contact" data-scroll>Let’s Work Together</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- SELECTED WORK -->
+    <div class="panel panel-gallery">
+      <section id="init" class="section-gallery">
+        <div class="d_grid0 selected-work-layout">
+          <div class="d_sub_grid0 selected-work-intro" id="d_sub_grid0">
+            <div class="wrapp">
+              <h2 id="gallery_title">Selected Work</h2>
+              <p id="gallery_desc">
+                A curated collection of portraits, product images, and visual experiments.
+              </p>
+
+            </div>
+          </div>
+
+          <div class="container-fluid" id="gallery">
+            <div id="gallery_grid" data-aos="fade-in" data-aos-duration="500"></div>
+            <div class="text-center mt-3">
+              <a href="gallery.html?service=photography" 
+              class="btn boton boton-secondary mybtn">
+             View More
+           </a>
+            </div>
+            <div class="text-center"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Overlay para galería -->
+    <div id="popupOverlay">
+      <i class="fa-solid fa-chevron-left" id="prevBtn"></i>
+      <img id="popupImage" alt="Expanded gallery image" />
+      <i class="fa-solid fa-chevron-right" id="nextBtn"></i>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="panel panel-about">
+      <section id="about" >
+        <div class="section-heading">
+         <h2>About Me</h2>
+        </div>
+
+        <div id="gallery_1" class="about-layout" data-aos="fade-in" data-aos-duration="800">
+          <div class="about-image-wrap d_work">
+            <img src="images/selfportrait/0-3.jpg" class="d_work" alt="Jose Luis Perez self portrait" />
+          </div>
+          <div class="d_work about_text">
+            <p class="about-lead">
+              I’m a Louisville-based photographer focused on product photography,
+              portrait work, and visually driven compositions.
+            </p>
+          
+            <p>
+              My approach combines technical control, lighting precision, and creative
+              direction to create images with clarity and impact. With a strong interest
+              in composition and image-making, I build photographs that feel intentional,
+              polished, and visually memorable.
+            </p>
+          
+            <ul class="about-highlights">
+              <li>Based in Louisville, Kentucky</li>
+              <li>Focused on product, portrait, and creative photography</li>
+              <li>Strong interest in lighting, composition, and image design</li>
+            </ul>
+          
+            <a href="data/RESUME_PEREZ.pdf" class="boton" download >
+              Download Resume
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+  <!-- AREAS OF EXPERTISE -->
+<div class="panel panel-work">
+  <section id="work">
+    <div class="work-heading">
+      <h2>Areas of Expertise</h2>
+        <h3 id="carousel-title"></h3>
+    </div>
+
+    <div id="carrusel-container">
+      <i id="prev" class="fa-solid fa-angle-left" aria-label="Previous slide"></i>
+
+      <div id="carrusel">
+        <a href="gallery.html?service=portrait" aria-label="Open portrait gallery">
+          <div class="carousel-item" data-title="Portrait"
+            style="background-image:url('images/Portraits/0-11.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=campaign" aria-label="Open campaign gallery">
+          <div class="carousel-item" data-title="campaign"
+            style="background-image:url('images/campaign/0-4.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=product" aria-label="Open product gallery">
+          <div class="carousel-item" data-title="Product"
+            style="background-image:url('images/product/0-20.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=creative" aria-label="Open creative gallery">
+          <div class="carousel-item" data-title="Creative"
+            style="background-image:url('images/creative/0-8.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=fashion" aria-label="Open Fashion gallery">
+          <div class="carousel-item" data-title="Fashion & Corporate"
+            style="background-image:url('images/fashion/0-5.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=food" aria-label="Open food gallery">
+          <div class="carousel-item" data-title="Food"
+            style="background-image:url('images/food/0-2.jpg')"></div>
+        </a>
+
+        <a href="gallery.html?service=environmental" aria-label="Open environmental gallery">
+          <div class="carousel-item" data-title="Environmental"
+            style="background-image:url('images/environmental/0-2.jpg')"></div>
+        </a>
+      </div>
+
+      <i id="next" class="fa-solid fa-angle-right" aria-label="Next slide"></i>
+    </div>
+
+    
+  </section>
+</div>
+
+    <!-- CONTACT -->
+    <div class="panel panel-contact" >
+      <section id="contact">
+        <div class="section-heading">
+            <h2>Let’s Work Together</h2>
+          <p class="contact-intro">
+            For bookings, collaborations, or project inquiries, please fill out the form below.
+            I’ll get back to you as soon as possible.
+          </p>
+        </div>
+
+        <form
+          id="contactForm"
+          class="d_grid"
+          action="https://formsubmit.co/jlprezc@gmail.com"
+          method="POST"  data-aos="fade-up" data-aos-duration="800" >
+          <div class="mb-3 input-box has-value">
+            <input type="text" name="name" id="name" required />
+            <label for="name" class="form-label">Name</label>
+          </div>
+
+          <div class="mb-3 input-box has-value">
+            <input type="email" name="email" id="email" required />
+            <label for="email" class="form-label">Email</label>
+          </div>
+
+          <div class="mb-3 input-box has-value">
+            <textarea name="message" id="message" rows="5" required style="overflow:hidden;"></textarea>
+            <label for="message" class="form-label">Message</label>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="mb-3 boton text-center">Send Message</button>
+          </div>
+
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="index.html#pop_up" />
+        </form>
+  
+      </section>
+    
+    </div>
+  </main>
+
+  <!-- popup -->
+  <div class="popup" id="pop_up">
+    <div class="innerpop">
+      <button class="closeBtn" onclick="closePopup()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <p>Thank you for your message. I'll respond shortly.</p>
+    </div>
+  </div>
+
+  <!-- botón flotante -->
+  <div id="mobile-menu-btn">
+    <a href="#sec_1"><i class="fa-solid fa-circle-arrow-up"></i></a>
+  </div>
+
+  <!-- footer -->
+<!--   <footer id="foot_bar">
+    <div id="div_menubotom">
+      <a href="https://www.instagram.com/jlperezc87" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/jlperezc" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.linkedin.com/in/jlperezc87" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
+      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
+    </a>
+  </footer> -->
+
+  <footer class="jp-footer" id="foot_bar">
+    <div class="jp-footer-logo"><img src="/images/logoMarkwhite.png" class="img-foot"></div>
+    <div class="jp-social-links" id="div_menubotom">
+      <a href="https://www.instagram.com/jlperezc87" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/jlperezc87" target="_blank">LinkedIn</a>
+      <a href="https://www.facebook.com/jlperezc" target="_blank">Facebook</a>
+    </div>
+    <div class="jp-footer-copy"> <a class="lnkMenu" href="https://gatangdesigns.io/" target="_blank">
+      <p style="font-size: 0.5rem; padding-top: 0.25rem;" id="copyright"></p>
+    </a></div>
+  </footer>
+
+  <style>
+
+  .jp-footer {
+    padding: 2rem 3rem;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .jp-footer-logo .img-foot{
+    max-height: 20px;
+  }
+  .jp-footer-copy {
+    font-size: 0.7rem;
+    color: rgba(232,226,217,0.25);
+    letter-spacing: 0.08em;
+  }
+  .jp-social-links { display: flex; gap: 1.5rem; }
+  .jp-social-links a , .lnkMenu{
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,226,217,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .jp-social-links a:hover, .lnkMenu:hover { color: #c9a96e; }
+
+  .jp-divider {
+    width: 40px;
+    height: 1px;
+    background: #c9a96e;
+    margin-bottom: 2rem;
+  }
+  </style>
+
+  <!-- JS -->
+  <script src="script/script.js"></script>
+
+  <!-- AOS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+  <!-- COPYRIGHT -->
+  <script>
+    const footer = document.getElementById('copyright');
+    const year = new Date().getFullYear();
+    footer.textContent = `© ${year} GATANG designs. All rights reserved.`;
+  </script>
+</body>
+</html>

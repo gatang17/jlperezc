@@ -1,0 +1,236 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=DM+Sans:wght@200;300;400&display=swap');
+
+.s{font-family:'DM Sans',sans-serif;background:#0d0d0d;color:#d4cfc8;width:100%}
+.s *{box-sizing:border-box;margin:0;padding:0}
+
+.nav{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 2.5rem;border-bottom:1px solid #1e1e1e}
+.nav-id{font-family:'DM Mono',monospace;font-size:0.7rem;font-weight:300;letter-spacing:0.15em;color:#d4cfc8}
+.nav-id span{color:#555}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.15em;color:#444;cursor:pointer;text-decoration:none;transition:color 0.15s}
+.nav-links a:hover{color:#d4cfc8}
+
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:92vh;border-bottom:1px solid #1e1e1e}
+.hero-left{padding:4rem 2.5rem;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #1e1e1e}
+.hero-index{font-family:'DM Mono',monospace;font-size:0.6rem;color:#333;letter-spacing:0.2em;margin-bottom:auto}
+.hero-text{padding:3rem 0 2rem}
+.hero-label{font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;letter-spacing:0.22em;margin-bottom:2rem;display:block}
+.hero-name{font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:200;line-height:1.1;color:#ffffff;letter-spacing:-0.02em;margin-bottom:0.5rem}
+.hero-title{font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:200;line-height:1.1;color:#444;letter-spacing:-0.02em}
+.hero-desc{margin-top:2.5rem;font-size:0.85rem;font-weight:300;line-height:1.85;color:#666;max-width:340px}
+.hero-meta{display:flex;gap:2.5rem;padding-top:2rem;border-top:1px solid #1e1e1e}
+.hero-meta-item{display:flex;flex-direction:column;gap:0.3rem}
+.hero-meta-label{font-family:'DM Mono',monospace;font-size:0.55rem;color:#333;letter-spacing:0.2em}
+.hero-meta-val{font-size:0.78rem;color:#888;font-weight:300}
+
+.hero-right{position:relative;background:#0a0a0a;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;opacity:0.85;display:block}
+.hero-img-num{position:absolute;bottom:1.5rem;right:1.5rem;font-family:'DM Mono',monospace;font-size:0.55rem;color:#333;letter-spacing:0.15em}
+
+.work{border-bottom:1px solid #1e1e1e}
+.work-header{display:flex;justify-content:space-between;align-items:baseline;padding:2rem 2.5rem 1.5rem;border-bottom:1px solid #1e1e1e}
+.section-mono{font-family:'DM Mono',monospace;font-size:0.6rem;color:#444;letter-spacing:0.2em}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.work-item{border-right:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e;position:relative;overflow:hidden;cursor:pointer}
+.work-item:nth-child(3n){border-right:none}
+.work-item img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(15%);transition:filter 0.4s,transform 0.5s}
+.work-item:hover img{filter:grayscale(0%);transform:scale(1.03)}
+.work-item-meta{padding:1rem 1.2rem;border-top:1px solid #1e1e1e;display:flex;justify-content:space-between;align-items:center}
+.work-item-cat{font-family:'DM Mono',monospace;font-size:0.58rem;color:#444;letter-spacing:0.15em}
+.work-item-arrow{font-size:0.7rem;color:#333}
+
+.about{display:grid;grid-template-columns:1fr 2fr;border-bottom:1px solid #1e1e1e}
+.about-left{padding:3rem 2.5rem;border-right:1px solid #1e1e1e;display:flex;flex-direction:column;gap:2rem}
+.about-img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;filter:grayscale(30%)}
+.about-right{padding:3rem 2.5rem;display:flex;flex-direction:column;justify-content:center;gap:2rem}
+.about-p{font-size:0.9rem;font-weight:300;line-height:1.9;color:#888;max-width:520px}
+.about-p.lead{font-size:1.1rem;font-weight:200;color:#bbb;line-height:1.7}
+.about-specs{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid #1e1e1e;margin-top:1rem}
+.spec{padding:1.2rem 0;border-bottom:1px solid #1e1e1e;border-right:1px solid #1e1e1e}
+.spec:nth-child(2n){border-right:none}
+.spec-key{font-family:'DM Mono',monospace;font-size:0.55rem;color:#333;letter-spacing:0.2em;margin-bottom:0.4rem;display:block}
+.spec-val{font-size:0.8rem;color:#777;font-weight:300}
+
+.services{border-bottom:1px solid #1e1e1e}
+.services-header{padding:2rem 2.5rem;border-bottom:1px solid #1e1e1e;display:flex;justify-content:space-between;align-items:baseline}
+.services-list{display:grid;grid-template-columns:repeat(2,1fr)}
+.service{padding:2rem 2.5rem;border-right:1px solid #1e1e1e;border-bottom:1px solid #1e1e1e;cursor:pointer;transition:background 0.15s}
+.service:nth-child(2n){border-right:none}
+.service:hover{background:#111}
+.service-num{font-family:'DM Mono',monospace;font-size:0.55rem;color:#2a2a2a;letter-spacing:0.15em;display:block;margin-bottom:1rem}
+.service-name{font-size:0.88rem;font-weight:300;color:#c0bbb4;margin-bottom:0.5rem}
+.service-detail{font-size:0.75rem;font-weight:300;color:#444;line-height:1.7}
+
+.contact{display:grid;grid-template-columns:1fr 1fr}
+.contact-left{padding:3rem 2.5rem;border-right:1px solid #1e1e1e;display:flex;flex-direction:column;gap:1.5rem}
+.contact-big{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:200;color:#ffffff;line-height:1.15;letter-spacing:-0.02em}
+.contact-sub{font-size:0.8rem;font-weight:300;color:#555;line-height:1.8;max-width:300px}
+.contact-links{display:flex;flex-direction:column;gap:0.8rem;margin-top:1rem;padding-top:1.5rem;border-top:1px solid #1e1e1e}
+.contact-link{display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:0.62rem;color:#444;letter-spacing:0.12em;padding-bottom:0.8rem;border-bottom:1px solid #161616;cursor:pointer;transition:color 0.15s}
+.contact-link:hover{color:#d4cfc8}
+.contact-right{padding:3rem 2.5rem;display:flex;flex-direction:column;gap:1.2rem}
+.field{display:flex;flex-direction:column;gap:0.5rem}
+.field label{font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:0.2em;color:#333}
+.field input,.field textarea,.field select{background:transparent;border:none;border-bottom:1px solid #1e1e1e;color:#d4cfc8;padding:0.7rem 0;font-family:'DM Sans',sans-serif;font-size:0.85rem;font-weight:300;outline:none;transition:border-color 0.2s;width:100%;border-radius:0}
+.field input:focus,.field textarea:focus,.field select:focus{border-bottom-color:#555}
+.field textarea{min-height:100px;resize:none}
+.field select option{background:#0d0d0d}
+.submit-row{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid #1e1e1e;margin-top:0.5rem}
+.submit-note{font-family:'DM Mono',monospace;font-size:0.55rem;color:#2a2a2a;letter-spacing:0.15em}
+.submit-btn{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;padding:0.8rem 1.8rem;background:transparent;border:1px solid #2a2a2a;color:#888;cursor:pointer;transition:border-color 0.2s,color 0.2s}
+.submit-btn:hover{border-color:#888;color:#d4cfc8}
+
+.footer{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-top:1px solid #1e1e1e}
+.footer-id{font-family:'DM Mono',monospace;font-size:0.55rem;color:#2a2a2a;letter-spacing:0.15em}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-family:'DM Mono',monospace;font-size:0.55rem;color:#2a2a2a;letter-spacing:0.15em;text-decoration:none;cursor:pointer;transition:color 0.2s}
+.footer-links a:hover{color:#888}
+</style>
+
+<div class="s">
+  <h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">Jose Luis Perez — commercial and product photographer portfolio</h2>
+
+  <nav class="nav">
+    <div class="nav-id">JLP <span>/</span> commercial photography</div>
+    <div class="nav-links">
+      <a>work</a>
+      <a>about</a>
+      <a>services</a>
+      <a>contact</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-index">index — 001</div>
+      <div class="hero-text">
+        <span class="hero-label">Louisville, KY · available for work</span>
+        <div class="hero-name">Jose Luis</div>
+        <div class="hero-title">Perez</div>
+        <p class="hero-desc">Commercial and product photography. Precision lighting, deliberate composition, images built to make your product impossible to ignore.</p>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">specialty</span>
+          <span class="hero-meta-val">Product · Spirits · Food</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">based</span>
+          <span class="hero-meta-val">Louisville, Kentucky</span>
+        </div>
+        <div class="hero-meta-item">
+          <span class="hero-meta-label">portfolio</span>
+          <span class="hero-meta-val">jlperezc.vercel.app</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=900&q=85" alt="Four Roses bourbon product shot" />
+      <span class="hero-img-num">img — 001 / bourbon · product</span>
+    </div>
+  </section>
+
+  <section class="work">
+    <div class="work-header">
+      <span class="section-mono">selected work</span>
+      <span class="section-mono">009 images</span>
+    </div>
+    <div class="work-grid">
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1569529465841-dfecdab7503b?w=600&q=80" alt="Bourbon" />
+        <div class="work-item-meta"><span class="work-item-cat">spirits · bourbon</span><span class="work-item-arrow">→</span></div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Cosmetics" />
+        <div class="work-item-meta"><span class="work-item-cat">beauty · cosmetics</span><span class="work-item-arrow">→</span></div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="Food" />
+        <div class="work-item-meta"><span class="work-item-cat">food · editorial</span><span class="work-item-arrow">→</span></div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80" alt="Product" />
+        <div class="work-item-meta"><span class="work-item-cat">product · packshot</span><span class="work-item-arrow">→</span></div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80" alt="Watch" />
+        <div class="work-item-meta"><span class="work-item-cat">product · campaign</span><span class="work-item-arrow">→</span></div>
+      </div>
+      <div class="work-item">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Food editorial" />
+        <div class="work-item-meta"><span class="work-item-cat">food · beverage</span><span class="work-item-arrow">→</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-left">
+      <span class="section-mono">about</span>
+      <img class="about-img" src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=500&q=80" alt="Jose Luis Perez" />
+    </div>
+    <div class="about-right">
+      <p class="about-p lead">I build photographs with the same care a product was built with.</p>
+      <p class="about-p">Based in Louisville, Kentucky. Focused on commercial and product photography — the kind of work where every element in the frame is there for a reason. Light, surface, angle, timing. Nothing accidental.</p>
+      <p class="about-p">Bourbon, food, beauty, fashion. If you make something worth looking at, I want to photograph it.</p>
+      <div class="about-specs">
+        <div class="spec"><span class="spec-key">location</span><span class="spec-val">Louisville, KY</span></div>
+        <div class="spec"><span class="spec-key">focus</span><span class="spec-val">Product · Commercial</span></div>
+        <div class="spec"><span class="spec-key">instagram</span><span class="spec-val">@jlperezc87</span></div>
+        <div class="spec"><span class="spec-key">linkedin</span><span class="spec-val">jlperezc87</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services">
+    <div class="services-header">
+      <span class="section-mono">services</span>
+      <span class="section-mono">06 areas</span>
+    </div>
+    <div class="services-list">
+      <div class="service"><span class="service-num">01</span><div class="service-name">Product & commercial</div><div class="service-detail">Packshots, campaign imagery, and brand visuals. Built to work on websites, ads, and retail.</div></div>
+      <div class="service"><span class="service-num">02</span><div class="service-name">Spirits & bourbon</div><div class="service-detail">Louisville's industry deserves world-class photography. Bottles, barrels, pour shots, and brand stories.</div></div>
+      <div class="service"><span class="service-num">03</span><div class="service-name">Food & beverage</div><div class="service-detail">From restaurant menus to CPG packaging. Appetite-driven photography with technical precision.</div></div>
+      <div class="service"><span class="service-num">04</span><div class="service-name">Beauty & cosmetics</div><div class="service-detail">Precision work for skin, glass, and formula. Clean packshots and campaign-ready imagery.</div></div>
+      <div class="service"><span class="service-num">05</span><div class="service-name">Fashion & portrait</div><div class="service-detail">Editorial portraits and lookbooks with strong compositional control and deliberate light.</div></div>
+      <div class="service"><span class="service-num">06</span><div class="service-name">Creative direction</div><div class="service-detail">From concept to final image. For brands that want a collaborator, not just a photographer.</div></div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="contact-left">
+      <span class="section-mono">contact</span>
+      <div class="contact-big">Let's make<br>something.</div>
+      <p class="contact-sub">Available for commercial projects in Louisville and beyond. Tell me about your product.</p>
+      <div class="contact-links">
+        <div class="contact-link"><span>instagram</span><span>@jlperezc87 →</span></div>
+        <div class="contact-link"><span>linkedin</span><span>jlperezc87 →</span></div>
+        <div class="contact-link"><span>portfolio</span><span>jlperezc.vercel.app →</span></div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <div class="field"><label>name</label><input type="text" placeholder="Your name" /></div>
+      <div class="field"><label>email</label><input type="email" placeholder="your@email.com" /></div>
+      <div class="field">
+        <label>project type</label>
+        <select><option>Product photography</option><option>Spirits & bourbon</option><option>Food & beverage</option><option>Beauty & cosmetics</option><option>Fashion & portrait</option><option>Other</option></select>
+      </div>
+      <div class="field"><label>message</label><textarea placeholder="Tell me about your project..."></textarea></div>
+      <div class="submit-row">
+        <span class="submit-note">Louisville, KY · available now</span>
+        <button class="submit-btn">send message</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="footer-id">© 2025 Jose Luis Perez Cespedes</span>
+    <div class="footer-links">
+      <a>instagram</a>
+      <a>linkedin</a>
+      <a>facebook</a>
+    </div>
+    <span class="footer-id">jlperezc.vercel.app</span>
+  </footer>
+</div>
