@@ -10,7 +10,8 @@
   --ink-soft: rgba(21, 21, 21, 0.72);
   --line: rgba(255, 255, 255, 0.16);
   --line-dark: rgba(21, 21, 21, 0.16);
-  --accent: #7a2417;
+  --accent: #c08e39;
+  --accent-soft:#c08f393a;
   --content: 1240px;
   --header-h: 72px;
 }
@@ -174,13 +175,16 @@ textarea {
 .site-brand {
   display: inline-flex;
   align-items: center;
-  width: 32px;
-  min-width: 32px;
+  width: 170px;
+  min-width: 30px;
+  padding: 20px;
+  
 }
 
-.site-brand img {
+.site-brand div {
   width: 100%;
   height: auto;
+  
 }
 
 .desktop-nav {
@@ -362,6 +366,7 @@ body.lightbox-open {
   padding: 0.04em 0.6em;
   isolation: isolate;
   text-transform: uppercase;
+  
 }
 
 /* Blur SOLO de la fotografía que está detrás */
@@ -369,6 +374,7 @@ body.lightbox-open {
   content: "";
   position: absolute;
   inset: -0.08em -0.10em;
+  
 
   z-index: 0;
 
@@ -377,12 +383,13 @@ body.lightbox-open {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   
-
+  background-color: var(--accent-soft);
   pointer-events: none;
 }
 
 /* La palabra permanece perfectamente enfocada */
 .viewfinder-text {
+ 
   position: relative;
   z-index: 2;
   color: inherit;
@@ -1543,10 +1550,7 @@ body.lightbox-open {
 /* =========================================================
    FINAL ACCENT SYSTEM — matches current index.html/header.html
    ========================================================= */
-:root {
-  --accent: #a64b3c;
-  --accent-soft: rgba(166, 75, 60, 0.14);
-}
+
 
 .viewfinder-word::before,
 .viewfinder-word::after {
